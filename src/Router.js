@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Nav from './pages/nav/Nav';
-import Login from './pages/login/Login';
-import Main from './pages/main/Main';
-import Cart from './pages/cart/Cart';
-import Detail from './pages/detail/Detail';
-import SignUp from './pages/signup/SignUp';
+import Nav from './pages/Nav/Nav';
+import Login from './pages/Login/Login';
+import Main from './pages/Main/Main';
+import Cart from './pages/Cart/Cart';
+import Detail from './pages/Detail/Detail';
+import SignUp from './pages/SignUp/SignUp';
 
 const Router = () => {
   return (
