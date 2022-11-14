@@ -5,7 +5,7 @@ function Nav() {
   return (
     <div className="navWrap">
       <ul>
-        <li>러닝</li>
+        <li>러닝1</li>
         <li>축구</li>
         <li>농구</li>
       </ul>
