@@ -1,8 +1,14 @@
 import React from 'react';
+import Filter from './Filter/Filter';
 import './Main.scss';
+import './Filter/Filter.scss';
 
 function Main() {
-  return <p>Hello worl1d</p>;
+  return (
+    <p>
+      <Filter />
+    </p>
+  );
 }
 
 export default Main;
