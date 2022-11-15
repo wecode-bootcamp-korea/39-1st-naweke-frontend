@@ -1,13 +1,23 @@
 import React from 'react';
 import './Nav.scss';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function Nav() {
+  const [navLink, setNavLink] = useState('none');
+
+  function navLinkOpen() {
+    if (navLink === 'none') {
+      setNavLink('block');
+    } else {
+      setNavLink('none');
+    }
+  }
   return (
     <>
       <div className="signBar">
-        <p>Find a Store</p>
         <p>Help</p>
+        <p>Order Check</p>
         <p>
           <Link to="/signup">Sign Up</Link>
         </p>
@@ -22,9 +32,9 @@ function Nav() {
           </Link>
         </div>
         <ul className="navMain">
-          <li>Running</li>
-          <li>Soccer</li>
-          <li>Basketball</li>
+          <li onMouseEnter={navLinkOpen}>Running</li>
+          <li onMouseEnter={navLinkOpen}>Soccer</li>
+          <li onMouseEnter={navLinkOpen}>Basketball</li>
         </ul>
         <div className="navRight">
           <div className="searchArea">
@@ -42,6 +52,9 @@ function Nav() {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="navUnder" style={{ display: navLink }}>
+        상세메뉴박스
       </div>
     </>
   );
