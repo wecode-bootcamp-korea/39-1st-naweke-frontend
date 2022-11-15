@@ -1,0 +1,31 @@
+.prdBox {
+  width: 375px;
+  height: 560px;
+
+  img {
+    width: 375px;
+    height: 375px;
+  }
+  
+  .contentBox{
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    height: 185px;
+
+    div{
+        padding: 10px 10px 10px 0px;
+    }
+
+    .nowState, .price{
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .prdName, .color{
+        color: #cecece;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+  }
+}
