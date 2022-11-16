@@ -2,89 +2,95 @@
   {
     "id": 1,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   },
   {
     "id": 2,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   },
   {
     "id": 3,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   },
   {
     "id": 4,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   },
   {
     "id": 5,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   },
   {
     "id": 6,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   },
   {
     "id": 7,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   },
   {
     "id": 8,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
-    "price": "279,000"
+    "discription": "남성 로드 러닝화",
+    "price": "269,000"
   },
   {
     "id": 9,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   },
   {
     "id": 10,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
-  },
-  {
+  },{
     "id": 11,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "남성 로드 러닝화",
+    "price": "269,000"
+  },{
+    "id": 12,
+    "image": "images/nike.png",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "discription": "남성 로드 러닝화",
+    "price": "269,000"
+  },{
+    "id": 13,
+    "image": "images/nike.png",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "discription": "남성 로드 러닝화",
+    "price": "269,000"
+  },{
+    "id": 14,
+    "image": "images/nike.png",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "discription": "남성 로드 러닝화",
     "price": "269,000"
   }
 ]

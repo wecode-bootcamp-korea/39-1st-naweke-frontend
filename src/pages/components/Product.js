@@ -6,8 +6,8 @@ const Product = ({ prdlist }) => {
     <div className="prdBox">
       <img alt="prdImage" src={prdlist.image} className="prdImage" />
       <div className="contentBox">
-        <div className="nowState">{prdlist.nowstate}</div>
-        <div className="prdName">{prdlist.name}</div>
+        <div className="nowState">{prdlist.name}</div>
+        <div className="prdName">{prdlist.discription}</div>
         <div className="color">{prdlist.color}</div>
         <div className="price">{prdlist.price}</div>
       </div>

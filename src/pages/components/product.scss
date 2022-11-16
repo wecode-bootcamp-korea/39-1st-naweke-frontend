@@ -2,12 +2,16 @@
   width: 375px;
   height: 560px;
 
+  &:hover{
+    cursor: pointer;
+  }
   img {
     width: 375px;
     height: 375px;
   }
   
   .contentBox{
+    background-color: red;
     display: flex;
     flex-direction: column;
     width: 375px;
@@ -19,13 +23,17 @@
 
     .nowState, .price{
         font-size: 2rem;
-        font-weight: 500;
+        font-weight: bold;
     }
 
-    .prdName, .color{
-        color: #cecece;
+    .prdName{
+        color: #757575;
         font-size: 1.5rem;
-        font-weight: 500;
+        font-weight: 900;
+    }
+
+    .price{
+      margin-top: 20px;
     }
   }
 }
