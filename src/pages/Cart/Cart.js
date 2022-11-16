@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Cart.scss';
+import ProductList from './ProductList';
+
+// const CARTS = [
+//   {
+//     id: 0,
+//     product: {
+//       id: 0,
+//       name: 'hi',
+//     },
+//   },
+// ];
 
 function Cart() {
+  //   const [carts, setCarts] = useState(CARTS);
+
   return (
     <div className="container">
       <div className="cart">
@@ -19,8 +32,28 @@ function Cart() {
               <div className="productInfo">
                 <div className="productName line fontSize">나이키 로고</div>
                 <div className="productColor line gray fontSize">검정색</div>
-                <div className="productSize line gray fontSize">사이즈</div>
-                <div className="productAmount line gray fontSize">수량</div>
+                <div className="productSize line gray fontSize">
+                  사이즈
+                  <select className="sizeOption">
+                    <option>XS</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                  </select>
+                </div>
+                <div className="productAmount line gray fontSize">
+                  수량
+                  <select className="amountOption">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                  </select>
+                </div>
                 <div className="iconBox">
                   <div className="heartIconWrap">
                     <button className="heartBtn">

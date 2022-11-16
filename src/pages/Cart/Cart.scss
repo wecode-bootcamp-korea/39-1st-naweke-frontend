@@ -8,6 +8,7 @@
 
   .cart {
     display: flex;
+    justify-content: space-between;
   }
 
   .cartContainer {
@@ -44,6 +45,10 @@
     padding-right: 3rem;
   }
 
+  .productName {
+    font-weight: 500;
+  }
+
   .line {
     line-height: 4rem;
   }
@@ -56,8 +61,28 @@
     font-size: 2rem;
   }
 
+  .productSize {
+    display: flex;
+  }
+
+  .sizeOption {
+    background-color: white;
+    margin-left: 15px;
+    font-size: 2rem;
+    border: none;
+    color: gray;
+  }
+
   .productAmount {
     padding-bottom: 10px;
+  }
+
+  .amountOption {
+    background-color: white;
+    margin-left: 15px;
+    font-size: 2rem;
+    border: none;
+    color: gray;
   }
 
   .productPrice {
@@ -164,5 +189,13 @@
 
   .wishList {
     margin-top: 10px;
+    margin-bottom: 20px;
   }
+
+  // .sizeOption {
+  //   background-color: white;
+  //   margin-left: 15px;
+  //   font-size: 1.5rem;
+  //   border: none;
+  // }
 }
