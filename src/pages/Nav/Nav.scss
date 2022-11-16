@@ -120,9 +120,30 @@
 .navUnder{
   position: absolute;
   width: 100vw;
-  height: 400px;
-  visibility: visible;
-  background-color: green;
+  height: 200px;
+  // visibility: hidden;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 
+  ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 11vw;
+    height: 150px;
+    font-size:1.8rem;
+    margin-left: -1vw;
+
+    li{
+      color: #757575;
+    }
+    li:hover{
+      color: black;
+    }
+  }
 }
+

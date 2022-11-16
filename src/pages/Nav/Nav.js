@@ -4,22 +4,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 function Nav() {
-  const [navLink, setNavLink] = useState('none');
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
-  function navLinkOpen() {
-    if (navLink === 'none') {
-      setNavLink('block');
-    }
-  }
-
-  function navLinkClose() {
-    if (navLink === 'block') {
-      setNavLink('none');
-    }
-  }
   return (
     <>
-      <div className="signBar">
+      <div className="signBar" onMouseEnter={() => setIsSubMenuOpen(false)}>
         <p>Help</p>
         <p>Order Check</p>
         <p>
@@ -35,16 +24,18 @@ function Nav() {
             <img alt="logo" src="images/nike.png" />
           </Link>
         </div>
-        <ul className="navMain">
-          <li onMouseOver={navLinkOpen}>
-            <Link to="/running">Running</Link>
-          </li>
-          <li onMouseOver={navLinkOpen}>
-            <Link to="/soccer">Soccer</Link>
-          </li>
-          <li onMouseOver={navLinkOpen}>
-            <Link to="/basketball">Basketball</Link>
-          </li>
+        <ul className="navMain" onMouseEnter={() => setIsSubMenuOpen(true)}>
+          <Link to="/running">
+            <li>Running</li>
+          </Link>
+
+          <Link to="/soccer">
+            <li>Soccer</li>
+          </Link>
+
+          <Link to="/basketball">
+            <li>Basketball</li>
+          </Link>
         </ul>
         <div className="navRight">
           <div className="searchArea">
@@ -63,13 +54,33 @@ function Nav() {
           </div>
         </div>
       </div>
-      <div
-        className="navUnder"
-        onMouseOut={navLinkClose}
-        style={{ display: navLink }}
-      >
-        상세메뉴박스
-      </div>
+      {isSubMenuOpen && (
+        <div
+          className="navUnder"
+          onMouseLeave={() => setIsSubMenuOpen(false)}
+          // style={{ visibility: navLink }}
+        >
+          <ul className="navUnderInRun">
+            <li>신발</li>
+            <li>의류</li>
+            <li>모자&용품</li>
+            <li>전체보기</li>
+          </ul>
+          <ul className="navUnderInSoccer">
+            <li>축구화</li>
+            <li>의류</li>
+            <li>팀 컬렉션</li>
+            <li>전체보기</li>
+          </ul>
+          <ul className="navUnderInBasket">
+            <li>신발</li>
+            <li>의류</li>
+            <li>NBA</li>
+            <li>용품</li>
+            <li>전체보기</li>
+          </ul>
+        </div>
+      )}
     </>
   );
 }
