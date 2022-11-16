@@ -118,8 +118,10 @@
 }
 
 .navUnder{
+  position: absolute;
   width: 100vw;
   height: 400px;
+  visibility: visible;
   background-color: green;
 
 

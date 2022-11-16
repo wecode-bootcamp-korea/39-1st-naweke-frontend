@@ -6,6 +6,9 @@ import Main from './pages/Main/Main';
 import Cart from './pages/Cart/Cart';
 import Detail from './pages/Detail/Detail';
 import SignUp from './pages/SignUp/SignUp';
+import Basketball from './pages/Basketball/Basketball';
+import Soccer from './pages/Soccer/Soccer';
+import Running from './pages/Running/Running';
 
 const Router = () => {
   return (
@@ -16,6 +19,9 @@ const Router = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/main" element={<Main />} />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/basketball" element={<Basketball />} />
+        <Route path="/soccer" element={<Soccer />} />
+        <Route path="/Running" element={<Running />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

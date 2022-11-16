@@ -9,7 +9,11 @@ function Nav() {
   function navLinkOpen() {
     if (navLink === 'none') {
       setNavLink('block');
-    } else {
+    }
+  }
+
+  function navLinkClose() {
+    if (navLink === 'block') {
       setNavLink('none');
     }
   }
@@ -32,9 +36,15 @@ function Nav() {
           </Link>
         </div>
         <ul className="navMain">
-          <li onMouseEnter={navLinkOpen}>Running</li>
-          <li onMouseEnter={navLinkOpen}>Soccer</li>
-          <li onMouseEnter={navLinkOpen}>Basketball</li>
+          <li onMouseOver={navLinkOpen}>
+            <Link to="/running">Running</Link>
+          </li>
+          <li onMouseOver={navLinkOpen}>
+            <Link to="/soccer">Soccer</Link>
+          </li>
+          <li onMouseOver={navLinkOpen}>
+            <Link to="/basketball">Basketball</Link>
+          </li>
         </ul>
         <div className="navRight">
           <div className="searchArea">
@@ -53,7 +63,11 @@ function Nav() {
           </div>
         </div>
       </div>
-      <div className="navUnder" style={{ display: navLink }}>
+      <div
+        className="navUnder"
+        onMouseOut={navLinkClose}
+        style={{ display: navLink }}
+      >
         상세메뉴박스
       </div>
     </>
