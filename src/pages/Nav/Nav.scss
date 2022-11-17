@@ -41,6 +41,7 @@
   }
 
   .navLogo {
+    margin-top: -7px;
     width: 280px;
     height: 67px;
     img {
@@ -137,6 +138,7 @@
     background-color: #ffffff;
 
     .navLogo {
+      margin-top: -7px;
       width: 200px;
       height: 67px;
       img {
@@ -250,13 +252,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
 
   ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 11vw;
+    width: 180px;
     height: 150px;
     font-size: 1.8rem;
     margin-left: -1vw;
