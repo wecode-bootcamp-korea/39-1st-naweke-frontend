@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.scss';
 
-function User({ userData, isSelectLogin }) {
+function User({ userData }) {
   const { title, text, url, button } = userData;
   const [inputValue, setInputValue] = useState({ id: '', pw: '' });
   const navigate = useNavigate();
@@ -11,28 +11,52 @@ function User({ userData, isSelectLogin }) {
   const [termsAgree, setTermsAgree] = useState(false);
 
   const handleInput = e => {
+    e.preventDefault();
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
   };
 
-  // const data = { id: 'abc@', pw: '123' };
+  const { id, pw } = inputValue;
+
+  const loginAccess = () => {
+    fetch('http', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        id: id,
+        password: pw,
+      }),
+    })
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('에러 발생!');
+      })
+      .catch(error => console.log(error))
+      .then(data => {
+        if (data.accessToken) {
+          localStorage.setItem('token', data.accessToken);
+          navigate('/main');
+        }
+      });
+  };
+
+  const signUpAccess = () => {
+    console.log(123);
+  };
+
   useEffect(() => {
     const regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-    if (!regExp.test(inputValue.id)) {
-      setValidId(false);
-    } else {
-      setValidId(true);
-    }
+    !regExp.test(inputValue.id) ? setValidId(false) : setValidId(true);
   }, [inputValue.id]);
 
   useEffect(() => {
     const regExp =
       /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
-    if (!regExp.test(inputValue.pw)) {
-      setValidPw(false);
-    } else {
-      setValidPw(true);
-    }
+    !regExp.test(inputValue.pw) ? setValidPw(false) : setValidPw(true);
   }, [inputValue.pw]);
 
   const validator = validId === true && validPw === true && termsAgree === true;
@@ -71,11 +95,11 @@ function User({ userData, isSelectLogin }) {
           {button === '계정만들기' &&
             (validId === true ? (
               <label htmlFor="userId" style={{ color: 'green' }}>
-                8자이상 영어, 숫자 포함
+                8~20자 영어, 숫자 포함
               </label>
             ) : (
               <label htmlFor="userId" style={{ color: 'red' }}>
-                8자이상 영어, 숫자 포함하세요
+                8~20자 영어, 숫자 포함하세요
               </label>
             ))}
           <input
@@ -91,18 +115,18 @@ function User({ userData, isSelectLogin }) {
           {button === '계정만들기' &&
             (validPw === true ? (
               <label htmlFor="userPw" style={{ color: 'green' }}>
-                8자 이상 영문, 숫자, 특수문자 포함
+                8~20자 영문, 숫자, 특수문자 포함
               </label>
             ) : (
               <label htmlFor="userPw" style={{ color: 'red' }}>
-                8자 이상 영문, 숫자, 특수문자를 포함하세요
+                8~20자 영문, 숫자, 특수문자를 포함하세요
               </label>
             ))}
         </form>
 
         {/* 이용약관 */}
         <div className="serviceTerms">
-          {button !== '로그인' && (
+          {button === '계정만들기' && (
             <>
               <input type="checkbox" id="terms" />
               <label
@@ -123,9 +147,7 @@ function User({ userData, isSelectLogin }) {
             type="button"
             className="signupBtn"
             disabled={!(inputValue.pw.length > 0)}
-            onClick={() => {
-              navigate('/main');
-            }}
+            onClick={loginAccess}
           >
             {button}
           </button>
@@ -133,10 +155,8 @@ function User({ userData, isSelectLogin }) {
           <button
             type="button"
             className="signupBtn"
-            // disabled={!validator}
-            onClick={() => {
-              navigate('/main');
-            }}
+            disabled={!validator}
+            onClick={signUpAccess}
           >
             {button}
           </button>
