@@ -20,57 +20,30 @@
       }
     }
 
-    .productGender .womenCheck {
+    .checkBoxList {
       margin-bottom: 10px;
-      input#checkBox {
+
+      .checkBoxInput {
         display: none;
-      }
-      input#checkBox + label {
         cursor: pointer;
       }
-      input[id='checkBox'] + label {
+
+      label {
         display: inline-block;
         width: 16px;
         height: 16px;
         border: 2px solid #bcbcbc;
         cursor: pointer;
       }
-      /* stylelint-disable-next-line no-duplicate-selectors */
-      input[id='checkBox']:checked + label {
+
+      input[id='checkWomen']:checked + label {
         background-color: #333;
       }
-      input[id='checkBox'] {
-        display: none;
-      }
-      span {
-        margin-left: 5px;
-        vertical-align: top;
-      }
-    }
-
-    .productGender .menCheck {
-      input#checkBox2 {
-        display: none;
-      }
-      input#checkBox2 + label {
-        cursor: pointer;
-      }
-      input[id='checkBox2'] + label {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        border: 2px solid #bcbcbc;
-        cursor: pointer;
-      }
-      /* stylelint-disable-next-line no-duplicate-selectors */
-      input[id='checkBox2']:checked + label {
+      input[id='checkMen']:checked + label {
         background-color: #333;
       }
-      input[id='checkBox2'] {
-        display: none;
-      }
 
-      span {
+      .selectTitle {
         margin-left: 5px;
         vertical-align: top;
       }
@@ -99,19 +72,32 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
 
-        /* stylelint-disable-next-line max-nesting-depth */
-        button {
-          width: 60px;
+        label {
+          width: 55px;
           height: 36px;
-          margin-right: 3px;
-          margin-bottom: 3px;
-          border: 1px solid #ddd;
-          background-color: #fff;
+          margin: 3px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          line-height: 30px;
+          text-align: center;
+          cursor: pointer;
+        }
 
-          /* stylelint-disable-next-line max-nesting-depth */
-          &:hover {
+        label:hover {
+          border: 1px solid #333;
+        }
+
+        input[type='checkbox'] {
+          -webkit-appearance: checkbox;
+          &:checked + label {
             border: 1px solid #333;
           }
+        }
+
+        .checkbox {
+          position: absolute;
+          height: 0px;
+          overflow: hidden;
         }
       }
     }
