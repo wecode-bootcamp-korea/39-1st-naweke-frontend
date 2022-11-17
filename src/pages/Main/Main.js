@@ -5,9 +5,12 @@ import './Filter/Filter.scss';
 
 function Main() {
   return (
-    <p>
-      <Filter />
-    </p>
+    <>
+      <img src="images/mainImg.PNG" alt="mainImg" className="mainImg" />
+      <div className="main">
+        <Filter />
+      </div>
+    </>
   );
 }
 

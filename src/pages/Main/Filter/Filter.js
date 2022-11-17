@@ -47,7 +47,7 @@ const Filter = () => {
         <div className="productSize filterLayout">
           <h3>사이즈</h3>
           <div className="sizeBtnWrap">
-            {SIZE_LIST.free.map((size, i) => {
+            {SIZE_LIST.shoes.map((size, i) => {
               return (
                 <>
                   <input

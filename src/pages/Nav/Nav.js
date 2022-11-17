@@ -1,16 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 function Nav() {
-  return (
-    <div className="navWrap">
-      <ul>
-        <li>러닝1</li>
-        <li>축구</li>
-        <li>농구</li>
-      </ul>
-    </div>
-  );
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
+  return <>hello world</>;
 }
 
 export default Nav;

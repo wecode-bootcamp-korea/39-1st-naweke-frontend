@@ -1,3 +1,16 @@
 h2 {
   color: #000;
 }
+.mainImg {
+  width: 100vw;
+  height: 450px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.main {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  margin-top: 40px;
+}
