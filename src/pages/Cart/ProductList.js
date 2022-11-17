@@ -1,34 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductList.scss';
+import SIZE_LIST from './SizeList';
 
-function ProductList() {
+function ProductList(props) {
+  const [selected, setSelected] = useState();
+
+  const saveAmount = e => {
+    setSelected(e.target.value);
+  };
+
+  const { productId, productPrice, image_url, amount, productName } =
+    props.product;
+
+  const [price, setPrice] = useState(productPrice);
+
+  const itemPrice = () => {
+    setPrice(productPrice * amount);
+  };
+  console.log(amount);
+
   return (
-    <div>
-      <div className="product">
+    <>
+      <div className="product" key={productId}>
         <div className="imgContainer">
-          <img
-            src="/images/signup/nike.png"
-            alt="장바구니 상품"
-            className="productImg"
-          />
+          <img src={image_url} alt="장바구니 상품" className="productImg" />
         </div>
+
         <div className="productInfo">
           <div className="productInfo">
-            <div className="productName line fontSize">나이키 로고</div>
+            <div className="productName line fontSize">{productName}</div>
             <div className="productColor line gray fontSize">검정색</div>
             <div className="productSize line gray fontSize">
               사이즈
               <select className="sizeOption">
-                <option>XS</option>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
+                {SIZE_LIST.clothes.map((items, index) => (
+                  <option key={index} value={index}>
+                    {items}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="productAmount line gray fontSize">
               수량
-              <select className="amountOption">
+              <select
+                className="amountOption"
+                onChange={saveAmount}
+                // onClick={itemPrice}
+                defaultValue={amount}
+              >
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -60,13 +79,12 @@ function ProductList() {
             </div>
           </div>
         </div>
-        <div className="productPrice"> 75,000 원 </div>
+        <div className="productPrice"> {price} 원 </div>
       </div>
-      <div className="iconBox">
-        <div className="delivery fontSize">무료배송</div>
-        <div className="arrival fontSize">도착예정일</div>
-      </div>
-    </div>
+
+      <div className="delivery fontSize">무료배송</div>
+      <div className="arrival fontSize">도착예정일</div>
+    </>
   );
 }
 
