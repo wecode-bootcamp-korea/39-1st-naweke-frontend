@@ -1,12 +1,12 @@
 import React from 'react';
+import UserAccount from '../UserAccount';
 import './Login.scss';
 
 function Login() {
   return (
-    <p>
-      Hello world1
-      <input>안녕</input>
-    </p>
+    <div className="login">
+      <UserAccount />
+    </div>
   );
 }
 

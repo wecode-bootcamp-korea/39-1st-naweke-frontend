@@ -1,0 +1,93 @@
+.signup {
+  width: 100vw;
+
+  .signupInner {
+    width: 460px;
+    margin: 0 auto;
+
+    .logo {
+      height: 50px;
+
+      img {
+        height: 60px;
+      }
+    }
+    h2 {
+      margin: 20px 0;
+      font-size: 2.8rem;
+      font-weight: 300;
+    }
+
+    .signupInput {
+      margin-top: 50px;
+
+      .singupName {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+      input {
+        width: 100%;
+        height: 48px;
+        margin-bottom: 20px;
+        padding: 13px;
+        border: 1px solid #444;
+        border-radius: 10px;
+        font-size: 1.6rem;
+      }
+      input#userId,
+      input#userPw {
+        margin-bottom: 4px;
+      }
+      label {
+        display: block;
+        margin: 0 10px 12px;
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
+    }
+
+    .serviceTerms {
+      width: 85%;
+      margin: 20px auto;
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 24px;
+
+      input#terms {
+        width: 15px;
+        height: 15px;
+        vertical-align: bottom;
+      }
+      input#terms:checked {
+        background-color: #444;
+      }
+    }
+
+    .signupBtn {
+      width: 100%;
+      height: 60px;
+      margin-top: 20px;
+      border-radius: 50px;
+      background-color: #111;
+      color: #fff;
+      font-size: 1.6rem;
+
+      &:disabled {
+        opacity: 0.6;
+      }
+    }
+    .link {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      color: #666;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+  }
+}

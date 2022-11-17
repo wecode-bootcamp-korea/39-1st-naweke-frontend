@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './Filter.scss';
 import COLOR_LIST from './colorData';
+import './Filter.scss';
 
 const Filter = () => {
   const [priceValue, setPriceValue] = useState(50000);
@@ -14,15 +14,15 @@ const Filter = () => {
         {/* gender */}
         <div className="productGender filterLayout">
           <h3>성별</h3>
-          <div className="womenCheck">
-            <input type="checkbox" id="checkBox" />
-            <label for="checkBox" />
-            <span>여성</span>
+          <div className="checkBoxList">
+            <input type="checkbox" id="checkWomen" className="checkBoxInput" />
+            <label for="checkWomen" />
+            <span className="selectTitle">여성</span>
           </div>
-          <div className="menCheck">
-            <input type="checkbox" id="checkBox2" />
-            <label for="checkBox2" />
-            <span>남성</span>
+          <div className="checkBoxList">
+            <input type="checkbox" id="checkMen" className="checkBoxInput" />
+            <label for="checkMen" />
+            <span className="selectTitle">남성</span>
           </div>
         </div>
         {/* price */}
@@ -61,16 +61,16 @@ const Filter = () => {
         <div className="productColor filterLayout">
           <h3>색상</h3>
           <div className="colorBtnWrap">
-            {COLOR_LIST.map(el => {
+            {COLOR_LIST.map(({ id, color, text }) => {
               return (
-                <div className="colorLayout" key={el.id}>
+                <div className="colorLayout" key={id}>
                   <span
                     className="showColor"
-                    style={{ backgroundColor: el.color }}
+                    style={{ backgroundColor: color }}
                   >
-                    {el.text}
+                    {text}
                   </span>
-                  <span>{el.text}</span>
+                  <span>{text}</span>
                 </div>
               );
             })}
