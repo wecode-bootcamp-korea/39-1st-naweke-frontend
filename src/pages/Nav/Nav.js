@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 function Nav() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
 
   return (
     <>
@@ -19,7 +20,7 @@ function Nav() {
         </p>
       </div>
       <div className="navBox">
-        <div className="navLogo">
+        <div className="navLogo" onMouseEnter={() => setIsSubMenuOpen(false)}>
           <Link to="/main">
             <img alt="logo" src="images/nike.png" />
           </Link>
@@ -37,8 +38,8 @@ function Nav() {
             <li>Basketball</li>
           </Link>
         </ul>
-        <div className="navRight">
-          <div className="searchArea">
+        <div className="navRight" onMouseEnter={() => setIsSubMenuOpen(false)}>
+          <div className="searchArea" onClick={() => setIsSearchBoxOpen(true)}>
             <div className="magnifyimg">
               <img alt="searchimg" src="images/magnifying-glass.png" />
             </div>
@@ -54,25 +55,62 @@ function Nav() {
           </div>
         </div>
       </div>
+      {isSearchBoxOpen && (
+        <div className="searchBox">
+          <div className="searchBoxIn">
+            <div className="navLogo">
+              <Link to="/main">
+                <img
+                  alt="logo"
+                  src="images/nike.png"
+                  onClick={() => setIsSearchBoxOpen(false)}
+                />
+              </Link>
+            </div>
+            <div className="searchMain">
+              <div className="magnifyimg">
+                <img
+                  alt="searchimg"
+                  src="images/magnifying-glass.png"
+                  onClick={() => setIsSearchBoxOpen(false)}
+                />
+              </div>
+              <input placeholder="Search" type="text" />
+            </div>
+            <div className="closeBox">
+              <p onClick={() => setIsSearchBoxOpen(false)}>취소</p>
+            </div>
+          </div>
+          <div className="popularSearchBox">
+            <ul className="popularSearch">
+              <p>인기검색어</p>
+              <li>축구화</li>
+              <li>농구화</li>
+              <li>런닝화</li>
+              <li>경량 운동화</li>
+            </ul>
+          </div>
+        </div>
+      )}
       {isSubMenuOpen && (
         <div
           className="navUnder"
           onMouseLeave={() => setIsSubMenuOpen(false)}
           // style={{ visibility: navLink }}
         >
-          <ul className="navUnderInRun">
+          <ul>
             <li>신발</li>
             <li>의류</li>
             <li>모자&용품</li>
             <li>전체보기</li>
           </ul>
-          <ul className="navUnderInSoccer">
+          <ul>
             <li>축구화</li>
             <li>의류</li>
             <li>팀 컬렉션</li>
             <li>전체보기</li>
           </ul>
-          <ul className="navUnderInBasket">
+          <ul>
             <li>신발</li>
             <li>의류</li>
             <li>NBA</li>
