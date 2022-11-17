@@ -2,16 +2,15 @@
   {
     "id": 1,
     "image": "images/nike.png",
-    "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "color": "1개 색상",
+    "discription": "나이키 러닝화",
     "price": "269,000"
   },
   {
     "id": 2,
     "image": "images/nike.png",
     "nowstate": "베스트셀러",
-    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "name": "나이키 브라질",
     "color": "1개 색상",
     "price": "269,000"
   },
@@ -19,7 +18,7 @@
     "id": 3,
     "image": "images/nike.png",
     "nowstate": "베스트셀러",
-    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "name": "나이키 네덜란드",
     "color": "1개 색상",
     "price": "269,000"
   },
@@ -27,7 +26,7 @@
     "id": 4,
     "image": "images/nike.png",
     "nowstate": "베스트셀러",
-    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "name": "나이키 네이스",
     "color": "1개 색상",
     "price": "269,000"
   },

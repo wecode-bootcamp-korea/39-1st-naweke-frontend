@@ -2,10 +2,13 @@ import React from 'react';
 import './Nav.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import SearchId from './FindProduct';
+import SearchIdLeft from './FinProductLeft';
 
 function Nav() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
 
   return (
     <>
@@ -75,7 +78,16 @@ function Nav() {
                   onClick={() => setIsSearchBoxOpen(false)}
                 />
               </div>
-              <input placeholder="Search" type="text" />
+              <input
+                type="text"
+                placeholder="search"
+                id="searchInput"
+                onChange={e => {
+                  setSearchInput(e.target.value);
+                }}
+              />
+              <SearchIdLeft searchInput={searchInput} />
+              <SearchId searchInput={searchInput} />
             </div>
             <div className="closeBox">
               <p onClick={() => setIsSearchBoxOpen(false)}>취소</p>
