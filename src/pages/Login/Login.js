@@ -2,12 +2,7 @@ import React from 'react';
 import './Login.scss';
 
 function Login() {
-  return (
-    <p>
-      Hello world1
-      <input>안녕</input>
-    </p>
-  );
+  return <h1>hello world</h1>;
 }
 
 export default Login;
