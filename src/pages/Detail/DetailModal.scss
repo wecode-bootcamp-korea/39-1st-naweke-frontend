@@ -7,12 +7,24 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 100;
   .modalText {
-  }
-  .modalTitle {
-    font-size: 25px;
-  }
-  .modalFont {
-    font-size: 20px;
+    margin-left: 40px;
+    .close:after {
+      font-weight: bold;
+      display: flex;
+      justify-content: end;
+      content: '\00d7';
+      font-size: 15pt;
+      cursor: pointer;
+    }
+
+    .modalTitle {
+      margin-top: 20px;
+      font-size: 25px;
+    }
+    .modalFont {
+      margin-top: 40px;
+      font-size: 20px;
+    }
   }
   .modalContent {
     border-radius: 30px;
@@ -33,6 +45,8 @@
     background-color: rgb(90, 90, 90);
   }
   .modalButton {
+    width: 150px;
+    margin-top: 60px;
     padding: 15px;
     display: flex;
     justify-content: center;

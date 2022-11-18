@@ -6,6 +6,7 @@ function DetailModal() {
     <div className="modal">
       <div className="modalContent">
         <div className="modalText">
+          <p className="close"></p>
           <p className="modalTitle">알림</p>
           <p className="modalFont">쇼핑을 계속 진행하시겠습니까?</p>
         </div>
