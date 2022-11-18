@@ -4,7 +4,12 @@ import './SignUp.scss';
 
 function User({ userData }) {
   const { title, text, url, button } = userData;
-  const [inputValue, setInputValue] = useState({ id: '', pw: '' });
+  const [inputValue, setInputValue] = useState({
+    nickname: '',
+    password: '',
+    name: '',
+    birth: '',
+  });
   const navigate = useNavigate();
   const [validId, setValidId] = useState(false);
   const [validPw, setValidPw] = useState(false);
@@ -16,17 +21,15 @@ function User({ userData }) {
     setInputValue({ ...inputValue, [name]: value });
   };
 
-  const { id, pw } = inputValue;
-
   const loginAccess = () => {
-    fetch('http', {
+    fetch('http://10.58.52.132:3000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        id: id,
-        password: pw,
+        nickname: inputValue.nickname,
+        password: inputValue.password,
       }),
     })
       .then(response => {
@@ -37,27 +40,49 @@ function User({ userData }) {
       })
       .catch(error => console.log(error))
       .then(data => {
-        if (data.accessToken) {
-          localStorage.setItem('token', data.accessToken);
-          navigate('/main');
-        }
+        navigate('/main');
+        // }
       });
   };
 
   const signUpAccess = () => {
-    console.log(123);
+    fetch('http://10.58.52.132:3000/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        name: inputValue.name,
+        nickname: inputValue.nickname,
+        password: inputValue.password,
+        birth: inputValue.birth,
+      }),
+    })
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('에러 발생!');
+      })
+      .catch(error => console.log(error))
+      .then(data => {
+        // if (data.accessToken) {
+        // localStorage.setItem('token', data.accessToken);
+        navigate('/main');
+        // }
+      });
   };
 
   useEffect(() => {
     const regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-    !regExp.test(inputValue.id) ? setValidId(false) : setValidId(true);
-  }, [inputValue.id]);
+    !regExp.test(inputValue.nickname) ? setValidId(false) : setValidId(true);
+  }, [inputValue.nickname]);
 
   useEffect(() => {
     const regExp =
       /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
-    !regExp.test(inputValue.pw) ? setValidPw(false) : setValidPw(true);
-  }, [inputValue.pw]);
+    !regExp.test(inputValue.password) ? setValidPw(false) : setValidPw(true);
+  }, [inputValue.password]);
 
   const validator = validId === true && validPw === true && termsAgree === true;
 
@@ -72,11 +97,17 @@ function User({ userData }) {
           {title === '이제 나위키의 멤버가 되어볼까요?' && (
             <>
               <div className="singupName">
-                <input type="text" placeholder="이름" />
+                <input
+                  type="text"
+                  placeholder="이름"
+                  name="name"
+                  onChange={handleInput}
+                />
               </div>
               <input
                 type="date"
                 name="birth"
+                onChange={handleInput}
                 placeholder="생년월일"
                 min="1900-01-01"
                 max="2022-11-16"
@@ -85,7 +116,7 @@ function User({ userData }) {
           )}
           <input
             type="text"
-            name="id"
+            name="nickname"
             placeholder="아이디"
             onChange={handleInput}
             id="userId"
@@ -104,7 +135,7 @@ function User({ userData }) {
             ))}
           <input
             type="password"
-            name="pw"
+            name="password"
             placeholder="비밀번호"
             onChange={handleInput}
             id="userPw"
@@ -146,7 +177,7 @@ function User({ userData }) {
           <button
             type="button"
             className="signupBtn"
-            disabled={!(inputValue.pw.length > 0)}
+            disabled={!(inputValue.password.length > 0)}
             onClick={loginAccess}
           >
             {button}
