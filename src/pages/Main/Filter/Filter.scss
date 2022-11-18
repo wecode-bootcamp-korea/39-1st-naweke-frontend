@@ -72,7 +72,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
 
-        label {
+        .label {
           width: 55px;
           height: 36px;
           margin: 3px;
@@ -83,18 +83,18 @@
           cursor: pointer;
         }
 
-        label:hover {
+        .label:hover {
           border: 1px solid #333;
         }
 
-        input[type='checkbox'] {
-          -webkit-appearance: checkbox;
-          &:checked + label {
+        input[type='radio'] {
+          -webkit-appearance: radio;
+          &:checked + .label {
             border: 1px solid #333;
           }
         }
 
-        .checkbox {
+        .radio {
           position: absolute;
           height: 0px;
           overflow: hidden;
