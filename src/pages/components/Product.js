@@ -1,7 +1,6 @@
 import React from 'react';
 import './product.scss';
 const Product = ({ prdlist }) => {
-  console.log(2);
   return (
     <div className="prdBox">
       <img alt="prdImage" src={prdlist.image} className="prdImage" />

@@ -1,12 +1,14 @@
 .prdBox {
-  width: 375px;
+  width: 26vw;
   height: 560px;
+  margin-bottom: 10px;
+  
 
   &:hover{
     cursor: pointer;
   }
   img {
-    width: 375px;
+    width: 24vw;
     height: 375px;
   }
   
@@ -14,7 +16,7 @@
     background-color: red;
     display: flex;
     flex-direction: column;
-    width: 375px;
+    width: 24vw;
     height: 185px;
 
     div{

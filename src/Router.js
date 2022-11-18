@@ -6,6 +6,7 @@ import Main from './pages/Main/Main';
 import Cart from './pages/Cart/Cart';
 import Detail from './pages/Detail/Detail';
 import SignUp from './pages/SignUp/SignUp';
+import ProductDetail from './pages/Main/ProductDetail';
 
 const Router = () => {
   return (
@@ -15,7 +16,7 @@ const Router = () => {
         <Route path="/" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/main" element={<Main />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/ProductDetail/:id" element={<ProductDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
