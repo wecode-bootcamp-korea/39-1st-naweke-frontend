@@ -22,7 +22,7 @@ function Cart() {
       .then(response => response.json())
       .then(result => setCartList(result)); //콜백함수//
   }, []);
-  console.log(cartList);
+
   return (
     <div className="container">
       <div className="cart">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
@@ -6,18 +6,19 @@ function ProductList(props) {
   const { productId, productPrice, image_url, amount, productName } =
     props.product;
 
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(amount);
   const [price, setPrice] = useState(productPrice);
-  const saveAmount = e => {
-    setSelected(e.target.value);
-    setPrice(productPrice * amount);
-  };
-  // const [price, setPrice] = useState(productPrice);
 
-  // const itemPrice = () => {
-  //   setPrice(productPrice * amount);
-  // };
-  console.log(amount);
+  const saveAmount = e => {
+    // console.log(e.target.value);
+    setSelected(e.target.value);
+  };
+
+  useEffect(() => {
+    setPrice(productPrice * selected);
+  }, [selected]);
+
+  console.log(selected);
 
   return (
     <>
@@ -45,8 +46,9 @@ function ProductList(props) {
               <select
                 className="amountOption"
                 onChange={saveAmount}
+                // value={selected}
                 // onClick={itemPrice}
-                // defaultValue={amount}
+                defaultValue={selected}
               >
                 <option>1</option>
                 <option>2</option>
