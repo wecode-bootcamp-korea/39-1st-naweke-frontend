@@ -3,26 +3,34 @@ import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
 function ProductList(props) {
-  const { productId, productPrice, image_url, amount, productName } =
-    props.product;
+  const { product, onChangeAmount } = props;
+  const { productId, productPrice, image_url, amount, productName } = product;
+
+  // const setTotalPrice = props.setTotalPrice;
 
   const [selected, setSelected] = useState(amount);
-  const [price, setPrice] = useState(productPrice);
+  const [price, setPrice] = useState(productPrice); //cart
 
   const saveAmount = e => {
     // console.log(e.target.value);
     setSelected(e.target.value);
+    onChangeAmount(productId, e.target.value);
   };
 
   useEffect(() => {
     setPrice(productPrice * selected);
+
+    // [10000, 20000, 30000, 40000]
+    // [10000, 20000, 60000, 40000]
+    // arr[id] = price;
+    // setTotalPrice([...totalPrice, (totalPrice[productId - 1] = price)]);
   }, [selected]);
 
-  console.log(selected);
-
+  // console.log(prev)
+  // console.log(price);
   return (
     <>
-      <div className="product" key={productId}>
+      <div className="product">
         <div className="imgContainer">
           <img src={image_url} alt="장바구니 상품" className="productImg" />
         </div>
