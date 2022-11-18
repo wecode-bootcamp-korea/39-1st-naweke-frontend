@@ -3,20 +3,20 @@ import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
 function ProductList(props) {
-  const [selected, setSelected] = useState();
-
-  const saveAmount = e => {
-    setSelected(e.target.value);
-  };
-
   const { productId, productPrice, image_url, amount, productName } =
     props.product;
 
+  const [selected, setSelected] = useState();
   const [price, setPrice] = useState(productPrice);
-
-  const itemPrice = () => {
+  const saveAmount = e => {
+    setSelected(e.target.value);
     setPrice(productPrice * amount);
   };
+  // const [price, setPrice] = useState(productPrice);
+
+  // const itemPrice = () => {
+  //   setPrice(productPrice * amount);
+  // };
   console.log(amount);
 
   return (
@@ -46,7 +46,7 @@ function ProductList(props) {
                 className="amountOption"
                 onChange={saveAmount}
                 // onClick={itemPrice}
-                defaultValue={amount}
+                // defaultValue={amount}
               >
                 <option>1</option>
                 <option>2</option>
