@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Filter.scss';
 import COLOR_LIST from './colorData';
 
