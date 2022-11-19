@@ -1,60 +1,95 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Footer.scss';
 
 function Footer() {
+  const navigate = useNavigate();
+  const FOOTER_LIST = [
+    {
+      id: 1,
+      title: 'Product',
+      list: ['Running', 'Soccer', 'Basketball'],
+      url: ['/running', '/soccer', '/basketball'],
+    },
+    {
+      id: 2,
+      title: 'Account',
+      list: ['Login', 'Join', 'Cart'],
+      url: ['/login', '/signup', '/cart'],
+    },
+  ];
+
+  const FOOTER_MEMBER = [
+    {
+      id: 1,
+      name: '김한솔',
+      img: 'images/man.png',
+    },
+    {
+      id: 2,
+      name: '김호준',
+      img: 'images/man1.png',
+    },
+    {
+      id: 3,
+      name: '이명석',
+      img: 'images/man2.png',
+    },
+    {
+      id: 4,
+      name: '조형진',
+      img: 'images/man3.png',
+    },
+    {
+      id: 5,
+      name: '지송현',
+      img: 'images/man4.png',
+    },
+    {
+      id: 6,
+      name: '홍석현',
+      img: 'images/man5.png',
+    },
+    {
+      id: 7,
+      name: '박지영',
+      img: 'images/girl.png',
+    },
+  ];
+
   return (
     <footer>
       <div className="footerInner">
         <div className="footerMenu">
-          <div className="footerList">
-            <h3>Product</h3>
-            <ul>
-              <li>Running</li>
-              <li>Soccer</li>
-              <li>Basketball</li>
-            </ul>
-          </div>
-          <div className="footerList">
-            <h3>Account</h3>
-            <ul>
-              <li>Login</li>
-              <li>Join</li>
-              <li>Cart</li>
-            </ul>
-          </div>
+          {FOOTER_LIST.map(({ id, title, list, url }) => {
+            return (
+              <div className="footerList" key={id}>
+                <h3>{title}</h3>
+                <ul>
+                  {list.map(text => {
+                    return (
+                      <li key={text} onClick={() => navigate({ url })}>
+                        {text}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
         </div>
         <div className="footerInfo">
           <div className="footerDev">
             <h3>Developer</h3>
             <ul className="devEmail">
-              <li>
-                <img src="images/man.png" alt="man" />
-                김한솔
-              </li>
-              <li>
-                <img src="images/man1.png" alt="man" />
-                김호준
-              </li>
-              <li>
-                <img src="images/man2.png" alt="man" />
-                이명석
-              </li>
-              <li>
-                <img src="images/man3.png" alt="man" />
-                조형진
-              </li>
-              <li>
-                <img src="images/man4.png" alt="man" />
-                지송현
-              </li>
-              <li>
-                <img src="images/man5.png" alt="man" />
-                홍석현
-              </li>
-              <li>
-                <img src="images/girl.png" alt="girl" />
-                박지영
-              </li>
+              {FOOTER_MEMBER.map(({ id, name, img }) => {
+                return (
+                  <li key={id}>
+                    <img src={img} alt="member" />
+                    {name}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
