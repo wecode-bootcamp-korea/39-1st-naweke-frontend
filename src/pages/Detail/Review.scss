@@ -1,0 +1,43 @@
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .reviewTitleInput {
+    width: 100%;
+    margin-top: 30px;
+    font-size: 20px;
+    border-style: none;
+    outline: none;
+  }
+  .reviewVal {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    .reviewSel {
+      margin-left: 5px;
+      width: 30px;
+      border-style: none;
+      outline: none;
+    }
+  }
+  .reviewInput {
+    margin-top: 10px;
+    border-style: none;
+    outline: none;
+    width: 100%;
+  }
+  .reviewBtn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 40px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}

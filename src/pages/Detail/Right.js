@@ -1,57 +1,58 @@
 import React, { useState } from 'react';
 import './Right.scss';
 import './DetailModal';
+import Review from './Review';
 
 function Right(props) {
   return (
-    <div className="detailContainer">
+    <div className="rightContainer">
       <h1 className="title">product name</h1>
       <h4 className="description">description</h4>
       <h4 className="price">price</h4>
       <h4 className="Size">사이즈 선택</h4>
 
       <div className="sizeButton">
-        <input type="radio" id="r1" name="caUse" class="radio" checked />
+        <input type="radio" id="r1" name="caUse" className="radio" checked />
         <label htmlFor="r1" class="label">
           220
         </label>
 
-        <input type="radio" id="r2" name="caUse" class="radio" checked />
+        <input type="radio" id="r2" name="caUse" className="radio" checked />
         <label htmlFor="r2" class="label">
           230
         </label>
 
-        <input type="radio" id="r3" name="caUse" class="radio" checked />
+        <input type="radio" id="r3" name="caUse" className="radio" checked />
         <label htmlFor="r3" class="label">
           240
         </label>
 
-        <input type="radio" id="r4" name="caUse" class="radio" checked />
+        <input type="radio" id="r4" name="caUse" className="radio" checked />
         <label htmlFor="r4" class="label">
           250
         </label>
 
-        <input type="radio" id="r5" name="caUse" class="radio" checked />
+        <input type="radio" id="r5" name="caUse" className="radio" checked />
         <label htmlFor="r5" class="label">
           260
         </label>
 
-        <input type="radio" id="r6" name="caUse" class="radio" checked />
+        <input type="radio" id="r6" name="caUse" className="radio" checked />
         <label htmlFor="r6" class="label">
           270
         </label>
 
-        <input type="radio" id="r7" name="caUse" class="radio" checked />
+        <input type="radio" id="r7" name="caUse" className="radio" checked />
         <label htmlFor="r7" class="label">
           280
         </label>
 
-        <input type="radio" id="r8" name="caUse" class="radio" checked />
+        <input type="radio" id="r8" name="caUse" className="radio" checked />
         <label htmlFor="r8" class="label">
           290
         </label>
 
-        <input type="radio" id="r9" name="caUse" class="radio" checked />
+        <input type="radio" id="r9" name="caUse" className="radio" checked />
         <label htmlFor="r9" class="label">
           300
         </label>
@@ -72,13 +73,14 @@ function Right(props) {
             <h3>리뷰</h3>
             <img className="directionImg" src="images/next.png" />
           </summary>
+          <Review />
         </details>
         <details>
           <summary>
             <h3>추가 정보</h3>
             <img className="directionImg" src="images/next.png" />
           </summary>
-          <p>상품정보제공고시</p>
+          <p className="productInforTitle">상품정보제공고시</p>
           <ul className="productInfor">
             <li>
               제조연월: 수입제품으로 각 상품별 입고 시기에 따라 상이하여 정확한

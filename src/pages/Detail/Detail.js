@@ -23,7 +23,7 @@ function Detail() {
   };
   return (
     <>
-      <div className="Container">
+      <div className="detail">
         <div className="productContainer">
           <img className="productImg" src="images/nike.png" />
           <img className="productImg" src="images/nike.png" />
