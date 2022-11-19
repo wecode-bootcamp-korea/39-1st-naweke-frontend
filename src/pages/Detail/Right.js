@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Right.scss';
+import './DetailModal';
 
-function Right() {
+function Right(props) {
   return (
     <div className="detailContainer">
       <h1 className="title">product name</h1>
@@ -55,8 +56,15 @@ function Right() {
           300
         </label>
       </div>
-
-      <button className="basketBtn">장바구니</button>
+      <button
+        className="basketBtn"
+        onClick={() => {
+          props.basketAccess();
+          props.switchModal();
+        }}
+      >
+        장바구니
+      </button>
 
       <div className="infor">
         <details>
