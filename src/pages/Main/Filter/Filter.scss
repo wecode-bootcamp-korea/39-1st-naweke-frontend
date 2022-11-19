@@ -2,7 +2,6 @@
 // /* stylelint-disable-next-line selector-class-pattern */
 .filter {
   width: 220px;
-  // border: 1px solid #ddd;
   color: #111111;
   font-size: 1.6rem;
 
@@ -73,6 +72,7 @@
         grid-template-rows: 1fr 1fr 1fr;
 
         .label {
+          display: inline-block;
           width: 55px;
           height: 36px;
           margin: 3px;
@@ -84,14 +84,13 @@
         }
 
         .label:hover {
-          border: 1px solid #333;
+          border: 1px solid #111;
         }
-
         input[type='radio'] {
           -webkit-appearance: radio;
-          &:checked + .label {
-            border: 1px solid #333;
-          }
+        }
+        input[type='radio']:checked + .label {
+          border-color: #111;
         }
 
         .radio {
@@ -109,22 +108,64 @@
         grid-template-rows: 1fr 1fr 1fr;
       }
       .colorLayout {
-        width: 65px;
-        height: 65px;
+        width: 62px;
+        height: 70px;
         font-size: 1.2rem;
         text-align: center;
         cursor: pointer;
 
-        /* stylelint-disable-next-line max-nesting-depth */
-        .showColor {
-          display: block;
-          width: 28px;
-          height: 28px;
+        .label {
+          display: inline-block;
+          width: 58px;
+          height: 70px;
           margin: 0 auto;
-          margin-bottom: 5px;
-          border: 1px solid #ddd;
-          border-radius: 50%;
-          text-indent: -9999px;
+          border-radius: 5px;
+          line-height: 24px;
+          text-align: center;
+          cursor: pointer;
+
+          .bgcolor {
+            width: 37px;
+            height: 37px;
+            margin: 0 auto;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+          }
+          .white {
+            background-color: white;
+          }
+          .black {
+            background-color: black;
+          }
+          .grey {
+            background-color: grey;
+          }
+          .green {
+            background-color: #7bba3c;
+          }
+          .yellow {
+            background-color: #fed533;
+          }
+          .red {
+            background-color: #e7352b;
+          }
+          .blue {
+            background-color: #1790c8;
+          }
+        }
+
+        input[type='radio'] {
+          -webkit-appearance: radio;
+        }
+        input[type='radio']:checked + .label {
+          background-color: #ccc;
+        }
+
+        input {
+          position: absolute;
+          height: 0px;
+          overflow: hidden;
         }
       }
     }
