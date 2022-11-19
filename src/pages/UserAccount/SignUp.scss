@@ -22,10 +22,6 @@
       margin-top: 50px;
 
       .singupName {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-
         input {
           width: 100%;
         }
@@ -39,15 +35,22 @@
         border-radius: 10px;
         font-size: 1.6rem;
       }
-      input#userId,
-      input#userPw {
-        margin-bottom: 4px;
+      .outgreen {
+        outline: 1px solid green;
       }
-      label {
+      .outred {
+        outline: 1px solid red;
+      }
+      span {
         display: block;
-        margin: 0 10px 12px;
+        margin: -12px 10px 12px;
         font-size: 1.2rem;
-        font-weight: 400;
+      }
+      .red {
+        color: red;
+      }
+      .green {
+        color: green;
       }
     }
 
@@ -63,6 +66,7 @@
         height: 15px;
         vertical-align: bottom;
       }
+
       input#terms:checked {
         background-color: #444;
       }

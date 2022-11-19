@@ -1,5 +1,4 @@
 import React from 'react';
-import './SignUp.scss';
 import User from './User';
 
 function UserAccount() {
@@ -19,10 +18,7 @@ function UserAccount() {
   };
   return (
     <div className="userAccount">
-      <User
-        userData={isSelectLogin ? LOGIN_DATA : SIGNUP_DATA}
-        isSelectLogin={isSelectLogin}
-      />
+      <User userData={isSelectLogin ? LOGIN_DATA : SIGNUP_DATA} />
     </div>
   );
 }

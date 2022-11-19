@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.scss';
 
-function User({ userData }) {
-  const { title, text, url, button } = userData;
+function User({ userData: { title, text, url, button } }) {
   const [inputValue, setInputValue] = useState({
     nickname: '',
     password: '',
@@ -11,9 +10,14 @@ function User({ userData }) {
     birth: '',
   });
   const navigate = useNavigate();
-  const [validId, setValidId] = useState(false);
-  const [validPw, setValidPw] = useState(false);
   const [termsAgree, setTermsAgree] = useState(false);
+
+  // id, pw 유효성 검사
+  const idExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+  const pwExp =
+    /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+  const validId = idExp.test(inputValue.nickname);
+  const validPw = pwExp.test(inputValue.password);
 
   const handleInput = e => {
     e.preventDefault();
@@ -21,6 +25,7 @@ function User({ userData }) {
     setInputValue({ ...inputValue, [name]: value });
   };
 
+  // fetch
   const loginAccess = () => {
     fetch('http://10.58.52.132:3000/users/login', {
       method: 'POST',
@@ -40,11 +45,13 @@ function User({ userData }) {
       })
       .catch(error => console.log(error))
       .then(data => {
-        navigate('/main');
-        // }
+        if (data.message === 'login success') {
+          navigate('/main');
+        } else {
+          alert('아이디와 비밀번호를 확인해주세요');
+        }
       });
   };
-
   const signUpAccess = () => {
     fetch('http://10.58.52.132:3000/users/signup', {
       method: 'POST',
@@ -66,25 +73,48 @@ function User({ userData }) {
       })
       .catch(error => console.log(error))
       .then(data => {
-        // if (data.accessToken) {
-        // localStorage.setItem('token', data.accessToken);
         navigate('/main');
-        // }
       });
   };
 
-  useEffect(() => {
-    const regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-    !regExp.test(inputValue.nickname) ? setValidId(false) : setValidId(true);
-  }, [inputValue.nickname]);
-
-  useEffect(() => {
-    const regExp =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
-    !regExp.test(inputValue.password) ? setValidPw(false) : setValidPw(true);
-  }, [inputValue.password]);
-
-  const validator = validId === true && validPw === true && termsAgree === true;
+  const validator = validId && validPw && termsAgree;
+  // login, signup data
+  const LOGIN_DATA = [
+    {
+      id: 1,
+      type: 'text',
+      name: 'nickname',
+      placeholder: '아이디',
+      valid: validId,
+      validTrueText: '8자이상 영어, 숫자 포함',
+      validFalseText: '8자이상 영어, 숫자 포함하세요',
+    },
+    {
+      id: 2,
+      type: 'password',
+      name: 'password',
+      placeholder: '비밀번호',
+      valid: validPw,
+      validTrueText: '8자 이상 영문, 숫자, 특수문자 포함',
+      validFalseText: '8자 이상 영문, 숫자, 특수문자 포함하세요',
+    },
+  ];
+  const SIGNUP_DATA = [
+    {
+      id: 1,
+      type: 'text',
+      name: 'name',
+      placeholder: '이름',
+    },
+    {
+      id: 2,
+      type: 'date',
+      name: 'birth',
+      placeholder: '생년월일',
+      min: '1900-01-01',
+      max: '2022-11-16',
+    },
+  ];
 
   return (
     <div className="signup">
@@ -94,78 +124,58 @@ function User({ userData }) {
         </div>
         <h2>{title}</h2>
         <form className="signupInput">
-          {title === '이제 나위키의 멤버가 되어볼까요?' && (
-            <>
-              <div className="singupName">
+          {/* 회원가입 이름, 생년월일 */}
+          {button !== '로그인' && (
+            <div className="singupName">
+              {SIGNUP_DATA.map(signdata => {
+                return (
+                  <input
+                    key={signdata.id}
+                    type={signdata.type}
+                    placeholder={signdata.placeholder}
+                    name={signdata.name}
+                    min={signdata.min}
+                    max={signdata.max}
+                    onChange={handleInput}
+                  />
+                );
+              })}
+            </div>
+          )}
+          {/* 공통 아이디, 비밀번호 */}
+          {LOGIN_DATA.map(lodata => {
+            return (
+              <React.Fragment key={lodata.id}>
                 <input
-                  type="text"
-                  placeholder="이름"
-                  name="name"
+                  type={lodata.type}
+                  placeholder={lodata.placeholder}
+                  name={lodata.name}
                   onChange={handleInput}
                 />
-              </div>
-              <input
-                type="date"
-                name="birth"
-                onChange={handleInput}
-                placeholder="생년월일"
-                min="1900-01-01"
-                max="2022-11-16"
-              />
-            </>
-          )}
-          <input
-            type="text"
-            name="nickname"
-            placeholder="아이디"
-            onChange={handleInput}
-            id="userId"
-          />
-
-          {/* 아이디 유효성 표시 */}
-          {button === '계정만들기' &&
-            (validId === true ? (
-              <label htmlFor="userId" style={{ color: 'green' }}>
-                8~20자 영어, 숫자 포함
-              </label>
-            ) : (
-              <label htmlFor="userId" style={{ color: 'red' }}>
-                8~20자 영어, 숫자 포함하세요
-              </label>
-            ))}
-          <input
-            type="password"
-            name="password"
-            placeholder="비밀번호"
-            onChange={handleInput}
-            id="userPw"
-            style={{ marginTop: '15px' }}
-          />
-
-          {/* 패스워드 유효성 표시 */}
-          {button === '계정만들기' &&
-            (validPw === true ? (
-              <label htmlFor="userPw" style={{ color: 'green' }}>
-                8~20자 영문, 숫자, 특수문자 포함
-              </label>
-            ) : (
-              <label htmlFor="userPw" style={{ color: 'red' }}>
-                8~20자 영문, 숫자, 특수문자를 포함하세요
-              </label>
-            ))}
+                {button === '계정만들기' && (
+                  <span className={lodata.valid ? 'green' : 'red'}>
+                    {lodata.valid
+                      ? lodata.validTrueText
+                      : lodata.validFalseText}
+                  </span>
+                )}
+              </React.Fragment>
+            );
+          })}
         </form>
 
         {/* 이용약관 */}
         <div className="serviceTerms">
           {button === '계정만들기' && (
             <>
-              <input type="checkbox" id="terms" />
-              <label
-                htmlFor="terms"
+              <input
+                type="checkbox"
+                id="terms"
                 onClick={() => {
                   setTermsAgree(!termsAgree);
                 }}
-              >
+              />
+              <label htmlFor="terms">
                 <span>
                   나위키의 개인 정보 처리 방침 및 이용약관에 동의합니다.
                 </span>

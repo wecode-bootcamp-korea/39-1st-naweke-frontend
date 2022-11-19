@@ -1,6 +1,5 @@
 import React from 'react';
 import UserAccount from '../UserAccount';
-import './Login.scss';
 
 function Login() {
   return (
