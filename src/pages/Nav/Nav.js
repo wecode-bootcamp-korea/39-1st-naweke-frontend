@@ -1,9 +1,9 @@
 import React from 'react';
-import './Nav.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import SearchId from './FindProduct';
 import SearchIdLeft from './FinProductLeft';
+import './Nav.scss';
 
 function Nav() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -105,11 +105,7 @@ function Nav() {
         </div>
       )}
       {isSubMenuOpen && (
-        <div
-          className="navUnder"
-          onMouseLeave={() => setIsSubMenuOpen(false)}
-          // style={{ visibility: navLink }}
-        >
+        <div className="navUnder" onMouseLeave={() => setIsSubMenuOpen(false)}>
           <ul>
             <li>신발</li>
             <li>의류</li>

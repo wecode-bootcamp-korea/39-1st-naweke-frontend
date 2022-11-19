@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const SearchIdLeft = ({ searchInput }) => {
   const [feedData, setFeedData] = useState([]);
@@ -13,13 +12,13 @@ const SearchIdLeft = ({ searchInput }) => {
 
   const searchIdData = feedData.filter(e => e.name.includes(searchInput));
 
-  if (searchInput.length > 0 && searchIdData.length > 0) {
+  if (searchInput.length > 1 && searchIdData.length > 1) {
     return (
       <div className="filterBoxLeft">
-        {searchIdData.map((productlist, i) => {
+        {searchIdData.map(({ id, name }) => {
           return (
-            <div key={i} className="filterIdLeft">
-              <div className="filterName">{productlist.name}</div>
+            <div key={id} className="filterIdLeft">
+              <div className="filterName">{name}</div>
             </div>
           );
         })}
