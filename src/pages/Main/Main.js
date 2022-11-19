@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './Main.scss';
-import PrdList from '../components/productlist';
+import ProductList from '../components/productlist';
 import Filter from '../components/Filter';
+import './Main.scss';
 
 function Main() {
-  const [data, setData] = useState([]);
+  const [productdata, setProductData] = useState([]);
   return (
     <div className="main">
-      <Filter setData={setData} data={data} />
-      <PrdList data={data} />
+      <Filter setData={setProductData} productdata={productdata} />
+      <ProductList data={productdata} />
     </div>
   );
 }

@@ -1,25 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Product from './Product';
 import './productlist.scss';
 import './product.scss';
-import { Link } from 'react-router-dom';
 
-const PrdList = ({ data }) => {
-  //   const [prdList, setPrdList] = useState([]);
-
-  //   useEffect(() => {
-  //     fetch('data/productlist.json')
-  //       .then(response => response.json())
-  //       .then(res => setPrdList(res));
-  //   }, []);
-  //   console.log(prdList);
+const ProductList = ({ data }) => {
   return (
     <div className="productWrap">
       {data.map(el => (
         <div className="prdBox" key={el.id}>
-          <Link key={el.id} to={`/ProductDetail/${el.name}`}>
+          <Link key={el.id} to={`/productDetail/${el.name}`}>
             <img alt="prdimage" src={el.thumbnailUrl} className="prdImage" />
             <div className="contentBox">
               <div className="nowState">{el.name}</div>
@@ -30,11 +21,8 @@ const PrdList = ({ data }) => {
           </Link>
         </div>
       ))}
-      {/* {data.map((prdlist, id) => {
-          return <Product key={id} prdlist={prdlist} />;
-        })} */}
     </div>
   );
 };
 
-export default PrdList;
+export default ProductList;
