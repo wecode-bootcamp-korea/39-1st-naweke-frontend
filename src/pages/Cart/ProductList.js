@@ -1,33 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
 function ProductList(props) {
-  const { product, onChangeAmount } = props;
+  const { product, onChangeAmount, setTotalPrice } = props;
   const { productId, productPrice, image_url, amount, productName } = product;
 
   // const setTotalPrice = props.setTotalPrice;
 
   const [selected, setSelected] = useState(amount);
-  const [price, setPrice] = useState(productPrice); //cart
+  // const [price, setPrice] = useState(productPrice);
 
   const saveAmount = e => {
     // console.log(e.target.value);
     setSelected(e.target.value);
     onChangeAmount(productId, e.target.value);
   };
+  const totalPrice = productPrice * selected;
+  // console.log(selected);
 
-  useEffect(() => {
-    setPrice(productPrice * selected);
+  // const itemPrice = () => {
+  //   setPrice(price * selected);
+  // };
+  // s
+  // useEffect(() => {
+  //   setPrice(productPrice * selected);
 
-    // [10000, 20000, 30000, 40000]
-    // [10000, 20000, 60000, 40000]
-    // arr[id] = price;
-    // setTotalPrice([...totalPrice, (totalPrice[productId - 1] = price)]);
-  }, [selected]);
-
-  // console.log(prev)
+  //   // [10000, 20000, 30000, 40000]
+  //   // [10000, 20000, 60000, 40000]
+  //   // arr[id] = price;
+  //   // setTotalPrice([...totalPrice, (totalPrice[productId - 1] = price)]);
+  // }, [selected]);
   // console.log(price);
+
   return (
     <>
       <div className="product">
@@ -54,6 +59,7 @@ function ProductList(props) {
               <select
                 className="amountOption"
                 onChange={saveAmount}
+                // onChange={onChangeAmount}
                 // value={selected}
                 // onClick={itemPrice}
                 defaultValue={selected}
@@ -89,7 +95,7 @@ function ProductList(props) {
             </div>
           </div>
         </div>
-        <div className="productPrice"> {price} 원 </div>
+        <div className="productPrice"> {totalPrice} 원 </div>
       </div>
 
       <div className="delivery fontSize">무료배송</div>

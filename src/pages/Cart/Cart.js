@@ -4,25 +4,19 @@ import './Cart.scss';
 
 import ProductList from './ProductList';
 
-// const CARTS = [
-//   {
-//     id: 0,
-//     product: {
-//       id: 0,
-//       name: 'hi',
-//     },
-//   },
-// ];
-
 function Cart() {
-  //   const [carts, setCarts] = useState(CARTS);
   const [cartList, setCartList] = useState([]);
+  const [totalpricee, setTotalPrice] = useState(0);
   useEffect(() => {
     fetch('/data/CartList.json')
       .then(response => response.json())
       .then(result => setCartList(result)); //콜백함수//
   }, []);
-  const totalPrice = cartList.reduce();
+  console.log(cartList);
+  // setLastPrice(cartList.amount * cartList.productPrice);
+  // const lastPrice = cartList.productPrice * cartList.amount;
+  // console.log(lastPrice);
+  // const lastPrice = setCartList.reduce;
 
   // const [totalPrice, setTotalPrice] = useState(0);
   // const totalPrice = amount * productPrice;
@@ -47,6 +41,7 @@ function Cart() {
             <ProductList
               key={product.productId}
               product={product}
+              setTotalPrice={setTotalPrice}
               onChangeAmount={amount => {
                 setCartList(
                   cartList.map(cart => {
@@ -65,7 +60,7 @@ function Cart() {
           <aside className="orderList">
             <div className="orderPriceWrap orderFlex">
               <div className="priceMent fontSize">상품금액</div>
-              <div className="orderPrice fontSize">{totalPrice} 원</div>
+              <div className="orderPrice fontSize">원</div>
             </div>
             <div className="deliveryWrap orderFlex">
               <div className="deliveryPrice fontSize">배송비</div>
@@ -73,7 +68,7 @@ function Cart() {
             </div>
             <div className="totalPriceWrap orderFlex">
               <div className="totalOrder fontSize">총 결제 금액</div>
-              <div className="finalPrice fontSize">{totalPrice} 원</div>
+              <div className="finalPrice fontSize"> 원</div>
             </div>
             <div className="orderbtnWrap">
               <button className="orderBtn ">주문결제</button>
