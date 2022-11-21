@@ -5,7 +5,7 @@ import Nav from './pages/Nav/Nav';
 import Main from './pages/Main/Main';
 import Cart from './pages/Cart/Cart';
 import Detail from './pages/Detail/Detail';
-import SignUp from './pages/UserAccount/SignUp/SignUp';
+// import SignUp from './pages/UserAccount/SignUp/SignUp';
 // import Footer from './pages/Footer/Footer';
 import Payment from './pages/Payment/Payment';
 
@@ -16,9 +16,9 @@ const Router = () => {
       <Routes>
         <Route path="/cart" element={<Cart />} />
         <Route path="/main" element={<Main />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/detail" element={<Detail />} />
-        <Route path="/signup" element={<SignUp />} />
+        {/* <Route path="/signup" element={<SignUp />} /> */}
         <Route path="/payment" element={<Payment />} />
       </Routes>
     </BrowserRouter>

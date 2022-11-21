@@ -1,22 +1,22 @@
 import React from 'react';
 import './Payment.scss';
 
-function PaymentProduct({ paylist }) {
+function PaymentProduct({ paylist: { price, id, name, num } }) {
   return (
     <div className="paymentProduct">
       <div className="payProductInfo">
         <ul>
           <li>2022.11.18</li>
-          <li>총 주문 금액 {paylist.price} 원</li>
-          <li>주문번호 : {paylist.id}</li>
+          <li>총 주문 금액 {price} 원</li>
+          <li>주문번호 : {id}</li>
         </ul>
       </div>
       <div className="payProductDetail">
         <img src="/images/nike.png" alt="productImg" />
         <ul className="payDetail">
-          <li>{paylist.name}</li>
-          <li>{paylist.num}개</li>
-          <li>{paylist.price}원</li>
+          <li>{name}</li>
+          <li>{num}개</li>
+          <li>{price}원</li>
         </ul>
         <ul className="shipment">
           <li>무료배송</li>
