@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PaymentProduct from './PaymentProduct';
+import './Payment.scss';
 
 function Payment() {
   const [paymentData, setPaymentData] = useState([]);
-
+  const accessToken = localStorage.getItem('token');
   useEffect(() => {
-    fetch('http')
+    fetch('http://10.58.52.132:3000/orders', {
+      method: 'GET',
+      headers: { Authorization: accessToken },
+    })
       .then(response => response.json())
-      .then(data => setPaymentData(data));
-  }, []);
+      .then(data => setPaymentData(data.orderList));
+  }, [accessToken]);
 
   return (
     <div className="payment">
