@@ -51,8 +51,8 @@ function Payment() {
         <div className="showReview">
           <h3>작성된 리뷰</h3>
           <div className="postReview">
-            <span>리뷰제목</span>
             <ul className="reviewInfo">
+              <li>리뷰제목</li>
               <li>평점</li>
               <li>날짜</li>
             </ul>
