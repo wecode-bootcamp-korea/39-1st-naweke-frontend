@@ -16,10 +16,12 @@ const Filter = () => {
 
   const [filterData, setFilterData] = useState([]);
   const filtering = url => {
-    fetch(`http://10.58.52.193:3000/products/all?${url}`)
+    fetch(`http://10.58.52.162:3000/products/all?${url}`)
       .then(response => response.json())
       .then(data => setFilterData(data));
   };
+
+  console.log(filterData);
 
   return (
     <div className="filter">
@@ -35,7 +37,11 @@ const Filter = () => {
                 name="genderCheck"
                 className="checkBoxInput"
               />
-              <label for="checkWomen" onChange={() => filtering('gender=2')} />
+              <label
+                for="checkWomen"
+                onClick={() => filtering('gender=woman')}
+                // onChange={() => filtering('gender=woman')}
+              />
               <span className="selectTitle">여성</span>
             </div>
             <div className="checkBoxList">
@@ -45,7 +51,11 @@ const Filter = () => {
                 name="genderCheck"
                 className="checkBoxInput"
               />
-              <label for="checkMen" onChange={() => filtering('gender=1')} />
+              <label
+                for="checkMen"
+                onClick={() => filtering('gender=man')}
+                // onChange={() => filtering('gender=1')}
+              />
               <span className="selectTitle">남성</span>
             </div>
           </fieldset>
@@ -60,7 +70,10 @@ const Filter = () => {
             max="250000"
             step={50000}
             value={selectValue.price}
-            onChange={handleSelect}
+            onChange={() => {
+              handleSelect();
+              filtering();
+            }}
           />
           <div className="showPrice">
             {selectValue.price < 200001
@@ -118,7 +131,7 @@ const Filter = () => {
                   <label
                     htmlFor={`color${id}`}
                     className="label"
-                    onChange={() => filtering(`color=${i}`)}
+                    onChange={() => filtering(`color=${text}`)}
                   >
                     <div className={`bgcolor ${text}`} />
                     <span>{text}</span>
