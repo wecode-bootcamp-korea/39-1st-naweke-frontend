@@ -121,7 +121,7 @@ function Nav() {
       {isSubMenuOpen && (
         <div className="navUnder" onMouseLeave={() => setIsSubMenuOpen(false)}>
           <ul>
-            <Link to="/running">
+            <Link to="/running?mainCategory=shose">
               <li>신발</li>
             </Link>
             <li>의류</li>
