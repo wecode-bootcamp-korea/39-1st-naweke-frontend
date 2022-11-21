@@ -18,7 +18,7 @@ const Filter = () => {
   const filtering = url => {
     fetch(`http://10.58.52.193:3000/products/all?${url}`)
       .then(response => response.json())
-      .then(res => setFilterData(res));
+      .then(data => setFilterData(data));
   };
 
   return (
