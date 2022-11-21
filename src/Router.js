@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './pages/Nav/Nav';
 import Login from './pages/Login/Login';
@@ -11,9 +11,10 @@ import Soccer from './pages/Soccer/Soccer';
 import Running from './pages/Running/Running';
 
 const Router = () => {
+  const [isToken, setIsToken] = useState(false);
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav isToken={isToken} />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/cart" element={<Cart />} />

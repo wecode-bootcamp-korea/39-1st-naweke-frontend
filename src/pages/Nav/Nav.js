@@ -22,6 +22,20 @@ function Nav() {
           <Link to="/login">Login</Link>
         </p>
       </div>
+      <div
+        className="signBar"
+        // isToken={isToken}
+        onMouseEnter={() => setIsSubMenuOpen(false)}
+      >
+        <p>Help</p>
+        <p>Order Check</p>
+        <p>
+          <Link to="/signup">Logout</Link>
+        </p>
+        <p>
+          <Link to="/login">안녕하세요 회원님!</Link>
+        </p>
+      </div>
       <div className="navBox">
         <div className="navLogo" onMouseEnter={() => setIsSubMenuOpen(false)}>
           <Link to="/main">
@@ -107,10 +121,14 @@ function Nav() {
       {isSubMenuOpen && (
         <div className="navUnder" onMouseLeave={() => setIsSubMenuOpen(false)}>
           <ul>
-            <li>신발</li>
+            <Link to="/running">
+              <li>신발</li>
+            </Link>
             <li>의류</li>
             <li>모자&용품</li>
-            <li>전체보기</li>
+            <Link to="/running">
+              <li>Running</li>
+            </Link>
           </ul>
           <ul>
             <li>축구화</li>
