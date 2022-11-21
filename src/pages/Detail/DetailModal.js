@@ -1,13 +1,12 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './DetailModal.scss';
 import { useNavigate } from 'react-router-dom';
 
 function DetailModal(props) {
   const navigate = useNavigate();
-  const clickOutside = useRef();
 
   return (
-    <div className="modal" onClick={props.switchModal}>
+    <div className="modal">
       <div className="modalContent">
         <div className="modalText">
           <p className="modalClose" onClick={props.switchModal}></p>

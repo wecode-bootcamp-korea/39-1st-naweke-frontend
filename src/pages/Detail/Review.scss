@@ -4,13 +4,13 @@
   gap: 10px;
   .reviewTitle {
     margin-top: 30px;
-    font-size: 20px;
+    font-size: 2rem;
   }
   .reviewVal {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 1.5rem;
     .reviewSel {
       margin-left: 5px;
       width: 30px;
@@ -20,7 +20,7 @@
   }
   .reviewReview {
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 1.5rem;
     width: 100%;
   }
 }

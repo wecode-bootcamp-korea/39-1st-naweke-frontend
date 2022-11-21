@@ -111,6 +111,15 @@ function Right(props) {
           300
         </label>
       </div>
+
+      <button
+        className="nowBtn"
+        onClick={() => {
+          props.basketAccess();
+        }}
+      >
+        바로결제
+      </button>
       <button
         className="basketBtn"
         onClick={() => {
@@ -143,7 +152,7 @@ function Right(props) {
               참고하시기 바랍니다.
             </li>
             <li>
-              A/S 책임자와 전화번호: (유)나이키코리아 온라인 스토어 고객센터 /
+              A/S 책임자와 전화번호: (유)나위키코리아 온라인 스토어 고객센터 /
               080-022-0182
             </li>
             <li>
@@ -163,8 +172,8 @@ function Right(props) {
               책임을 지지 않습니다.
             </li>
             <li>
-              제조자/수입품의 경우 수입자를 함께 표기: Nike. Inc /
-              (유)나이키코리아
+              제조자/수입품의 경우 수입자를 함께 표기: Naweke. Inc /
+              (유)나위키코리아
             </li>
           </ul>
         </details>

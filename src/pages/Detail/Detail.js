@@ -6,9 +6,18 @@ import Right from './Right';
 import Left from './Left';
 
 function Detail() {
-  // useEffect(() => {
-  //   console.log('effect');
-  // });
+  useEffect(() => {
+    const detailImgAccess = () => {
+      fetch('10.58.52.132:3000/products/1', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    };
+  });
   const [isOpenModal, setIsOpenModal] = useState(false);
   const switchModal = () => {
     setIsOpenModal(prev => !prev);
