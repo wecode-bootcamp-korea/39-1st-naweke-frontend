@@ -45,7 +45,8 @@ function User({ userData: { title, text, url, button } }) {
       })
       .catch(error => console.log(error))
       .then(data => {
-        if (data.message === 'login success') {
+        if (data.message) {
+          localStorage.setItem('token', data.message);
           navigate('/main');
         } else {
           alert('아이디와 비밀번호를 확인해주세요');
@@ -73,7 +74,10 @@ function User({ userData: { title, text, url, button } }) {
       })
       .catch(error => console.log(error))
       .then(data => {
-        navigate('/main');
+        if (data.result.message === 'login success') {
+          localStorage.setItem('token', data.result.accessToken);
+          navigate('/main');
+        }
       });
   };
 
