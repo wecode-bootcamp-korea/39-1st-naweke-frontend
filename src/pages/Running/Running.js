@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import ProductList from '../components/productlist';
 
 function Running({ data }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,7 +22,7 @@ function Running({ data }) {
     searchParams.set(mainCategory, subCategory);
     setSearchParams(searchParams);
   };
-  // return <ProductList />;
+  return <ProductList />;
 }
 
 export default Running;
