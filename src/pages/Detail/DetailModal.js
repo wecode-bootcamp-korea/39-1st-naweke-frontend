@@ -1,14 +1,16 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useRef } from 'react';
 import './DetailModal.scss';
+import { useNavigate } from 'react-router-dom';
 
 function DetailModal(props) {
   const navigate = useNavigate();
+  const clickOutside = useRef();
+
   return (
-    <div className="modal">
+    <div className="modal" onClick={props.switchModal}>
       <div className="modalContent">
         <div className="modalText">
-          <p className="close" onClick={props.switchModal}></p>
+          <p className="modalClose" onClick={props.switchModal}></p>
           <p className="modalTitle">알림</p>
           <p className="modalFont">쇼핑을 계속 진행하시겠습니까?</p>
         </div>

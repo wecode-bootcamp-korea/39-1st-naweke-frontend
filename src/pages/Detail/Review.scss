@@ -2,12 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  .reviewTitleInput {
-    width: 100%;
+  .reviewTitle {
     margin-top: 30px;
     font-size: 20px;
-    border-style: none;
-    outline: none;
   }
   .reviewVal {
     margin-top: 10px;
@@ -21,23 +18,9 @@
       outline: none;
     }
   }
-  .reviewInput {
+  .reviewReview {
     margin-top: 10px;
-    border-style: none;
-    outline: none;
+    font-size: 15px;
     width: 100%;
-  }
-  .reviewBtn {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    border: none;
-    border-radius: 40px;
-    background-color: black;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
   }
 }

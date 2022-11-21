@@ -12,48 +12,102 @@ function Right(props) {
       <h4 className="Size">사이즈 선택</h4>
 
       <div className="sizeButton">
-        <input type="radio" id="r1" name="caUse" className="radio" checked />
-        <label htmlFor="r1" class="label">
+        <input
+          type="radio"
+          id="r1"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r1" className="label">
           220
         </label>
 
-        <input type="radio" id="r2" name="caUse" className="radio" checked />
-        <label htmlFor="r2" class="label">
+        <input
+          type="radio"
+          id="r2"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r2" className="label">
           230
         </label>
 
-        <input type="radio" id="r3" name="caUse" className="radio" checked />
-        <label htmlFor="r3" class="label">
+        <input
+          type="radio"
+          id="r3"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r3" className="label">
           240
         </label>
 
-        <input type="radio" id="r4" name="caUse" className="radio" checked />
-        <label htmlFor="r4" class="label">
+        <input
+          type="radio"
+          id="r4"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r4" className="label">
           250
         </label>
 
-        <input type="radio" id="r5" name="caUse" className="radio" checked />
-        <label htmlFor="r5" class="label">
+        <input
+          type="radio"
+          id="r5"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r5" className="label">
           260
         </label>
 
-        <input type="radio" id="r6" name="caUse" className="radio" checked />
-        <label htmlFor="r6" class="label">
+        <input
+          type="radio"
+          id="r6"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r6" className="label">
           270
         </label>
 
-        <input type="radio" id="r7" name="caUse" className="radio" checked />
-        <label htmlFor="r7" class="label">
+        <input
+          type="radio"
+          id="r7"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r7" className="label">
           280
         </label>
 
-        <input type="radio" id="r8" name="caUse" className="radio" checked />
-        <label htmlFor="r8" class="label">
+        <input
+          type="radio"
+          id="r8"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r8" className="label">
           290
         </label>
 
-        <input type="radio" id="r9" name="caUse" className="radio" checked />
-        <label htmlFor="r9" class="label">
+        <input
+          type="radio"
+          id="r9"
+          name="caUse"
+          className="radio"
+          defaultChecked
+        />
+        <label htmlFor="r9" className="label">
           300
         </label>
       </div>
