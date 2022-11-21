@@ -5,6 +5,22 @@
 .container {
   margin: 100px auto 40px;
   width: 1200px;
+  // position: relative;
+  .titleContainer {
+    position: relative;
+  }
+
+  .allCheckBox {
+    // position: absolute;
+    // left: 0%;
+    // bottom: 10px;
+    display: inline;
+  }
+
+  .check {
+    margin-right: 10px;
+    zoom: 1.2;
+  }
 
   .cart {
     display: flex;
@@ -14,11 +30,21 @@
   .cartContainer {
     width: 770px;
     margin-right: 20px;
+
+    .cartInner {
+      height: 650px;
+      overflow: scroll;
+    }
   }
 
   .titleWord {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 30px;
+  }
+
+  .titleCart {
+    display: inline;
   }
 
   .orderList {
@@ -65,11 +91,5 @@
     border-radius: 36px;
     font-size: 2rem;
     padding: 24px 30px;
-  }
-
-  .wishList {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    color: blue;
   }
 }

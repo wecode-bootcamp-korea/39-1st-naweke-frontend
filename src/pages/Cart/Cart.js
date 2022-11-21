@@ -1,3 +1,4 @@
+import { check } from 'prettier';
 import React, { useState, useEffect } from 'react';
 
 import './Cart.scss';
@@ -5,13 +6,32 @@ import './Cart.scss';
 import ProductList from './ProductList';
 
 function Cart() {
-  const [cartList, setCartList] = useState([]);
+  const [cartList, setCartList] = useState([]); //selectedbread와 같은 프로덕트 리스트
+  const [checkList, setCheckList] = useState([]); //체크 박스 빈배열
 
   useEffect(() => {
     fetch('/data/CartList.json')
       .then(response => response.json())
       .then(result => setCartList(result)); //콜백함수//
   }, []);
+  //전체 체크박스
+  const changeAllBox = checked => {
+    if (checked) {
+      const checkAllBox = [];
+      cartList.forEach(el => checkAllBox.push(el.product_option_id));
+      setCheckList(checkAllBox);
+    } else {
+      setCheckList([]);
+    }
+  };
+  //개별 체크박스
+  const changeSingleBox = (checked, product_option_id) => {
+    if (checked) {
+      setCheckList([...checkList, product_option_id]);
+    } else {
+      setCheckList(checkList.filter(el => el !== product_option_id));
+    }
+  };
 
   // useEffect(() => {
   //   fetch('http://10.58.52.56:3000/carts/', {
@@ -57,31 +77,44 @@ function Cart() {
   //     .then(response => response.json())
   //     .then(result => setCartList(result)); //콜백함수//
   // }, []);
-  // console.log(totalPrice);
-  // console.log(cartList);
+
+  console.log(onchange);
   return (
     <div className="container">
       <div className="cart">
         <div className="cartContainer">
-          <h1 className="titleWord">장바구니</h1>
-          {cartList.map(product => (
-            <ProductList
-              cartDelete={cartDelete}
-              key={product.product_option_id}
-              product={product}
-              // setTotalPrice={setTotalPrice}
-              onChangeAmount={amount => {
-                setCartList(
-                  cartList.map(cart => {
-                    if (cart.product_option_id === product.product_option_id) {
-                      cart.quantity = amount;
-                    }
-                    return cart;
-                  })
-                );
-              }}
+          <div className="titleContainer">
+            <input
+              className="allCheckBox check"
+              type="checkbox"
+              // checked={checkList.length === }
+              onChange={e => changeAllBox(e.target.checked)}
             />
-          ))}
+            <h1 className="titleWord titleCart">장바구니</h1>
+          </div>
+          <div className="cartInner">
+            {cartList.map(product => (
+              <ProductList
+                cartDelete={cartDelete}
+                key={product.product_option_id}
+                product={product}
+                changeSingleBox={changeSingleBox}
+                // setTotalPrice={setTotalPrice}
+                onChangeAmount={amount => {
+                  setCartList(
+                    cartList.map(cart => {
+                      if (
+                        cart.product_option_id === product.product_option_id
+                      ) {
+                        cart.quantity = amount;
+                      }
+                      return cart;
+                    })
+                  );
+                }}
+              />
+            ))}
+          </div>
         </div>
         <div className="orderContainer">
           <h1 className="order titleWord">주문내역</h1>
@@ -107,14 +140,6 @@ function Cart() {
             </div>
           </aside>
         </div>
-      </div>
-      <div className="wishList fontSize">위시리스트</div>
-      <div className="imgContainer">
-        <img
-          src="/images/signup/nike.png"
-          alt="장바구니 상품"
-          className="productImg"
-        />
       </div>
     </div>
   );

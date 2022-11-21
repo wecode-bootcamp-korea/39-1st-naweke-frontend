@@ -2,6 +2,11 @@
   font-size: 2rem;
 }
 .container {
+  .cartContainer {
+    // overflow: scroll;
+    height: 680px; //수정한거
+  }
+
   .product {
     display: flex;
     position: relative;
@@ -70,7 +75,7 @@
     line-height: 40px;
     font-size: 2rem;
     position: absolute;
-    right: 0;
+    right: 10px;
   }
 
   .iconBox {

@@ -4,10 +4,11 @@ import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
 function ProductList(props) {
-  const { product, onChangeAmount, cartDelete } = props;
+  const { product, onChangeAmount, cartDelete, changeSingleBox } = props;
   const { product_option_id, price, thumbnail_image_url, quantity, name } =
     product;
   const [selected, setSelected] = useState(quantity);
+  // const [checkList, setCheckList] = useState([]); //체크 박스 빈배열
 
   const saveAmount = e => {
     setSelected(e.target.value);
@@ -21,6 +22,12 @@ function ProductList(props) {
   return (
     <>
       <div className="product">
+        <input
+          className="checkBox check"
+          type="checkbox"
+          // checked
+          onChange={e => changeSingleBox(e.target.checked, product_option_id)}
+        />
         <div className="imgContainer">
           <img
             src={thumbnail_image_url}
