@@ -1,48 +1,37 @@
 import React, { useState } from 'react';
+import Cart from './Cart';
 import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
 function ProductList(props) {
-  const { product, onChangeAmount, setTotalPrice } = props;
-  const { productId, productPrice, image_url, amount, productName } = product;
-
-  // const setTotalPrice = props.setTotalPrice;
-
-  const [selected, setSelected] = useState(amount);
-  // const [price, setPrice] = useState(productPrice);
+  const { product, onChangeAmount, cartDelete } = props;
+  const { product_option_id, price, thumbnail_image_url, quantity, name } =
+    product;
+  const [selected, setSelected] = useState(quantity);
 
   const saveAmount = e => {
-    // console.log(e.target.value);
     setSelected(e.target.value);
-    onChangeAmount(productId, e.target.value);
+    onChangeAmount(e.target.value);
   };
-  const totalPrice = productPrice * selected;
-  // console.log(selected);
+  //상품 수량에 따른 가격
+  const amountPrice = price * selected;
 
-  // const itemPrice = () => {
-  //   setPrice(price * selected);
-  // };
-  // s
-  // useEffect(() => {
-  //   setPrice(productPrice * selected);
-
-  //   // [10000, 20000, 30000, 40000]
-  //   // [10000, 20000, 60000, 40000]
-  //   // arr[id] = price;
-  //   // setTotalPrice([...totalPrice, (totalPrice[productId - 1] = price)]);
-  // }, [selected]);
-  // console.log(price);
+  //장바구니 물건 삭제 기능
 
   return (
     <>
       <div className="product">
         <div className="imgContainer">
-          <img src={image_url} alt="장바구니 상품" className="productImg" />
+          <img
+            src={thumbnail_image_url}
+            alt="장바구니 상품"
+            className="productImg"
+          />
         </div>
 
-        <div className="productInfo">
+        <div className="productInfo" key={product_option_id}>
           <div className="productInfo">
-            <div className="productName line fontSize">{productName}</div>
+            <div className="productName line fontSize">{name}</div>
             <div className="productColor line gray fontSize">검정색</div>
             <div className="productSize line gray fontSize">
               사이즈
@@ -84,7 +73,10 @@ function ProductList(props) {
                 </button>
               </div>
               <div className="deleteIconWrap">
-                <button className="deleteBtn">
+                <button
+                  className="deleteBtn"
+                  onClick={() => cartDelete(product_option_id)}
+                >
                   <img
                     className="heartImg"
                     src="/images/signup/delete.png"
@@ -95,7 +87,7 @@ function ProductList(props) {
             </div>
           </div>
         </div>
-        <div className="productPrice"> {totalPrice} 원 </div>
+        <div className="productPrice"> {amountPrice.toLocaleString()} 원 </div>
       </div>
 
       <div className="delivery fontSize">무료배송</div>

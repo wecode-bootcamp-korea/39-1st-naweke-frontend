@@ -6,32 +6,59 @@ import ProductList from './ProductList';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
-  const [totalpricee, setTotalPrice] = useState(0);
+
   useEffect(() => {
     fetch('/data/CartList.json')
       .then(response => response.json())
       .then(result => setCartList(result)); //콜백함수//
   }, []);
-  console.log(cartList);
-  // setLastPrice(cartList.amount * cartList.productPrice);
-  // const lastPrice = cartList.productPrice * cartList.amount;
-  // console.log(lastPrice);
-  // const lastPrice = setCartList.reduce;
-
-  // const [totalPrice, setTotalPrice] = useState(0);
-  // const totalPrice = amount * productPrice;
 
   // useEffect(() => {
-  //   const arr = [];
-  //   cartList.forEach(({ amount, productPrice }) => {
-  //     arr.push(amount * productPrice);
-  //   });
-  //   setTotalPrice(arr);
-  //   // setTotalPrice(arr);
-  // }, [cartList]);
-  // console.log(totalPrice);
-  // map cartList
+  //   fetch('http://10.58.52.56:3000/carts/', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       user_id: 8,
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(result => setCartList(result)); //콜백함수//
+  // }, []);
 
+  //총 가격
+  const totalPrice = cartList.reduce((a, b) => a + b.quantity * b.price, 0);
+  const cartDelete = product_option_id => {
+    // const targetId = e.target.value;
+    setCartList(
+      cartList.filter(
+        product => product.product_option_id !== product_option_id
+      )
+    );
+    fetch('http://10.58.52.56:3000/carts/delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        product_option_id: 5,
+        user_id: 8,
+      },
+    })
+      .then(response => response.json())
+      .then(result => setCartList(result));
+  };
+
+  // useEffect(() => {
+  //   fetch('http://10.58.52.56:3000/carts/', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       user_id: 8,
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(result => setCartList(result)); //콜백함수//
+  // }, []);
+  // console.log(totalPrice);
+  // console.log(cartList);
   return (
     <div className="container">
       <div className="cart">
@@ -39,14 +66,15 @@ function Cart() {
           <h1 className="titleWord">장바구니</h1>
           {cartList.map(product => (
             <ProductList
-              key={product.productId}
+              cartDelete={cartDelete}
+              key={product.product_option_id}
               product={product}
-              setTotalPrice={setTotalPrice}
+              // setTotalPrice={setTotalPrice}
               onChangeAmount={amount => {
                 setCartList(
                   cartList.map(cart => {
-                    if (cart.productId === product.productId) {
-                      cart.amount = amount;
+                    if (cart.product_option_id === product.product_option_id) {
+                      cart.quantity = amount;
                     }
                     return cart;
                   })
@@ -60,7 +88,9 @@ function Cart() {
           <aside className="orderList">
             <div className="orderPriceWrap orderFlex">
               <div className="priceMent fontSize">상품금액</div>
-              <div className="orderPrice fontSize">원</div>
+              <div className="orderPrice fontSize">
+                {totalPrice.toLocaleString()} 원
+              </div>
             </div>
             <div className="deliveryWrap orderFlex">
               <div className="deliveryPrice fontSize">배송비</div>
@@ -68,7 +98,9 @@ function Cart() {
             </div>
             <div className="totalPriceWrap orderFlex">
               <div className="totalOrder fontSize">총 결제 금액</div>
-              <div className="finalPrice fontSize"> 원</div>
+              <div className="finalPrice fontSize">
+                {totalPrice.toLocaleString()} 원
+              </div>
             </div>
             <div className="orderbtnWrap">
               <button className="orderBtn ">주문결제</button>
@@ -89,3 +121,13 @@ function Cart() {
 }
 
 export default Cart;
+
+// const array1 = [{x: 1, y:2}, {x:2, y:3}, {x:3,y:2}];
+
+// const sumWithInitial = array1.reduce(
+//   (accumulator, currentValue) => accumulator + (currentValue.x*currentValue.y),
+//   0
+// );
+
+// console.log(sumWithInitial);
+// expected output: 14
