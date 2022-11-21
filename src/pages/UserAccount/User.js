@@ -99,22 +99,6 @@ function User({ userData: { title, text, url, button } }) {
       validFalseText: '8자 이상 영문, 숫자, 특수문자 포함하세요',
     },
   ];
-  const SIGNUP_DATA = [
-    {
-      id: 1,
-      type: 'text',
-      name: 'name',
-      placeholder: '이름',
-    },
-    {
-      id: 2,
-      type: 'date',
-      name: 'birth',
-      placeholder: '생년월일',
-      min: '1900-01-01',
-      max: '2022-11-16',
-    },
-  ];
 
   return (
     <div className="signup">
@@ -183,25 +167,15 @@ function User({ userData: { title, text, url, button } }) {
             </>
           )}
         </div>
-        {button === '로그인' ? (
-          <button
-            type="button"
-            className="signupBtn"
-            disabled={!(inputValue.password.length > 0)}
-            onClick={loginAccess}
-          >
-            {button}
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="signupBtn"
-            disabled={!validator}
-            onClick={signUpAccess}
-          >
-            {button}
-          </button>
-        )}
+        <button
+          className="signupBtn"
+          disabled={
+            button === '로그인' ? !(inputValue.password.length > 0) : !validator
+          }
+          onClick={button === '로그인' ? loginAccess : signUpAccess}
+        >
+          {button}
+        </button>
         <Link to={url} className="link">
           {text}
         </Link>
@@ -211,3 +185,20 @@ function User({ userData: { title, text, url, button } }) {
 }
 
 export default User;
+
+const SIGNUP_DATA = [
+  {
+    id: 1,
+    type: 'text',
+    name: 'name',
+    placeholder: '이름',
+  },
+  {
+    id: 2,
+    type: 'date',
+    name: 'birth',
+    placeholder: '생년월일',
+    min: '1900-01-01',
+    max: '2022-11-16',
+  },
+];
