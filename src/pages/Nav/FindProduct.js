@@ -14,29 +14,18 @@ const FindProduct = ({ searchInput }) => {
 
   if (searchInput.length > 1 && searchIdData.length > 1) {
     return (
-      <>
-        <div className="filterBox">
-          {searchIdData.map(({ id, image, name, discription, price }) => {
-            return (
-              <div key={id} className="filterId">
-                <img src={image} alt="img" className="filterImg" />
-                {name}
-                {discription}
-                {price}
-              </div>
-            );
-          })}
-        </div>
-        <div className="filterBoxLeft">
-          {searchIdData.map(({ id, name }) => {
-            return (
-              <div key={id} className="filterIdLeft">
-                <div className="filterName">{name}</div>
-              </div>
-            );
-          })}
-        </div>
-      </>
+      <div className="filterBox">
+        {searchIdData.map(({ id, image, name, discription, price }) => {
+          return (
+            <div key={id} className="filterId">
+              <img src={image} alt="img" className="filterImg" />
+              {name}
+              {discription}
+              {price}
+            </div>
+          );
+        })}
+      </div>
     );
   }
 };

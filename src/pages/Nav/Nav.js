@@ -9,9 +9,25 @@ function Nav() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-
+  const accessToken = localStorage.getItem('accessToken') && (
+    <div
+      className="signBar"
+      // isToken={isToken}
+      onMouseEnter={() => setIsSubMenuOpen(false)}
+    >
+      <p>Help</p>
+      <p>Order Check</p>
+      <p>
+        <Link to="/main">Logout</Link>
+      </p>
+      <p>
+        <Link to="/login">안녕하세요 회원님!</Link>
+      </p>
+    </div>
+  );
   return (
     <>
+      {accessToken}
       <div className="signBar" onMouseEnter={() => setIsSubMenuOpen(false)}>
         <p>Help</p>
         <p>Order Check</p>
@@ -22,20 +38,7 @@ function Nav() {
           <Link to="/login">Login</Link>
         </p>
       </div>
-      <div
-        className="signBar"
-        // isToken={isToken}
-        onMouseEnter={() => setIsSubMenuOpen(false)}
-      >
-        <p>Help</p>
-        <p>Order Check</p>
-        <p>
-          <Link to="/signup">Logout</Link>
-        </p>
-        <p>
-          <Link to="/login">안녕하세요 회원님!</Link>
-        </p>
-      </div>
+
       <div className="navBox">
         <div className="navLogo" onMouseEnter={() => setIsSubMenuOpen(false)}>
           <Link to="/main">

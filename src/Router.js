@@ -10,7 +10,7 @@ import Soccer from './pages/Soccer/Soccer';
 import Running from './pages/Running/Running';
 import Footer from './pages/Footer/Footer';
 import SignUp from './pages/UserAccount/SignUp/SignUp';
-import Login from './pages/Login/Login';
+import Login from './pages/UserAccount/Login/Login';
 
 const Router = () => {
   const [isToken, setIsToken] = useState(false);
