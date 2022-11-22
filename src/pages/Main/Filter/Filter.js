@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import COLOR_LIST from './colorData';
 import SIZE_LIST from './sizeData';
 import './Filter.scss';
-
+import { useSearchParams } from 'react-router-dom';
 const Filter = ({ setFilterData }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [selectValue, setSelectValue] = useState({
     size: '',
     color: '',
@@ -13,7 +15,9 @@ const Filter = ({ setFilterData }) => {
   const handleSelect = e => {
     const { name, value } = e.target;
     setSelectValue(prev => ({ ...prev, [name]: value }));
-    // filtering(`${name}=${value}&`);
+    searchParams.append(name, value);
+    setSearchParams(searchParams);
+    filtering(searchParams.toString());
   };
 
   const filtering = url => {
@@ -94,10 +98,7 @@ const Filter = ({ setFilterData }) => {
                     id={`size${i}`}
                     value={size}
                     checked={Number(selectValue.size) === size}
-                    onChange={
-                      handleSelect
-                      // filtering(`${e.target.name}=${e.target.value}`);
-                    }
+                    onChange={handleSelect}
                     className="radio"
                   />
                   <label htmlFor={`size${i}`} className="label">
@@ -121,11 +122,7 @@ const Filter = ({ setFilterData }) => {
                     name="color"
                     value={text}
                     checked={selectValue.color === text}
-                    // onChange={handleSelect}
-                    onChange={
-                      handleSelect
-                      // filtering(`${e.target.name}=${e.target.value}`);
-                    }
+                    onChange={handleSelect}
                     className="showColor"
                   />
                   <label htmlFor={`color${id}`} className="label">
