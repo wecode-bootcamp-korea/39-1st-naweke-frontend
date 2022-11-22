@@ -1,9 +1,8 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { NAV_LIST } from './Navlist';
-import SearchId from './FindProduct';
-import SearchIdLeft from './FinProductLeft';
+import FindProductLeft from './FindProductLeft';
+import FindProduct from './FindProduct';
 import './Nav.scss';
 
 function Nav() {
@@ -101,8 +100,7 @@ function Nav() {
                   setSearchInput(e.target.value);
                 }}
               />
-              <SearchIdLeft searchInput={searchInput} />
-              <SearchId searchInput={searchInput} />
+              <FindProduct searchInput={searchInput} />
             </div>
             <div className="closeBox">
               <p onClick={() => setIsSearchBoxOpen(false)}>취소</p>
