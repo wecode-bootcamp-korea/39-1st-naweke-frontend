@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MAIN_DATA from './mainData.js';
 import './Main.scss';
@@ -6,6 +6,7 @@ import Filter from './Filter/Filter.js';
 
 function Main() {
   const navigate = useNavigate();
+  const [filterData, setFilterData] = useState([]);
 
   return (
     <div className="main">
@@ -45,7 +46,10 @@ function Main() {
           <img src="images/mainmsg.png" alt="mainmsg" />
         </div>
       </div>
-      <Filter />
+      <Filter setFilterData={setFilterData} />
+      {filterData.map((el, i) => {
+        return <div key={i}>{el.data.name}</div>;
+      })}
     </div>
   );
 }
