@@ -7,7 +7,7 @@ import Cart from './pages/Cart/Cart';
 import Detail from './pages/Detail/Detail';
 // import Basketball from './pages/Basketball/Basketball';
 import Soccer from './pages/Soccer/Soccer';
-import Running from './pages/Running/Running';
+import Running from './pages/Mainthema/Mainthema';
 import Footer from './pages/Footer/Footer';
 import SignUp from './pages/UserAccount/SignUp/SignUp';
 import Login from './pages/UserAccount/Login/Login';

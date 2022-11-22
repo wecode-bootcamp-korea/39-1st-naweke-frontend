@@ -18,7 +18,7 @@ function Running({ data }) {
     searchParams.set(mainCategory, subCategory);
     setSearchParams(searchParams);
   };
-  return <h1>dksl</h1>;
+  return <h1>productlist</h1>;
 }
 
 export default Running;
