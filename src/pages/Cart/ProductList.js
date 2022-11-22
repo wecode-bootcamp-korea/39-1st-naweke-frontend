@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cart from './Cart';
 import './ProductList.scss';
 import SIZE_LIST from './SizeList';
@@ -12,6 +12,7 @@ function ProductList(props) {
     checkHandler,
     onChangeCheck,
     setCheckItems,
+    checkItems,
   } = props;
   const { product_option_id, price, thumbnail_image_url, quantity, name } =
     product;
@@ -23,6 +24,20 @@ function ProductList(props) {
   //   setCheckCartList(!checkCartList);
   //   checkHandler(product.product_option_id, target.checked);
   // }; 3
+  // useEffect(() => {
+  //   handleSingleCheck();
+  // }, []);
+  const handleSingleCheck = (checked, product_option_id) => {
+    if (checked) {
+      setCheckItems(prev => [...prev, product_option_id]);
+    } else {
+      setCheckItems(checkItems.filter(el => el !== product_option_id));
+    }
+  };
+
+  // const onChangeCheck = e => {
+  //   setCheckItems(e.target.checked);
+  // }; -4
 
   const saveAmount = e => {
     setSelected(e.target.value);
@@ -32,6 +47,8 @@ function ProductList(props) {
   const amountPrice = price * selected;
 
   //장바구니 물건 삭제 기능
+  console.log(checkItems);
+  // console.log(product_option_id);
 
   return (
     <>
@@ -39,8 +56,8 @@ function ProductList(props) {
         <input
           className="checkBox check"
           type="checkbox"
-          onChange={e => onChangeCheck(e.target.checked)}
-          checked={CheckItems}
+          onChange={e => handleSingleCheck(e.target.checked, product_option_id)}
+          checked={checkItems.includes(product.product_option_id)}
           // checked={checkCartList}
           // onChange={e => checkCartsHandler(e)}
           // checked

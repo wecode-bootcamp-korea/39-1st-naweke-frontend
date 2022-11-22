@@ -9,17 +9,27 @@ function Cart() {
   const [cartList, setCartList] = useState([]);
   const [checkItems, setCheckItems] = useState([]); //-4(빈 배열)
 
-  const handleSingleCheck = (checked, product_option_id) => {
+  // const handleSingleCheck = (checked, product_option_id) => {
+  //   if (checked) {
+  //     setCheckItems(prev => [...prev, product_option_id]);
+  //   } else {
+  //     setCheckItems(checkItems.filter(el => el !== product_option_id));
+  //   }
+  // }; -4
+
+  const handleAllCheck = checked => {
     if (checked) {
-      setCheckItems(prev => [...prev, product_option_id]);
+      const newCheckArr = [];
+      cartList.forEach(el => newCheckArr.push(el.product_option_id));
+      setCheckItems(newCheckArr);
     } else {
-      setCheckItems(checkItems.filter(el => el !== product_option_id));
+      setCheckItems([]);
     }
   };
 
-  const onChangeCheck = e => {
-    setCheckItems(e.target.checked);
-  }; // 자식한테 props로
+  // const onChangeCheck = e => {
+  //   setCheckItems(e.target.checked);
+  // }; // 자식한테 props로
 
   // const [checkList, setCheckList] = useState([]); //체크 박스 빈배열
 
@@ -145,6 +155,8 @@ function Cart() {
             <input
               className="allCheckBox check"
               type="checkbox"
+              onChange={e => handleAllCheck(e.target.checked)}
+              checked={checkItems.length === cartList.length ? true : false}
               // checked={checkList.length === }
               // onChange={e => changeAllBox(e.target.checked)}
               // onChange={onChangeCheck} -2
@@ -157,7 +169,8 @@ function Cart() {
                 cartDelete={cartDelete}
                 key={product.product_option_id}
                 product={product}
-                onChangeCheck={onChangeCheck}
+                // onChangeCheck={onChangeCheck}
+                setCheckItems={setCheckItems}
                 checkItems={checkItems}
                 // checkHandler={checkHandler}
                 // changeSingleBox={changeSingleBox}
