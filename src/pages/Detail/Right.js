@@ -2,24 +2,39 @@ import React, { useState } from 'react';
 import './Right.scss';
 import './DetailModal';
 import Review from './Review';
+import { useNavigate } from 'react-router-dom';
 
 function Right(props) {
+  const navigate = useNavigate();
+  const [changeValue, setChangeValue] = useState('');
+  const [size, setSize] = useState(0);
+
+  const handleSize = e => {
+    setSize(e.target.value);
+  };
+
+  console.log(size);
+
   return (
     <div className="rightContainer">
-      {/* {console.log(props.detailData.productInfo.name)}
       <h1 className="title">{props.detailData.productInfo.name}</h1>
       <h4 className="description">
         {props.detailData.productInfo.description}
       </h4>
-      <h4 className="price">{props.detailData.productInfo.price}</h4> */}
+      <h4 className="price">
+        {props.detailData.productInfo.price.toLocaleString()}
+      </h4>
       <h4 className="Size">사이즈 선택</h4>
+
       <div className="sizeButton">
         <input
           type="radio"
           id="r1"
-          name="caUse"
+          name="size"
+          value={220}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r1" className="label">
           220
@@ -28,9 +43,11 @@ function Right(props) {
         <input
           type="radio"
           id="r2"
-          name="caUse"
+          name="size"
+          value={230}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r2" className="label">
           230
@@ -39,9 +56,11 @@ function Right(props) {
         <input
           type="radio"
           id="r3"
-          name="caUse"
+          name="size"
+          value={240}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r3" className="label">
           240
@@ -50,9 +69,11 @@ function Right(props) {
         <input
           type="radio"
           id="r4"
-          name="caUse"
+          name="size"
+          value={250}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r4" className="label">
           250
@@ -61,9 +82,11 @@ function Right(props) {
         <input
           type="radio"
           id="r5"
-          name="caUse"
+          name="size"
+          value={260}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r5" className="label">
           260
@@ -72,9 +95,11 @@ function Right(props) {
         <input
           type="radio"
           id="r6"
-          name="caUse"
+          name="size"
+          value={270}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r6" className="label">
           270
@@ -83,9 +108,11 @@ function Right(props) {
         <input
           type="radio"
           id="r7"
-          name="caUse"
+          name="size"
+          value={280}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r7" className="label">
           280
@@ -94,9 +121,11 @@ function Right(props) {
         <input
           type="radio"
           id="r8"
-          name="caUse"
+          name="size"
+          value={290}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r8" className="label">
           290
@@ -105,20 +134,17 @@ function Right(props) {
         <input
           type="radio"
           id="r9"
-          name="caUse"
+          name="size"
+          value={300}
           className="radio"
-          defaultChecked
+          onChange={handleSize}
+          Checked
         />
         <label htmlFor="r9" className="label">
           300
         </label>
       </div>
-      <button
-        className="nowBtn"
-        onClick={() => {
-          props.basketAccess();
-        }}
-      >
+      <button className="nowBtn" onClick={() => navigate('/payment')}>
         바로결제
       </button>
       <button

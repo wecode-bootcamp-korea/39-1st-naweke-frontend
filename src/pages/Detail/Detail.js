@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Detail.scss';
 import DetailModal from './DetailModal';
 import Right from './Right';
@@ -8,8 +8,12 @@ import Left from './Left';
 function Detail() {
   const [detailData, setDetailData] = useState([]);
 
+  const params = useParams();
+
+  console.log(params);
+
   // useEffect(() => {
-  //   fetch('http://10.58.52.132:3000/products/1', {
+  //   fetch(`http://10.58.52.132:3000/products/${params.id}`, {
   //     method: 'GET',
   //     headers: {
   //       'Content-Type': 'application/json;charset=utf-8',
@@ -19,7 +23,13 @@ function Detail() {
   //     .then(data => setDetailData(data));
   // }, []);
 
-  // console.log(detailData);
+  useEffect(() => {
+    fetch('/data/cartData.json')
+      .then(res => res.json())
+      .then(data => setDetailData(data));
+  }, []);
+
+  console.log(detailData);
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const switchModal = () => {
@@ -52,8 +62,7 @@ function Detail() {
       .then(data => console.log(data));
   };
 
-  // console.log(detailData);
-  // if (!detailData.productInfo) return null;
+  if (!detailData.productInfo) return null;
 
   return (
     <div className="detail">

@@ -1,0 +1,23 @@
+{
+  "productInfo": {
+    "name": "나위키 줌X 스트릭플라이",
+    "description": "남성 로드 러닝화",
+    "image": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "price": 143000,
+    "size": [10, 11, 12, 13, 14],
+    "reviews": [
+      {
+        "title": "Naweke 제품 좋아요!",
+        "content": "믿고 사는 naweke 제품입니다!",
+        "nickname": "Brightstone1",
+        "createdAt": "2022-11-21 19:05:48.000000"
+      },
+      {
+        "title": "역시 Naweke",
+        "content": "색깔이 너무 마음에 들어서 구매했는데 사진과 실물 색상이 똑같아요~! 만족합니다.",
+        "nickname": "naweke123",
+        "createdAt": "2022-11-21 19:06:55.000000"
+      }
+    ]
+  }
+}
