@@ -5,19 +5,15 @@ import ProductList from '../components/productlist';
 
 function Running({ data }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const mainCategory = searchParams.get('mainCategory');
-  const subCategory = searchParams.get('subCategory');
 
   const [posts, setPosts] = useState();
 
   useEffect(() => {
-    fetch(
-      `http://10.58.52.162:3000/products/all?mainCategory=${mainCategory}&subCategory=${subCategory}`
-    )
+    fetch(`http://10.58.52.162:3000/products?${searchParams.toString()}`)
       .then(response => response.json())
       .then(result => setPosts(result));
-  }, [mainCategory, subCategory]);
-
+  }, [searchParams]);
+  console.log(searchParams.toString());
   const changeProduct = (mainCategory, subCategory) => {
     searchParams.set(mainCategory, subCategory);
     setSearchParams(searchParams);

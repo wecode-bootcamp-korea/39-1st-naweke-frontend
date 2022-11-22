@@ -122,9 +122,13 @@ function Nav() {
           {NAV_LIST.map(nav => {
             return (
               <ul key={nav.id}>
-                <li key={nav.list.id}>
-                  <a href={nav.list.path}>{nav.list.name}</a>
-                </li>
+                {nav.list.map(text => {
+                  return (
+                    <li key={text.id}>
+                      <Link to={text.path}>{text.name}</Link>
+                    </li>
+                  );
+                })}
               </ul>
             );
           })}
