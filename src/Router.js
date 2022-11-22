@@ -6,7 +6,7 @@ import Main from './pages/Main/Main';
 import Cart from './pages/Cart/Cart';
 import Detail from './pages/Detail/Detail';
 // import SignUp from './pages/UserAccount/SignUp/SignUp';
-// import Footer from './pages/Footer/Footer';
+import Footer from './pages/Footer/Footer';
 import Payment from './pages/Payment/Payment';
 
 const Router = () => {
@@ -21,6 +21,7 @@ const Router = () => {
         {/* <Route path="/signup" element={<SignUp />} /> */}
         <Route path="/payment" element={<Payment />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
