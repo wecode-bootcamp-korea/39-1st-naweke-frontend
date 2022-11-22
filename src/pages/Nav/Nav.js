@@ -43,15 +43,15 @@ function Nav() {
           <Link to="/main">NAWEKE</Link>
         </div>
         <ul className="navMain" onMouseEnter={() => setIsSubMenuOpen(true)}>
-          <Link to="/running">
+          <Link to="/products">
             <li>Running</li>
           </Link>
 
-          <Link to="/soccer">
+          <Link to="/products">
             <li>Soccer</li>
           </Link>
 
-          <Link to="/basketball">
+          <Link to="/products">
             <li>Basketball</li>
           </Link>
         </ul>
