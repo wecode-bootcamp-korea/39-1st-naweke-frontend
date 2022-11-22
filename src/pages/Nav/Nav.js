@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { NAV_LIST } from './Navlist';
 import SearchId from './FindProduct';
 import SearchIdLeft from './FinProductLeft';
 import './Nav.scss';
@@ -120,7 +121,16 @@ function Nav() {
       )}
       {isSubMenuOpen && (
         <div className="navUnder" onMouseLeave={() => setIsSubMenuOpen(false)}>
-          <ul>
+          {NAV_LIST.map(nav => {
+            return (
+              <ul key={nav.id}>
+                <li key={nav.list.id}>
+                  <a href={nav.list.path}>{nav.list.name}</a>
+                </li>
+              </ul>
+            );
+          })}
+          {/* <ul>
             <Link to="/running?mainCategory=shoes&subCategory=running">
               <li>신발</li>
             </Link>
@@ -164,7 +174,7 @@ function Nav() {
             <Link to="/basketball">
               <li>전체보기</li>
             </Link>
-          </ul>
+          </ul> */}
         </div>
       )}
     </>

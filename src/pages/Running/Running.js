@@ -12,7 +12,7 @@ function Running({ data }) {
 
   useEffect(() => {
     fetch(
-      `http://127.0.0.1:3000/products/all?mainCategory=${mainCategory}&subCategory=${subCategory}`
+      `http://10.58.52.162:3000/products/all?mainCategory=${mainCategory}&subCategory=${subCategory}`
     )
       .then(response => response.json())
       .then(result => setPosts(result));
@@ -22,7 +22,7 @@ function Running({ data }) {
     searchParams.set(mainCategory, subCategory);
     setSearchParams(searchParams);
   };
-  return <h1>hi</h1>;
+  return <h1></h1>;
 }
 
 export default Running;
