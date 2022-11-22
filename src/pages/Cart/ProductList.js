@@ -24,7 +24,7 @@ function ProductList(props) {
   const amountPrice = price * selected;
 
   //장바구니 물건 삭제 기능
-  console.log(checkItems);
+  // console.log(checkItems);
 
   return (
     <>

@@ -17,6 +17,16 @@ function Cart() {
       setCheckItems([]);
     }
   };
+  const selectDelete = () => {
+    const afterDeleted = cartList.filter(
+      el => !checkItems.includes(el.product_option_id)
+    );
+    setCartList(afterDeleted);
+    setCheckItems([]);
+  };
+  console.log(checkItems);
+
+  //선택 삭제 -> 결국 재렌더링인데 온클릭을 했을떼 카트리스트의 프로덕트옵션아이디와
 
   useEffect(() => {
     fetch('/data/CartList.json')
@@ -38,8 +48,9 @@ function Cart() {
 
   //총 가격 계산
 
-  const totalPrice = cartList.reduce((a, b) => a + b.quantity * b.price, 0);
-
+  const totalPrice = cartList
+    .filter(el => checkItems.includes(el.product_option_id))
+    .reduce((a, b) => a + b.quantity * b.price, 0);
   //삭제 버튼
 
   const cartDelete = product_option_id => {
@@ -48,16 +59,16 @@ function Cart() {
         product => product.product_option_id !== product_option_id
       )
     );
-    fetch('http://10.58.52.56:3000/carts/delete', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        product_option_id: 5,
-        user_id: 8,
-      },
-    })
-      .then(response => response.json())
-      .then(result => setCartList(result));
+    // fetch('http://10.58.52.56:3000/carts/delete', {
+    //   method: 'DELETE',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     product_option_id: 5,
+    //     user_id: 8,
+    //   },
+    // })
+    //   .then(response => response.json())
+    //   .then(result => setCartList(result));
   };
 
   // useEffect(() => {
@@ -84,6 +95,9 @@ function Cart() {
               checked={checkItems.length === cartList.length ? true : false}
             />
             <h1 className="titleWord titleCart">장바구니</h1>
+            <button className="deleteButton" onClick={selectDelete}>
+              선택 삭제
+            </button>
           </div>
           <div className="cartInner">
             {cartList.map(product => (
@@ -93,6 +107,7 @@ function Cart() {
                 product={product}
                 setCheckItems={setCheckItems}
                 checkItems={checkItems}
+                // selectDelete={selectDelete}
                 onChangeAmount={amount => {
                   setCartList(
                     cartList.map(cart => {

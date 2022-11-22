@@ -38,6 +38,21 @@
     }
   }
 
+  .titleContainer {
+    position: relative;
+    .deleteButton {
+      position: absolute;
+      right: 0%;
+      text-align: center;
+      width: 75px;
+      height: 30px;
+      background-color: #111;
+      color: white;
+      border: none;
+      border-radius: 12px;
+    }
+  }
+
   .titleWord {
     font-size: 3.5rem;
     margin-bottom: 25px;
