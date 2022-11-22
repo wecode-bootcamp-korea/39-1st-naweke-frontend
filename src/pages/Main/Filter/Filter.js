@@ -1,30 +1,45 @@
 import React, { useState } from 'react';
 import COLOR_LIST from './colorData';
 import SIZE_LIST from './sizeData';
+import PRICE_LIST from './priceData';
 import './Filter.scss';
 import { useSearchParams } from 'react-router-dom';
 const Filter = ({ setFilterData }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [selectValue, setSelectValue] = useState({
     size: '',
     color: '',
-    price: 50000,
+    price: 0,
   });
-
   const sizeTitle = searchParams.get('mainCategory');
 
   const handleSelect = e => {
-    const { name, value } = e.target;
+    const { name, value, id } = e.target;
     setSelectValue(prev => ({ ...prev, [name]: value }));
-    // 조건문
-    searchParams.append(name, value);
+    if (name === 'size') {
+      searchParams.append(name, value);
+      setSearchParams(searchParams);
+      filtering(searchParams.toString());
+    } else if (name === 'price') {
+      searchParams.set(name, id);
+      setSearchParams(searchParams);
+      filtering(searchParams.toString());
+    } else {
+      searchParams.set(name, value);
+      setSearchParams(searchParams);
+      filtering(searchParams.toString());
+    }
+  };
+
+  const handleGender = e => {
+    searchParams.set(e.target.name, e.target.value);
     setSearchParams(searchParams);
     filtering(searchParams.toString());
   };
 
   const filtering = url => {
-    fetch(`http://10.58.52.162:3000/products?${url}`)
+    // fetch(`http://10.58.52.162:3000/products?${url}`)
+    fetch('data/productlist.json')
       .then(response => response.json())
       .then(data => setFilterData(data.data));
   };
@@ -37,56 +52,55 @@ const Filter = ({ setFilterData }) => {
           <h3>성별</h3>
           <fieldset>
             <div className="checkBoxList">
-              <input
-                type="radio"
-                id="checkWomen"
-                name="genderCheck"
-                className="checkBoxInput"
-              />
-              <label
-                for="checkWomen"
-                onClick={() => filtering('gender=woman')}
-                // onChange={() => filtering('gender=woman')}
-              />
-              <span className="selectTitle">여성</span>
+              <label for="checkWomen">
+                <input
+                  type="radio"
+                  id="checkWomen"
+                  name="gender"
+                  value="woman"
+                  className="checkBoxInput"
+                  onChange={handleGender}
+                />
+                <span className="selectTitle">여성</span>
+              </label>
             </div>
             <div className="checkBoxList">
-              <input
-                type="radio"
-                id="checkMen"
-                name="genderCheck"
-                className="checkBoxInput"
-              />
-              <label
-                for="checkMen"
-                onClick={() => filtering('gender=man')}
-                // onChange={() => filtering('gender=man')}
-              />
-              <span className="selectTitle">남성</span>
+              <label for="checkMen">
+                <input
+                  type="radio"
+                  id="checkMen"
+                  name="gender"
+                  value="man"
+                  className="checkBoxInput"
+                  onChange={handleGender}
+                />
+                <span className="selectTitle">남성</span>
+              </label>
             </div>
           </fieldset>
         </div>
         {/* price */}
         <div className="productPrice filterLayout">
           <h3>가격</h3>
-          <input
-            type="range"
-            name="price"
-            min="50000"
-            max="250000"
-            step={50000}
-            value={selectValue.price}
-            onChange={handleSelect}
-            list="number"
-          />
-          <div className="showPrice">
-            {selectValue.price < 200001
-              ? (selectValue.price - 50000).toLocaleString() +
-                '원 ~' +
-                Number(selectValue.price).toLocaleString() +
-                '원'
-              : '200,000원+'}
-          </div>
+          {PRICE_LIST.map(({ id, price }) => {
+            return (
+              <div className="showPrice" key={id}>
+                <label htmlFor={id} className="label">
+                  <input
+                    type="radio"
+                    name="price"
+                    id={id}
+                    value={price}
+                    checked={Number(selectValue.price) === price}
+                    onChange={handleSelect}
+                  />
+                  <span>{`${(
+                    price - 50000
+                  ).toLocaleString()}원 ~${price.toLocaleString()}원`}</span>
+                </label>
+              </div>
+            );
+          })}
         </div>
         {/* size */}
         <div className="productSize filterLayout">
@@ -96,13 +110,12 @@ const Filter = ({ setFilterData }) => {
               return (
                 <div key={i}>
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="size"
                     id={`size${i}`}
                     value={size}
-                    checked={Number(selectValue.size) === size}
+                    // checked={Number(selectValue.size) === size}
                     onChange={handleSelect}
-                    className="radio"
                   />
                   <label htmlFor={`size${i}`} className="label">
                     <span>{size}</span>

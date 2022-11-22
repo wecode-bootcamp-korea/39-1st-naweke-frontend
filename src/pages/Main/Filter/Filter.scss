@@ -1,9 +1,26 @@
 /* stylelint-disable selector-class-pattern */
 // /* stylelint-disable-next-line selector-class-pattern */
 .filter {
+  position: fixed;
+  top: 50px;
   width: 220px;
+  height: 700px;
+  overflow-y: scroll;
   color: #111111;
   font-size: 1.6rem;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: #ddd;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff;
+  }
 
   .filterInner {
     width: 85%;
@@ -22,60 +39,76 @@
     .checkBoxList {
       margin-bottom: 10px;
 
-      .checkBoxInput {
-        display: none;
-        cursor: pointer;
-      }
-
       label {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        border: 2px solid #bcbcbc;
+        font-size: 1.6rem;
+        vertical-align: middle;
         cursor: pointer;
       }
 
-      input[id='checkWomen']:checked + label {
-        background-color: #333;
+      span {
+        vertical-align: middle;
       }
-      input[id='checkMen']:checked + label {
-        background-color: #333;
+
+      [type='radio'] {
+        width: 15px;
+        height: 15px;
+        margin: 0 5px 0 0;
+        transition: border 0.5s ease-in-out;
+        border: 2px solid #bcbcbc;
+        appearance: none;
+      }
+
+      [type='radio']:checked {
+        background-color: #111;
       }
 
       .selectTitle {
-        margin-left: 5px;
         vertical-align: top;
       }
     }
 
     .productPrice {
-      input {
-        display: block;
-        width: 90%;
-        margin: 0 auto;
-        border-radius: 8px;
-        outline: none;
-        background: #bdbdbd;
-        -webkit-appearance: none;
-        accent-color: #333;
-      }
       .showPrice {
-        width: 90%;
-        margin: 10px auto;
+        width: 100%;
+        margin: 12px auto;
+
+        label {
+          font-size: 1.6rem;
+          cursor: pointer;
+        }
+
+        span {
+          vertical-align: middle;
+        }
+
+        [type='radio'] {
+          width: 15px;
+          height: 15px;
+          margin: 0 5px 0 0;
+          transition: border 0.5s ease-in-out;
+          border: 2px solid #bcbcbc;
+          vertical-align: middle;
+          appearance: none;
+        }
+
+        [type='radio']:checked {
+          background-color: #111;
+        }
       }
     }
 
     .productSize {
       .sizeBtnWrap {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 190px;
 
         .label {
           display: inline-block;
           width: 55px;
           height: 36px;
-          margin: 3px;
+          margin: 5px 3px;
           border: 1px solid #ccc;
           border-radius: 5px;
           line-height: 30px;
@@ -86,14 +119,14 @@
         .label:hover {
           border: 1px solid #111;
         }
-        input[type='radio'] {
-          -webkit-appearance: radio;
+        input[type='checkbox'] {
+          -webkit-appearance: checkbox;
         }
-        input[type='radio']:checked + .label {
+        input[type='checkbox']:checked + .label {
           border-color: #111;
         }
 
-        .radio {
+        input {
           position: absolute;
           height: 0px;
           overflow: hidden;
@@ -106,6 +139,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
+        margin-bottom: 75px;
       }
       .colorLayout {
         width: 62px;
@@ -159,7 +193,7 @@
           -webkit-appearance: radio;
         }
         input[type='radio']:checked + .label {
-          background-color: #ccc;
+          background-color: #ddd;
         }
 
         input {

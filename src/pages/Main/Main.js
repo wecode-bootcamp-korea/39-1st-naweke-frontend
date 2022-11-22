@@ -47,10 +47,10 @@ function Main() {
         </div>
       </div>
       <Filter setFilterData={setFilterData} />
-      {console.log(filterData)}
+      {/* {console.log(filterData)}
       {filterData.map((el, i) => {
         return <div key={i}>{el.name}</div>;
-      })}
+      })} */}
     </div>
   );
 }
