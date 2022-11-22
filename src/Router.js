@@ -8,8 +8,9 @@ import Detail from './pages/Detail/Detail';
 // import Basketball from './pages/Basketball/Basketball';
 import Soccer from './pages/Soccer/Soccer';
 import Running from './pages/Running/Running';
-// import SignUp from './pages/UserAccount/SignUp/SignUp';
-// import Footer from './pages/Footer/Footer';
+import Footer from './pages/Footer/Footer';
+import SignUp from './pages/UserAccount/SignUp/SignUp';
+import Login from './pages/Login/Login';
 
 const Router = () => {
   const [isToken, setIsToken] = useState(false);
@@ -23,11 +24,11 @@ const Router = () => {
         {/* <Route path="/basketball" element={<Basketball />} /> */}
         <Route path="/soccer" element={<Soccer />} />
         <Route path="/running" element={<Running />} />
-        {/* <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/footer" element={<Footer />} /> */}
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
