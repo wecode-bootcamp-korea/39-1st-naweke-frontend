@@ -1,10 +1,10 @@
 import React from 'react';
 import './Left.scss';
 
-function Left() {
+function Left({ detailData }) {
   return (
     <div className="productContainer">
-      <img className="productImg" src="images/nike.png" />
+      {/* <img className="productImg" src={detailData.productInfo.image} /> */}
       <img className="productImg" src="images/nike.png" />
       <img className="productImg" src="images/nike.png" />
       <img className="productImg" src="images/nike.png" />

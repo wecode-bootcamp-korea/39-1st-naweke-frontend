@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './Review.scss';
 
-function Review() {
-  const [reviewVal, setReviewVal] = useState('');
+function Review(props) {
   return (
     <div className="review">
       <div className="reviewContainer">
-        <h1 className="reviewTitle">제목</h1>
+        <h1 className="reviewTitle">
+          {/* {console.log(props.detailData.productInfo.reviews[0].title)} */}
+        </h1>
 
         <div className="reviewVal">
           <span>평점</span>

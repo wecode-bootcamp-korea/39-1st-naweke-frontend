@@ -6,11 +6,13 @@ import Review from './Review';
 function Right(props) {
   return (
     <div className="rightContainer">
-      <h1 className="title">product name</h1>
-      <h4 className="description">description</h4>
-      <h4 className="price">price</h4>
+      {/* {console.log(props.detailData.productInfo.name)}
+      <h1 className="title">{props.detailData.productInfo.name}</h1>
+      <h4 className="description">
+        {props.detailData.productInfo.description}
+      </h4>
+      <h4 className="price">{props.detailData.productInfo.price}</h4> */}
       <h4 className="Size">사이즈 선택</h4>
-
       <div className="sizeButton">
         <input
           type="radio"
@@ -111,7 +113,6 @@ function Right(props) {
           300
         </label>
       </div>
-
       <button
         className="nowBtn"
         onClick={() => {
@@ -129,7 +130,6 @@ function Right(props) {
       >
         장바구니
       </button>
-
       <div className="infor">
         <details>
           <summary>
