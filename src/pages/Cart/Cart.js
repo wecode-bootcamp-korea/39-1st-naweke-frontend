@@ -1,4 +1,3 @@
-import { check } from 'prettier';
 import React, { useState, useEffect } from 'react';
 
 import './Cart.scss';
@@ -7,15 +6,7 @@ import ProductList from './ProductList';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
-  const [checkItems, setCheckItems] = useState([]); //-4(빈 배열)
-
-  // const handleSingleCheck = (checked, product_option_id) => {
-  //   if (checked) {
-  //     setCheckItems(prev => [...prev, product_option_id]);
-  //   } else {
-  //     setCheckItems(checkItems.filter(el => el !== product_option_id));
-  //   }
-  // }; -4
+  const [checkItems, setCheckItems] = useState([]); // 체크 박스 빈 배열
 
   const handleAllCheck = checked => {
     if (checked) {
@@ -27,79 +18,11 @@ function Cart() {
     }
   };
 
-  // const onChangeCheck = e => {
-  //   setCheckItems(e.target.checked);
-  // }; // 자식한테 props로
-
-  // const [checkList, setCheckList] = useState([]); //체크 박스 빈배열
-
-  // const [isChecked, setisChecked] = useState(false); -2
-
-  // const [checkCarts, setCheckCarts] = useState(new Set()); //-3
-  // const [allCheckCarts, setAllCheckCarts] = useState(false);
-
-  // const checkHandler = (product_option_id, isChecked) => {
-  //   if (isChecked) {
-  //     checkCarts.add(product_option_id);
-  //     setCheckCarts(checkCarts);
-  //   } else if (!isChecked && checkCarts.has(product_option_id)) {
-  //     checkCarts.delete(product_option_id);
-  //     setCheckCarts(checkCarts);
-  //   }
-  // };
-  // console.log('checkCarts:', checkCarts);
-  // console.log('allCheckCarts:', allCheckCarts);
-
-  // const allCheckHandler = isChecked => {
-  //   if (isChecked) {
-  //     setCheckCarts(
-  //       new Set(cartList.map(({ product_option_id }) => product_option_id))
-  //     );
-  //     setAllCheckCarts(true);
-  //   } else {
-  //     checkCarts.clear();
-  //     setCheckCarts(setCheckCarts);
-  //     setAllCheckCarts(false);
-  //   }
-  // };
-
-  // useEffect(() => allCheckHandler(), [allCheckCarts]);
-
   useEffect(() => {
     fetch('/data/CartList.json')
       .then(response => response.json())
-      .then(result => setCartList(result)); //콜백함수//
+      .then(result => setCartList(result));
   }, []);
-
-  // const onChangeCheck = e => {
-  //   setisChecked(e.target.checked); -2
-  // };
-
-  //전체 체크박스
-
-  // const changeAllBox = checked => {
-  //   if (checked) {
-  //     const checkAllBox = [];
-  //     cartList.forEach(el => checkAllBox.push(el.product_option_id));
-  //     setCheckList(checkAllBox);
-  //     // console.log(checkAllBox);
-  //     // console.log(checkList);
-  //   } else {
-  //     setCheckList([]);
-  //   }
-  // };
-
-  //개별 체크박스
-
-  // const changeSingleBox = (checked, product_option_id) => {
-  //   if (checked) {
-  //     setCheckList([...checkList, product_option_id]);
-  //     // console.log(checkList);
-  //   } else {
-  //     setCheckList(checkList.filter(el => el !== product_option_id));
-  //   }
-  //   // console.log(checkList);
-  // };
 
   // useEffect(() => {
   //   fetch('http://10.58.52.56:3000/carts/', {
@@ -113,10 +36,13 @@ function Cart() {
   //     .then(result => setCartList(result)); //콜백함수//
   // }, []);
 
-  //총 가격
+  //총 가격 계산
+
   const totalPrice = cartList.reduce((a, b) => a + b.quantity * b.price, 0);
+
+  //삭제 버튼
+
   const cartDelete = product_option_id => {
-    // const targetId = e.target.value;
     setCartList(
       cartList.filter(
         product => product.product_option_id !== product_option_id
@@ -146,7 +72,6 @@ function Cart() {
   //     .then(result => setCartList(result)); //콜백함수//
   // }, []);
 
-  // console.log(onchange);
   return (
     <div className="container">
       <div className="cart">
@@ -157,9 +82,6 @@ function Cart() {
               type="checkbox"
               onChange={e => handleAllCheck(e.target.checked)}
               checked={checkItems.length === cartList.length ? true : false}
-              // checked={checkList.length === }
-              // onChange={e => changeAllBox(e.target.checked)}
-              // onChange={onChangeCheck} -2
             />
             <h1 className="titleWord titleCart">장바구니</h1>
           </div>
@@ -169,12 +91,8 @@ function Cart() {
                 cartDelete={cartDelete}
                 key={product.product_option_id}
                 product={product}
-                // onChangeCheck={onChangeCheck}
                 setCheckItems={setCheckItems}
                 checkItems={checkItems}
-                // checkHandler={checkHandler}
-                // changeSingleBox={changeSingleBox}
-                // setTotalPrice={setTotalPrice}
                 onChangeAmount={amount => {
                   setCartList(
                     cartList.map(cart => {
@@ -221,13 +139,3 @@ function Cart() {
 }
 
 export default Cart;
-
-// const array1 = [{x: 1, y:2}, {x:2, y:3}, {x:3,y:2}];
-
-// const sumWithInitial = array1.reduce(
-//   (accumulator, currentValue) => accumulator + (currentValue.x*currentValue.y),
-//   0
-// );
-
-// console.log(sumWithInitial);
-// expected output: 14

@@ -1,32 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import Cart from './Cart';
+import React, { useState } from 'react';
 import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
 function ProductList(props) {
-  const {
-    product,
-    onChangeAmount,
-    cartDelete,
-    changeSingleBox,
-    checkHandler,
-    onChangeCheck,
-    setCheckItems,
-    checkItems,
-  } = props;
+  const { product, onChangeAmount, cartDelete, setCheckItems, checkItems } =
+    props;
   const { product_option_id, price, thumbnail_image_url, quantity, name } =
     product;
   const [selected, setSelected] = useState(quantity);
-  // const [checkList, setCheckList] = useState([]); //체크 박스 빈배열
 
-  // const [checkCartList, setCheckCartList] = useState(false); -3
-  // const checkCartsHandler = ({ target }) => {
-  //   setCheckCartList(!checkCartList);
-  //   checkHandler(product.product_option_id, target.checked);
-  // }; 3
-  // useEffect(() => {
-  //   handleSingleCheck();
-  // }, []);
   const handleSingleCheck = (checked, product_option_id) => {
     if (checked) {
       setCheckItems(prev => [...prev, product_option_id]);
@@ -34,11 +16,6 @@ function ProductList(props) {
       setCheckItems(checkItems.filter(el => el !== product_option_id));
     }
   };
-
-  // const onChangeCheck = e => {
-  //   setCheckItems(e.target.checked);
-  // }; -4
-
   const saveAmount = e => {
     setSelected(e.target.value);
     onChangeAmount(e.target.value);
@@ -48,7 +25,6 @@ function ProductList(props) {
 
   //장바구니 물건 삭제 기능
   console.log(checkItems);
-  // console.log(product_option_id);
 
   return (
     <>
@@ -58,10 +34,6 @@ function ProductList(props) {
           type="checkbox"
           onChange={e => handleSingleCheck(e.target.checked, product_option_id)}
           checked={checkItems.includes(product.product_option_id)}
-          // checked={checkCartList}
-          // onChange={e => checkCartsHandler(e)}
-          // checked
-          // onChange={e => changeSingleBox(e.target.checked, product_option_id)}
         />
         <div className="imgContainer">
           <img
@@ -90,9 +62,6 @@ function ProductList(props) {
               <select
                 className="amountOption"
                 onChange={saveAmount}
-                // onChange={onChangeAmount}
-                // value={selected}
-                // onClick={itemPrice}
                 defaultValue={selected}
               >
                 <option>1</option>
