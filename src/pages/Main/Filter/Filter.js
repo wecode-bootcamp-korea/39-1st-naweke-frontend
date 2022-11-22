@@ -12,9 +12,12 @@ const Filter = ({ setFilterData }) => {
     price: 50000,
   });
 
+  const sizeTitle = searchParams.get('mainCategory');
+
   const handleSelect = e => {
     const { name, value } = e.target;
     setSelectValue(prev => ({ ...prev, [name]: value }));
+    // 조건문
     searchParams.append(name, value);
     setSearchParams(searchParams);
     filtering(searchParams.toString());
