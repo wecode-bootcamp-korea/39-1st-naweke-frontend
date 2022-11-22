@@ -47,8 +47,9 @@ function Main() {
         </div>
       </div>
       <Filter setFilterData={setFilterData} />
+      {console.log(filterData)}
       {filterData.map((el, i) => {
-        return <div key={i}>{el.data.name}</div>;
+        return <div key={i}>{el.name}</div>;
       })}
     </div>
   );

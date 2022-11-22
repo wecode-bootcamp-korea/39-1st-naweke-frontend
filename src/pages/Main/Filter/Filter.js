@@ -13,16 +13,13 @@ const Filter = ({ setFilterData }) => {
   const handleSelect = e => {
     const { name, value } = e.target;
     setSelectValue(prev => ({ ...prev, [name]: value }));
-    // searchParams.set(name, value);
-    // setSearchParams(searchParams);
-    // filtering(`${name}=${value}`);
+    // filtering(`${name}=${value}&`);
   };
 
-  // const [filterData, setFilterData] = useState([]);
   const filtering = url => {
-    fetch(`http://10.58.52.162:3000/products/all?${url}`)
+    fetch(`http://10.58.52.162:3000/products?${url}`)
       .then(response => response.json())
-      .then(data => setFilterData(data));
+      .then(data => setFilterData(data.data));
   };
 
   return (
@@ -41,7 +38,7 @@ const Filter = ({ setFilterData }) => {
               />
               <label
                 for="checkWomen"
-                // onClick={() => filtering('gender=woman')}
+                onClick={() => filtering('gender=woman')}
                 // onChange={() => filtering('gender=woman')}
               />
               <span className="selectTitle">여성</span>
@@ -55,7 +52,7 @@ const Filter = ({ setFilterData }) => {
               />
               <label
                 for="checkMen"
-                // onClick={() => filtering('gender=man')}
+                onClick={() => filtering('gender=man')}
                 // onChange={() => filtering('gender=man')}
               />
               <span className="selectTitle">남성</span>
@@ -97,9 +94,10 @@ const Filter = ({ setFilterData }) => {
                     id={`size${i}`}
                     value={size}
                     checked={Number(selectValue.size) === size}
-                    onChange={e => {
-                      filtering(`${e.target.name}=${e.target.value}`);
-                    }}
+                    onChange={
+                      handleSelect
+                      // filtering(`${e.target.name}=${e.target.value}`);
+                    }
                     className="radio"
                   />
                   <label htmlFor={`size${i}`} className="label">
@@ -124,9 +122,10 @@ const Filter = ({ setFilterData }) => {
                     value={text}
                     checked={selectValue.color === text}
                     // onChange={handleSelect}
-                    onChange={e => {
-                      filtering(`${e.target.name}=${e.target.value}`);
-                    }}
+                    onChange={
+                      handleSelect
+                      // filtering(`${e.target.name}=${e.target.value}`);
+                    }
                     className="showColor"
                   />
                   <label htmlFor={`color${id}`} className="label">
