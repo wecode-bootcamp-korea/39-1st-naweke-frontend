@@ -22,7 +22,7 @@ function Running({ data }) {
     searchParams.set(mainCategory, subCategory);
     setSearchParams(searchParams);
   };
-  return <ProductList />;
+  return <h1>hi</h1>;
 }
 
 export default Running;

@@ -135,17 +135,35 @@ function Nav() {
             </Link>
           </ul>
           <ul>
-            <li>축구화</li>
-            <li>의류</li>
-            <li>팀 컬렉션</li>
-            <li>전체보기</li>
+            <Link to="/soccer?mainCategory=shoes&subCategory=soccer">
+              <li>축구화</li>
+            </Link>
+            <Link to="/soccer?mainCategory=clothes&subCategory=soccer">
+              <li>의류</li>
+            </Link>
+            <Link to="/soccer?mainCategory=teamcollection&subCategory=soccer">
+              <li>팀컬렉션</li>
+            </Link>
+            <Link to="/soccer">
+              <li>전체보기</li>
+            </Link>
           </ul>
           <ul>
-            <li>신발</li>
-            <li>의류</li>
-            <li>NBA</li>
-            <li>용품</li>
-            <li>전체보기</li>
+            <Link to="/basketball?mainCategory=shoes&subCategory=basketball">
+              <li>신발</li>
+            </Link>
+            <Link to="/basketball?mainCategory=clothes&subCategory=basketball">
+              <li>의류</li>
+            </Link>
+            <Link to="/basketball?mainCategory=teamcollection&subCategory=basketball">
+              <li>NBA</li>
+            </Link>
+            <Link to="/basketball?mainCategory=accessories&subCategory=basketball">
+              <li>용품</li>
+            </Link>
+            <Link to="/basketball">
+              <li>전체보기</li>
+            </Link>
           </ul>
         </div>
       )}
