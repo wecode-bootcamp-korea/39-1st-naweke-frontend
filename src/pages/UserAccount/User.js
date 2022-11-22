@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { APIS } from '../../config';
 import './SignUp.scss';
 
 function User({ userData: { title, text, url, button } }) {
@@ -27,7 +28,7 @@ function User({ userData: { title, text, url, button } }) {
 
   // fetch
   const loginAccess = () => {
-    fetch('http://10.58.52.132:3000/users/login', {
+    fetch(`${APIS.login}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -54,7 +55,7 @@ function User({ userData: { title, text, url, button } }) {
       });
   };
   const signUpAccess = () => {
-    fetch('http://10.58.52.132:3000/users/signup', {
+    fetch(`${APIS.signup}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
