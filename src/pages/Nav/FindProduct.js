@@ -6,22 +6,24 @@ const FindProduct = ({ searchInput }) => {
 
   useEffect(() => {
     fetch('/data/productlist.json')
+      // http://10.58.52.162:3000/products
       .then(response => response.json())
       .then(result => setFeedData(result));
   }, []);
 
   const searchIdData = feedData.filter(e => e.name.includes(searchInput));
 
-  if (searchInput.length > 1 && searchIdData.length > 1) {
+  if (searchInput.length > 1 && searchIdData) {
     return (
       <div className="filterBox">
-        {searchIdData.map(({ id, image, name, discription, price }) => {
+        {searchIdData.map(({ id, image, name, price }) => {
           return (
             <div key={id} className="filterId">
               <img src={image} alt="img" className="filterImg" />
-              {name}
-              {discription}
-              {price}
+              <div className="filterProduct">
+                <p>{name}</p>
+                <p>{price}</p>
+              </div>
             </div>
           );
         })}

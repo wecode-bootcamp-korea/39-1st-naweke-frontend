@@ -1,7 +1,6 @@
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NAV_LIST } from './Navlist';
-import FindProductLeft from './FindProductLeft';
 import FindProduct from './FindProduct';
 import './Nav.scss';
 
@@ -41,9 +40,7 @@ function Nav() {
 
       <div className="navBox">
         <div className="navLogo" onMouseEnter={() => setIsSubMenuOpen(false)}>
-          <Link to="/main">
-            <img alt="logo" src="images/nike.png" />
-          </Link>
+          <Link to="/main">NAWEKE</Link>
         </div>
         <ul className="navMain" onMouseEnter={() => setIsSubMenuOpen(true)}>
           <Link to="/running">
@@ -80,11 +77,12 @@ function Nav() {
           <div className="searchBoxIn">
             <div className="navLogo">
               <Link to="/main">
-                <img
-                  alt="logo"
-                  src="images/nike.png"
+                <p
+                  className="searchBoxLogo"
                   onClick={() => setIsSearchBoxOpen(false)}
-                />
+                >
+                  NAWEKE
+                </p>
               </Link>
             </div>
             <div className="searchMain">

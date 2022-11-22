@@ -39,6 +39,11 @@
   }
 
   .navLogo {
+    display: flex;
+    align-items: center;
+    margin-bottom: -7px;
+    font-size: 3rem;
+    font-weight: 900;
     margin-top: -7px;
     width: 280px;
     height: 67px;
@@ -124,129 +129,140 @@
     background-color: #ffffff;
 
     .navLogo {
-      margin-top: -7px;
+      display: flex;
+      align-items: center;
+      font-size: 3rem;
+      font-weight: 900;
       width: 200px;
       height: 67px;
-      img {
-        width: 80px;
-        height: 80px;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-
-    .searchMain {
-      @include flex(normal, center);
-      width: 700px;
-      height: 40px;
-      background-color: #f5f5f5;
-      border-radius: 100px;
-
-      .magnifyimg {
-        @include flex(center, center);
-        margin-left: 2px;
-        width: 40px;
-        height: 36px;
-        background-color: none;
-        border-radius: 50px;
-        background-color: #f5f5f5;
-
-        &:hover {
-          cursor: pointer;
-          background-color: #cccfd8;
-        }
-
-        img {
-          width: 24px;
-          height: 24px;
-        }
-      }
-
-      input {
-        width: 630px;
-        height: 40px;
-        border: none;
-        outline: none;
-        background-color: #f5f5f5;
-        font-size: 2rem;
-        &:hover {
-          cursor: pointer;
-        }
-      }
 
       &:hover {
         cursor: pointer;
       }
+    }
+  }
 
-      .filterBox {
-        @include flex(space-around, center);
-        z-index: 1;
-        position: absolute;
-        top: 67px;
-        left: 0px;
-        width: 100vw;
-        height: 350px;
-        background-color: #fff;
-        overflow: scroll;
+  .searchMain {
+    @include flex(normal, center);
+    width: 700px;
+    height: 40px;
+    background-color: #f5f5f5;
+    border-radius: 100px;
 
-        &::-webkit-scrollbar {
-          display: none;
+    .magnifyimg {
+      @include flex(center, center);
+      margin-left: 2px;
+      width: 40px;
+      height: 36px;
+      background-color: none;
+      border-radius: 50px;
+      background-color: #f5f5f5;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #cccfd8;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    input {
+      width: 630px;
+      height: 40px;
+      border: none;
+      outline: none;
+      background-color: #f5f5f5;
+      font-size: 2rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .filterBox {
+      @include flex(space-around, center);
+      z-index: 1;
+      position: absolute;
+      top: 67px;
+      left: 0px;
+      width: 100vw;
+      height: 350px;
+      background-color: #ffffff;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filterId {
+        @include flex(space-between, normal);
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 130px;
+        height: 220px;
+
+        .filterImg {
+          width: 130px;
+          height: 160px;
         }
 
-        .filterId {
-          @include flex(center, normal);
+        .filterProduct {
+          @include flex(space-between, normal);
+          height: 60px;
+          width: 130px;
+          background-color: #ffffff;
           flex-direction: column;
-          background-color: #fff;
-          width: 100px;
-          height: 100px;
 
-          .filterImg {
-            width: 70px;
-            height: 70px;
+          p {
+            font-size: 1.5rem;
+            font-weight: 700;
           }
         }
       }
     }
-    .closeBox {
-      @include flex(end, center);
-      width: 200px;
-      height: 40px;
-      font-size: 2rem;
-      font-weight: 900;
+  }
+  .closeBox {
+    @include flex(end, center);
+    width: 200px;
+    height: 40px;
+    font-size: 2rem;
+    font-weight: 900;
 
-      & > p:hover {
-        cursor: pointer;
-        color: #c8c8c8;
-      }
+    & > p:hover {
+      cursor: pointer;
+      color: #c8c8c8;
     }
   }
-  .popularSearchBox {
-    @include flex(baseline, center);
-    width: 47vw;
-    height: 270px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
+}
+.popularSearchBox {
+  @include flex(baseline, center);
+  width: 47vw;
+  height: 270px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
 
-    .popularSearch {
-      @include flex(space-around, center);
-      width: 200px;
-      height: 200px;
-      flex-direction: column;
-      font-size: 2rem;
-      font-weight: 900;
+  .popularSearch {
+    @include flex(space-around, center);
+    width: 200px;
+    height: 200px;
+    flex-direction: column;
+    font-size: 2rem;
+    font-weight: 900;
 
-      p {
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: #c8c8c8;
-      }
+    p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #c8c8c8;
+    }
 
-      li:hover {
-        color: #c8c8c8;
-      }
+    li:hover {
+      color: #c8c8c8;
     }
   }
 }
@@ -256,7 +272,6 @@
   position: absolute;
   width: 100vw;
   height: 200px;
-  // visibility: hidden;
   background-color: #ffffff;
 
   ul {

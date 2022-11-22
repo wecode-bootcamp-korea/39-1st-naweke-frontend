@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "discription": "나이키 러닝화",
     "color":"white",
@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 브라질",
     "color": "black",
@@ -21,7 +21,7 @@
   },
   {
     "id": 3,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 네덜란드",
     "color": "white",
@@ -31,7 +31,7 @@
   },
   {
     "id": 4,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 네이스",
     "color": "black",
@@ -41,7 +41,7 @@
   },
   {
     "id": 5,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "black",
@@ -51,7 +51,7 @@
   },
   {
     "id": 6,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "black",
@@ -61,7 +61,7 @@
   },
   {
     "id": 7,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "white",
@@ -71,7 +71,7 @@
   },
   {
     "id": 8,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "white",
@@ -81,7 +81,7 @@
   },
   {
     "id": 9,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "white",
@@ -91,7 +91,7 @@
   },
   {
     "id": 10,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "white",
@@ -101,7 +101,7 @@
   },
   {
     "id": 11,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "black",
