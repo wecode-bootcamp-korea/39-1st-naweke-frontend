@@ -6,7 +6,6 @@ import Main from './pages/Main/Main';
 import Cart from './pages/Cart/Cart';
 import Detail from './pages/Detail/Detail';
 import SignUp from './pages/UserAccount/SignUp/SignUp';
-import Footer from './pages/Footer/Footer';
 
 const Router = () => {
   return (
