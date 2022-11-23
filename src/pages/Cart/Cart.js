@@ -8,9 +8,11 @@ import ProductList from './ProductList';
 function Cart() {
   const [cartList, setCartList] = useState([]);
   const [checkItems, setCheckItems] = useState([]); // 체크 박스 빈 배열
+  const btnCartId = cartList.map(el => {
+    return el.cartId;
+  });
   // const navigate = useNavigate();
-  // console.log(checkItems);
-  // console.log(cartList);
+
   // const goToOrderList = () => {
   //   const orderId = "";
   //   for ( key in cartList){
@@ -52,18 +54,22 @@ function Cart() {
       el => !checkItems.includes(el.productOptionId) //원래꺼
     );
     setCartList(afterDeleted);
-    // console.log(typeof checkItems[0]);
+
     // setCheckItems([]);
-    const cartId = checkItems.map(el => {
-      return el;
-    });
 
     // const productApi = checkItems
     //   .map(el => {
     //     return `productOptionId[]=${el}&`;
     //   })
     //   .join('');
-    // console.log(cartId);
+    // delete?${productApi}`
+    const beforeDeleted = cartList.filter(
+      el => checkItems.includes(el.productOptionId) //원래꺼
+    );
+
+    const deleteCartId = beforeDeleted.map(el => {
+      return el.cartId;
+    });
     fetch(`http://10.58.52.172:3000/carts/`, {
       method: 'DELETE',
       headers: {
@@ -71,7 +77,9 @@ function Cart() {
         Authorization:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
       },
-      body: JSON.stringify({ cartId: cartId }),
+      body: JSON.stringify({
+        cartId: deleteCartId,
+      }),
     })
       .then(response => response.json())
       .then(result => {
@@ -82,7 +90,6 @@ function Cart() {
           alert('다시 시도해주세요!');
         }
       });
-    setCheckItems([]);
   };
 
   // const selectDelete = () => {
@@ -122,21 +129,33 @@ function Cart() {
   useEffect(() => {
     getCartList();
   }, []);
-
+  console.log(cartList);
   //총 가격 계산
   const totalPrice = cartList
     .filter(el => checkItems.includes(el.productOptionId))
     .reduce((a, b) => a + b.quantity * b.price, 0);
-
+  console.log(checkItems);
   //삭제 버튼 통신
+  console.log(totalPrice);
   const cartDelete = productOptionId => {
     // setCartList(
     //   cartList.filter(product => product.productOptionId !== productOptionId)
     // );
-    const cartId = checkItems.map(el => {
-      return el;
-    });
-    // console.log(cartId);
+
+    // );
+
+    // const beforeDeleted = cartList.filter(
+    //   el => checkItems.includes(el.productOptionId) //원래꺼
+    // );
+
+    const beforeDeleted = cartList.filter(
+      el => el.productOptionId === productOptionId
+    );
+    // const be
+    console.log(beforeDeleted);
+
+    // const cartDeleteBtn = cartList.filter(el => cart);
+
     fetch(`http://10.58.52.172:3000/carts/`, {
       method: 'DELETE',
       headers: {
@@ -145,7 +164,7 @@ function Cart() {
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
       },
       body: JSON.stringify({
-        cartId: `${cartId}`,
+        cartId: [`${beforeDeleted[0].cartId}`],
       }),
     })
       .then(response => response.json())
@@ -162,6 +181,7 @@ function Cart() {
   /////여기까지 삭제 버튼 통신
 
   //목 데이터
+
   return (
     <div className="container">
       <div className="cart">
@@ -186,7 +206,6 @@ function Cart() {
                 product={product}
                 setCheckItems={setCheckItems}
                 checkItems={checkItems}
-                // cartId={cartId}
                 // quantityOnchange={quantityOnchange}
                 selectDelete={selectDelete}
                 onChangeAmount={amount => {

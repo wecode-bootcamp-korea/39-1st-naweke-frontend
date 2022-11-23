@@ -13,7 +13,7 @@ function ProductList(props) {
     productName,
     colorName,
     sizeName,
-    // cartId,
+    cartId,
   } = product;
   const [selected, setSelected] = useState(quantity);
 
@@ -32,28 +32,27 @@ function ProductList(props) {
   const amountPrice = price * selected;
 
   //장바구니 물건 삭제 기능
-  // console.log(checkItems);
 
   const quantityOnchange = e => {
     setSelected(e.target.value);
+    const productCartId = cartId;
 
-    fetch(
-      `http://10.58.52.172:3000/carts/quantity?productOptionId=${productOptionId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
-        },
-        body: JSON.stringify({
-          quantity: `${selected}`,
-        }),
-      }
-    )
+    fetch(`http://10.58.52.172:3000/carts/${[productCartId]}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+      },
+      body: JSON.stringify({
+        quantity: `${selected}`,
+      }),
+    })
       .then(response => response.json())
       .then(result => console.log(result));
   };
+  console.log(cartId);
+  console.log(productOptionId);
   return (
     <>
       <div className="product">
@@ -105,7 +104,7 @@ function ProductList(props) {
               <div className="deleteIconWrap">
                 <button
                   className="deleteBtn"
-                  onClick={() => cartDelete(productOptionId)}
+                  onClick={() => cartDelete(productOptionId, cartId)}
                 >
                   <img
                     className="heartImg"
