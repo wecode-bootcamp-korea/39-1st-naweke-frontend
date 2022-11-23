@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
@@ -13,6 +13,7 @@ function ProductList(props) {
     productName,
     colorName,
     sizeName,
+    // cartId,
   } = product;
   const [selected, setSelected] = useState(quantity);
 
@@ -24,8 +25,8 @@ function ProductList(props) {
     }
   };
   const saveAmount = e => {
-    setSelected(e.target.value);
     onChangeAmount(e.target.value);
+    // quantityOnchange();
   };
   //상품 수량에 따른 가격
   const amountPrice = price * selected;
@@ -33,6 +34,26 @@ function ProductList(props) {
   //장바구니 물건 삭제 기능
   // console.log(checkItems);
 
+  const quantityOnchange = e => {
+    setSelected(e.target.value);
+
+    fetch(
+      `http://10.58.52.172:3000/carts/quantity?productOptionId=${productOptionId}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+        },
+        body: JSON.stringify({
+          quantity: `${selected}`,
+        }),
+      }
+    )
+      .then(response => response.json())
+      .then(result => console.log(result));
+  };
   return (
     <>
       <div className="product">
@@ -54,21 +75,12 @@ function ProductList(props) {
           <div className="productInfo">
             <div className="productName line fontSize">{productName}</div>
             <div className="productColor line gray fontSize">{colorName}</div>
-            <div className="productSize line gray fontSize">
-              {/* <select className="sizeOption">
-                {SIZE_LIST.clothes.map((items, index) => (
-                  <option key={index} value={index}>
-                    {items}
-                  </option>
-                ))}
-              </select> */}
-              {sizeName}
-            </div>
+            <div className="productSize line gray fontSize">{sizeName}</div>
             <div className="productAmount line gray fontSize">
               수량
               <select
                 className="amountOption"
-                onChange={saveAmount}
+                onChange={quantityOnchange}
                 defaultValue={selected}
               >
                 <option>1</option>
