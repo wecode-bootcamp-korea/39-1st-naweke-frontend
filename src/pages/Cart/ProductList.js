@@ -5,15 +5,22 @@ import SIZE_LIST from './SizeList';
 function ProductList(props) {
   const { product, onChangeAmount, cartDelete, setCheckItems, checkItems } =
     props;
-  const { product_option_id, price, thumbnail_image_url, quantity, name } =
-    product;
+  const {
+    productOptionId,
+    price,
+    thumbnailImageUrl,
+    quantity,
+    productName,
+    colorName,
+    sizeName,
+  } = product;
   const [selected, setSelected] = useState(quantity);
 
-  const handleSingleCheck = (checked, product_option_id) => {
+  const handleSingleCheck = (checked, productOptionId) => {
     if (checked) {
-      setCheckItems(prev => [...prev, product_option_id]);
+      setCheckItems(prev => [...prev, productOptionId]);
     } else {
-      setCheckItems(checkItems.filter(el => el !== product_option_id));
+      setCheckItems(checkItems.filter(el => el !== productOptionId));
     }
   };
   const saveAmount = e => {
@@ -32,30 +39,30 @@ function ProductList(props) {
         <input
           className="checkBox check"
           type="checkbox"
-          onChange={e => handleSingleCheck(e.target.checked, product_option_id)}
-          checked={checkItems.includes(product.product_option_id)}
+          onChange={e => handleSingleCheck(e.target.checked, productOptionId)}
+          checked={checkItems.includes(product.productOptionId)}
         />
         <div className="imgContainer">
           <img
-            src={thumbnail_image_url}
+            src={thumbnailImageUrl}
             alt="장바구니 상품"
             className="productImg"
           />
         </div>
 
-        <div className="productInfo" key={product_option_id}>
+        <div className="productInfo" key={productOptionId}>
           <div className="productInfo">
-            <div className="productName line fontSize">{name}</div>
-            <div className="productColor line gray fontSize">검정색</div>
+            <div className="productName line fontSize">{productName}</div>
+            <div className="productColor line gray fontSize">{colorName}</div>
             <div className="productSize line gray fontSize">
-              사이즈
-              <select className="sizeOption">
+              {/* <select className="sizeOption">
                 {SIZE_LIST.clothes.map((items, index) => (
                   <option key={index} value={index}>
                     {items}
                   </option>
                 ))}
-              </select>
+              </select> */}
+              {sizeName}
             </div>
             <div className="productAmount line gray fontSize">
               수량
@@ -86,7 +93,7 @@ function ProductList(props) {
               <div className="deleteIconWrap">
                 <button
                   className="deleteBtn"
-                  onClick={() => cartDelete(product_option_id)}
+                  onClick={() => cartDelete(productOptionId)}
                 >
                   <img
                     className="heartImg"

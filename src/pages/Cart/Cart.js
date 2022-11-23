@@ -11,7 +11,7 @@ function Cart() {
   const handleAllCheck = checked => {
     if (checked) {
       const newCheckArr = [];
-      cartList.forEach(el => newCheckArr.push(el.product_option_id));
+      cartList.forEach(el => newCheckArr.push(el.productOptionId));
       setCheckItems(newCheckArr);
     } else {
       setCheckItems([]);
@@ -19,57 +19,87 @@ function Cart() {
   };
   const selectDelete = () => {
     const afterDeleted = cartList.filter(
-      el => !checkItems.includes(el.product_option_id)
+      el => !checkItems.includes(el.productOptionId)
     );
     setCartList(afterDeleted);
     setCheckItems([]);
   };
+  //고차 함수 마스터하자.
+
   console.log(checkItems);
 
-  //선택 삭제 -> 결국 재렌더링인데 온클릭을 했을떼 카트리스트의 프로덕트옵션아이디와
-
-  useEffect(() => {
-    fetch('/data/CartList.json')
-      .then(response => response.json())
-      .then(result => setCartList(result));
-  }, []);
+  //선택 삭제 -> 결국 재렌더링인데 온클릭을 했을떼 카트리스트의 프로덕트옵션아이디와 다른것을 보여주면 된다.
+  //그리고 setcheckitems에 빈배열 넣어주면 끝.
 
   // useEffect(() => {
-  //   fetch('http://10.58.52.56:3000/carts/', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       user_id: 8,
-  //     },
-  //   })
+  //   fetch('/data/CartList.json')
   //     .then(response => response.json())
-  //     .then(result => setCartList(result)); //콜백함수//
+  //     .then(result => setCartList(result));
   // }, []);
+
+  //백엔드 통신
+  const getCartList = () => {
+    fetch('http://10.58.52.172:3000/carts/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+      },
+    })
+      .then(response => response.json())
+      .then(result => setCartList(result)); //콜백함수//
+  };
+
+  useEffect(() => {
+    getCartList();
+  }, []);
 
   //총 가격 계산
 
   const totalPrice = cartList
-    .filter(el => checkItems.includes(el.product_option_id))
+    .filter(el => checkItems.includes(el.productOptionId))
     .reduce((a, b) => a + b.quantity * b.price, 0);
   //삭제 버튼
 
-  const cartDelete = product_option_id => {
-    setCartList(
-      cartList.filter(
-        product => product.product_option_id !== product_option_id
-      )
-    );
-    // fetch('http://10.58.52.56:3000/carts/delete', {
-    //   method: 'DELETE',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     product_option_id: 5,
-    //     user_id: 8,
-    //   },
-    // })
-    //   .then(response => response.json())
-    //   .then(result => setCartList(result));
+  //삭제 버튼 통신
+  const cartDelete = productOptionId => {
+    // setCartList(
+    //   cartList.filter(product => product.productOptionId !== productOptionId)
+    // );
+    fetch(
+      `http://10.58.52.172:3000/carts/delete?product_option_id=${productOptionId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+        },
+      }
+    )
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'product deleted') {
+          alert('삭제가 완료되었습니다.');
+          getCartList();
+        } else {
+          alert('다시 시도해주세요!');
+        }
+      });
   };
+
+  // if (!cartList.productOptionId) return null;
+  // fetch('http://10.58.52.56:3000/carts/', {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     Authorization:
+  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+  //   },
+  // })
+  //   .then(response => response.json())
+  //   .then(result => setCartList(result));
 
   // useEffect(() => {
   //   fetch('http://10.58.52.56:3000/carts/', {
@@ -103,17 +133,15 @@ function Cart() {
             {cartList.map(product => (
               <ProductList
                 cartDelete={cartDelete}
-                key={product.product_option_id}
+                key={product.productOptionId}
                 product={product}
                 setCheckItems={setCheckItems}
                 checkItems={checkItems}
-                // selectDelete={selectDelete}
+                selectDelete={selectDelete}
                 onChangeAmount={amount => {
                   setCartList(
                     cartList.map(cart => {
-                      if (
-                        cart.product_option_id === product.product_option_id
-                      ) {
+                      if (cart.productOptionId === product.productOptionId) {
                         cart.quantity = amount;
                       }
                       return cart;
