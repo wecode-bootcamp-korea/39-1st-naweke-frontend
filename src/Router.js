@@ -7,7 +7,6 @@ import Cart from './pages/Cart/Cart';
 import Detail from './pages/Detail/Detail';
 import ProductDetail from './pages/Main/ProductDetail';
 import SignUp from './pages/UserAccount/SignUp/SignUp';
-import Footer from './pages/Footer/Footer';
 
 const Router = () => {
   return (
@@ -20,8 +19,8 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/footer" element={<Footer />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
