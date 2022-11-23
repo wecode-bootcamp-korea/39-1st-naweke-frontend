@@ -1,19 +1,19 @@
 [
   {
     "id": 1,
-    "image": "images/nike.png",
-    "prdname": "나이키 줌X 베이퍼플라이 넥스트% 2",
-    "discription": "나이키 러닝화",
+    "thumbnailUrl": "images/contact.png",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "desc": "나이키 러닝화",
     "color":"white",
-    "price": "269,000",
+    "price": "269000",
     "gender": "여성",
     "size": "230"
   },
   {
     "id": 2,
-    "image": "images/nike.png",
-    "nowstate": "베스트셀러",
-    "prdname": "나이키 브라질",
+    "thumbnailUrl": "images/contact.png",
+    "desc": "베스트셀러",
+    "name": "나이키 브라질",
     "color": "black",
     "price": "269,000",
     "gender": "여성",
@@ -21,9 +21,9 @@
   },
   {
     "id": 3,
-    "image": "images/nike.png",
-    "nowstate": "베스트셀러",
-    "prdname": "나이키 네덜란드",
+    "thumbnailUrl": "images/contact.png",
+    "desc": "베스트셀러",
+    "name": "나이키 네덜란드",
     "color": "white",
     "price": "269,000",
     "gender": "여성",
@@ -31,8 +31,8 @@
   },
   {
     "id": 4,
-    "image": "images/nike.png",
-    "nowstate": "베스트셀러",
+    "thumbnailUrl": "images/contact.png",
+    "desc": "베스트셀러",
     "name": "나이키 네이스",
     "color": "black",
     "price": "200000",
@@ -41,8 +41,8 @@
   },
   {
     "id": 5,
-    "image": "images/nike.png",
-    "nowstate": "베스트셀러",
+    "thumbnailUrl": "images/contact.png",
+    "desc": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "black",
     "price": "111111",
@@ -51,7 +51,7 @@
   },
   {
     "id": 6,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "black",
@@ -61,7 +61,7 @@
   },
   {
     "id": 7,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "white",
@@ -71,7 +71,7 @@
   },
   {
     "id": 8,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "white",
@@ -81,7 +81,7 @@
   },
   {
     "id": 9,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "white",
@@ -91,7 +91,7 @@
   },
   {
     "id": 10,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "white",
@@ -101,7 +101,7 @@
   },
   {
     "id": 11,
-    "image": "images/nike.png",
+    "image": "images/contact.png",
     "nowstate": "베스트셀러",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "color": "black",
@@ -109,3 +109,4 @@
     "gender": "남성"
   }
 ]
+

@@ -6,14 +6,14 @@ import './product.scss';
 const ProductList = ({ data }) => {
   return (
     <div className="productWrap">
-      {data.map(({ id, description, thumbnailUrl, productname, price }) => (
+      {data.map(({ id, desc, thumbnailUrl, name, price }) => (
         <div className="prdBox" key={id}>
           <Link key={id} to={`/products/${id}`}>
             <img alt="prdimage" src={thumbnailUrl} className="prdImage" />
             <div className="contentBox">
-              <div className="nowState">{productname}</div>
-              <div className="prdName">{description}</div>
-              <div className="price">{price}</div>
+              <div className="nowState">{name}</div>
+              <div className="prdName">{desc}</div>
+              <div className="price">{price.toLocaleString()}</div>
             </div>
           </Link>
         </div>
