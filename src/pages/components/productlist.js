@@ -10,7 +10,7 @@ const ProductList = ({ data }) => {
     <div className="productWrap">
       {data.map(el => (
         <div className="prdBox" key={el.id}>
-          <Link key={el.id} to={`/productDetail/${el.name}`}>
+          <Link key={el.id} to={`/products/${el.id}`}>
             <img alt="prdimage" src={el.thumbnailUrl} className="prdImage" />
             <div className="contentBox">
               <div className="nowState">{el.name}</div>

@@ -1,3 +1,5 @@
+@import '../../styles/mixin.scss';
+
 .main {
   @include flex(center, normal);
   flex-direction: column;
