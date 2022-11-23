@@ -43,15 +43,15 @@ function Nav() {
           <Link to="/main">NAWEKE</Link>
         </div>
         <ul className="navMain" onMouseEnter={() => setIsSubMenuOpen(true)}>
-          <Link to="/products">
+          <Link to="/products?subCategory=running">
             <li>Running</li>
           </Link>
 
-          <Link to="/products">
+          <Link to="/products?subCategory=soccer">
             <li>Soccer</li>
           </Link>
 
-          <Link to="/products">
+          <Link to="/products?subCategory=basketball">
             <li>Basketball</li>
           </Link>
         </ul>
@@ -110,9 +110,15 @@ function Nav() {
           <div className="popularSearchBox">
             <ul className="popularSearch">
               <p>인기검색어</p>
-              <li>축구화</li>
-              <li>농구화</li>
-              <li>런닝화</li>
+              <Link to="/products?mainCategory=shoes&subCategory=soccer">
+                <li>축구화</li>
+              </Link>
+              <Link to="/products?mainCategory=shoes&subCategory=basketball">
+                <li>농구화</li>
+              </Link>
+              <Link to="/products?mainCategory=shoes&subCategory=running">
+                <li>런닝화</li>
+              </Link>
               <li>경량 운동화</li>
             </ul>
           </div>
@@ -123,10 +129,10 @@ function Nav() {
           {NAV_LIST.map(nav => {
             return (
               <ul key={nav.id}>
-                {nav.list.map(text => {
+                {nav.list.map(({ id, path, name }) => {
                   return (
-                    <li key={text.id}>
-                      <Link to={text.path}>{text.name}</Link>
+                    <li key={id}>
+                      <Link to={path}>{name}</Link>
                     </li>
                   );
                 })}

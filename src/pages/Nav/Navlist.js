@@ -21,7 +21,7 @@ export const NAV_LIST = [
       {
         id: 4,
         name: '전체보기',
-        path: '/products',
+        path: '/products?subCategory=running',
       },
     ],
   },
@@ -47,7 +47,7 @@ export const NAV_LIST = [
       {
         id: 8,
         name: '전체보기',
-        path: '/products',
+        path: '/products?subCategory=soccer',
       },
     ],
   },
@@ -78,7 +78,7 @@ export const NAV_LIST = [
       {
         id: 13,
         name: '전체보기',
-        path: '/products',
+        path: '/products?subCategory=basketball',
       },
     ],
   },

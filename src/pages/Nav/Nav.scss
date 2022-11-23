@@ -190,7 +190,7 @@
       }
 
       .filterBox {
-        @include flex(space-around, center);
+        @include flex(center, center);
         z-index: 1;
         position: absolute;
         top: 67px;
@@ -199,32 +199,37 @@
         height: 350px;
         background-color: #ffffff;
 
-        &::-webkit-scrollbar {
-          display: none;
-        }
-
-        .filterId {
-          @include flex(space-between, normal);
-          flex-direction: column;
-          background-color: #ffffff;
-          width: 130px;
-          height: 220px;
-
-          .filterImg {
-            width: 130px;
-            height: 160px;
-          }
-
-          .filterProduct {
+        .innerFilterBox {
+          display: flex;
+          align-items: center;
+          width: 68vw;
+          height: 350px;
+          gap: 40px;
+          overflow: auto;
+          
+          .filterId {
             @include flex(space-between, normal);
-            height: 60px;
-            width: 130px;
-            background-color: #ffffff;
             flex-direction: column;
+            background-color: #ffffff;
+            width: 130px;
+            height: 220px;
 
-            p {
-              font-size: 1.5rem;
-              font-weight: 700;
+            .filterImg {
+              width: 130px;
+              height: 160px;
+            }
+
+            .filterProduct {
+              @include flex(space-between, normal);
+              height: 60px;
+              width: 130px;
+              background-color: #ffffff;
+              flex-direction: column;
+
+              p {
+                font-size: 1.5rem;
+                font-weight: 700;
+              }
             }
           }
         }
@@ -252,7 +257,7 @@
     transform: translate(-50%);
 
     .popularSearch {
-      @include flex(space-around, center);
+      @include flex(space-around, baseline);
       width: 200px;
       height: 200px;
       flex-direction: column;

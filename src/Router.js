@@ -7,15 +7,16 @@ import Cart from './pages/Cart/Cart';
 import Mainthema from './pages/Mainthema/Mainthema';
 import Footer from './pages/Footer/Footer';
 import SignUp from './pages/UserAccount/SignUp/SignUp';
+import Productdetail from './pages/Productdetail/ProductDetail';
 
 const Router = () => {
-  const [isToken, setIsToken] = useState(false);
   return (
     <BrowserRouter>
-      <Nav isToken={isToken} />
+      <Nav />
       <Routes>
         <Route path="/cart" element={<Cart />} />
-        <Route path="/main" element={<Main />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/products/:id" element={<Productdetail />} />
         <Route path="/products" element={<Mainthema />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

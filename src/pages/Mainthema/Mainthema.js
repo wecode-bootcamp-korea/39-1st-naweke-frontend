@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import ProductList from '../components/productlist';
+import { SORT_DATA } from './Sortfilter';
+import './Mainthema.scss';
 
-function Running({ data }) {
+function Running() {
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const sort = searchParams.get('sort');
   const [posts, setPosts] = useState();
 
   useEffect(() => {
@@ -13,12 +15,11 @@ function Running({ data }) {
       .then(response => response.json())
       .then(result => setPosts(result));
   }, [searchParams]);
-  console.log(searchParams.toString());
-  const changeProduct = (mainCategory, subCategory) => {
-    searchParams.set(mainCategory, subCategory);
-    setSearchParams(searchParams);
-  };
-  return <h1>productlist</h1>;
+  return (
+    <>
+      <ul className="sortWrap">안녕</ul>
+    </>
+  );
 }
 
 export default Running;
