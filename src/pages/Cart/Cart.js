@@ -14,48 +14,45 @@ function Cart() {
 
   console.log('cartList', cartList);
 
-  const btnCartId = cartList.map(el => {
-    return el.cartId;
-  });
+  // const btnCartId = cartList.map(el => {
+  //   return el.cartId;
+  // });
   // const navigate = useNavigate();
-
-  // const goToOrderList = () => {
-  //   const orderId = "";
-  //   for ( key in cartList){
-  //     orderId=(cartList[key].productOptionId);
-  //   }
-  //   fetch('http://127.0.0.1:3000/orders', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization:
-  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
-  //     },
-  //     body: json.stringify({
-  //       totalPrice:`${totalPrice}`,
-  //       orderItems:[{
-  //         productOptionsId:`${[orderId]}`
-  //         quantity:`${cartsList.quantity}`
-  //       }]
-
-  const lastItems = () => {
-    const orderItems = cartList.filter(el =>
+  //
+  const goToOrderList = () => {
+    const orderCheckItems = cartList.filter(el =>
       checkItems.includes(el.productOptionId)
     );
-    const itemsProductOptionId = orderItems.map(el => {
-      return el.productOptionId;
-    });
-    const itemsQuantity = orderItems.map(el => {
-      return el.quantity;
-    });
-  };
+    console.log(orderCheckItems);
+    const cartOrder = orderCheckItems => {
+      return orderCheckItems.map((obj, i) => {
+        return {
+          productOptionId: orderCheckItems[i].productOptionId,
+          quantity: orderCheckItems[i].quantity,
+        };
+      });
+    };
+    const cartOrderItems = cartOrder(orderCheckItems);
+    const result = {
+      totalPrice: totalPrice,
 
-  //     })
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => setCartList(result));
-  //   navigate(/'/payment')
-  // }
+      orderItems: cartOrderItems,
+    };
+    console.log(typeof totalPrice);
+
+    fetch('http://10.58.52.132:3000/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxOSwiaWF0IjoxNjY5MTgxMzQ1LCJleHAiOjE2NzE3NzMzNDUsImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.dvHAlqCKLEpOa1sF_u-V0xp1qnswG_NeocDzJ31ioKo',
+      },
+      body: JSON.stringify(result),
+    })
+      .then(response => response.json())
+      .then(result => setCartList(result));
+    // navigate(/'/payment')
+  };
 
   const handleAllCheck = checked => {
     if (checked) {
@@ -118,8 +115,6 @@ function Cart() {
   //   setCartList(afterDeleted);
   //   setCheckItems([]);
   // };
-  //선택 삭제 -> 결국 재렌더링인데 온클릭을 했을떼 카트리스트의 프로덕트옵션아이디와 다른것을 보여주면 된다.
-  //그리고 setcheckitems에 빈배열 넣어주면 끝.
 
   //목데이터
 
@@ -131,12 +126,12 @@ function Cart() {
 
   //백엔드 통신
   const getCartList = () => {
-    fetch('http://10.58.52.172:3000/carts/', {
+    fetch('http://10.58.52.132:3000/carts/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxOSwiaWF0IjoxNjY5MTgxMzQ1LCJleHAiOjE2NzE3NzMzNDUsImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.dvHAlqCKLEpOa1sF_u-V0xp1qnswG_NeocDzJ31ioKo',
       },
     })
       .then(response => response.json())
@@ -261,7 +256,7 @@ function Cart() {
               </div>
             </div>
             <div className="orderbtnWrap">
-              <button className="orderBtn" disabled>
+              <button className="orderBtn" onClick={goToOrderList}>
                 주문결제
               </button>
             </div>
