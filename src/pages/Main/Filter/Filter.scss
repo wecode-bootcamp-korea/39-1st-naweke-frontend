@@ -224,39 +224,3 @@
     }
   }
 }
-
-.sortWrap {
-  display: flex;
-  justify-content: space-between;
-  width: 500px;
-
-  .label {
-    display: inline-block;
-    width: 160px;
-    height: 36px;
-    margin: 0 5px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    line-height: 34px;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .label:hover {
-    border: 1px solid #111;
-  }
-  input[type='radio'] {
-    -webkit-appearance: radio;
-  }
-  input[type='radio']:checked + .label {
-    border-color: #111;
-    background-color: #111;
-    color: #fff;
-  }
-
-  input {
-    position: absolute;
-    height: 0px;
-    overflow: hidden;
-  }
-}

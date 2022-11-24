@@ -7,7 +7,6 @@ import './Filter.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 const Filter = ({ setFilterData }) => {
   const navigate = useNavigate();
-  const [sortValue, setSortValue] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectValue, setSelectValue] = useState({
     size: '',
@@ -164,36 +163,6 @@ const Filter = ({ setFilterData }) => {
               );
             })}
           </div>
-        </div>
-        <div className="sortWrap">
-          {SORT_DATA.map(({ id, text, url }) => {
-            return (
-              <>
-                <input
-                  id={url}
-                  name="sort"
-                  type="radio"
-                  value={sortValue}
-                  onChange={e => {
-                    setSortValue(prev => ({
-                      ...prev,
-                      [e.target.name]: e.target.name,
-                    }));
-                  }}
-                  className={`sort ${text}`}
-                  key={id}
-                  onClick={() => {
-                    searchParams.delete('sort');
-                    searchParams.append('sort', url);
-                    setSearchParams(searchParams);
-                  }}
-                />
-                <label htmlFor={url} className="label">
-                  <span>{text}</span>
-                </label>
-              </>
-            );
-          })}
         </div>
       </div>
     </div>
