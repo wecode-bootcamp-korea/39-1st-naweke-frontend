@@ -40,8 +40,7 @@ const Filter = ({ setFilterData }) => {
   };
 
   const filtering = url => {
-    // fetch(`http://10.58.52.162:3000/products?${url}`)
-    fetch('data/productlist.json')
+    fetch(`http://10.58.52.162:3000/products?${url}`)
       .then(response => response.json())
       .then(data => setFilterData(data.data));
   };
@@ -120,7 +119,7 @@ const Filter = ({ setFilterData }) => {
         <div className="productSize filterLayout">
           <h3>사이즈</h3>
           <div className="sizeBtnWrap">
-            {SIZE_LIST.shoes.map((size, i) => {
+            {SIZE_LIST[sizeTitle].map((size, i) => {
               return (
                 <div key={i}>
                   <input
