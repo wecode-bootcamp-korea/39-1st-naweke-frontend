@@ -49,16 +49,18 @@ function PayReview() {
   // console.log(reviewArr);
   useEffect(() => {
     reviewListFetch();
+    // }, []);
+    reviewListFetch();
   }, [modal]);
 
-  useEffect(
-    i => {
-      return () => {
-        reviewDelete(i);
-      };
-    },
-    [reviewArr, reviewDelete]
-  );
+  // useEffect(
+  //   i => {
+  //     return () => {
+  //       reviewDelete(i);
+  //     };
+  //   },
+  //   [reviewArr, reviewDelete]
+  // );
 
   return (
     <div className="PayReview">
