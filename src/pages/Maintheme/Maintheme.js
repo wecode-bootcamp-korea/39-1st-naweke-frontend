@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductList from '../components/productlist';
-// import Filter from '../components/Filter';
+import Filter from '../components/Filter';
 import './Maintheme.scss';
 
 function Maintheme() {
@@ -15,7 +15,7 @@ function Maintheme() {
   return (
     <div className="main">
       상품페이지
-      {/* <Filter setData={setProductData} productdata={productdata} /> */}
+      <Filter setData={setProductData} productdata={productdata} />
       <ProductList data={productdata} />
     </div>
   );
