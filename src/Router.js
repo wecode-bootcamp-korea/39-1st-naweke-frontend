@@ -12,7 +12,7 @@ import Maintheme from './pages/Maintheme/Maintheme';
 const Router = () => {
   return (
     <BrowserRouter>
-      {/* <Nav /> */}
+      <Nav />
       <Routes>
         <Route path="/cart" element={<Cart />} />
         <Route path="/" element={<Main />} />
