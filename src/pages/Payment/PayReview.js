@@ -6,10 +6,11 @@ import './PayReview.scss';
 import { reviewData } from './data';
 
 function PayReview() {
+  const token = localStorage.getItem('token');
+
   const [modal, setModal] = useState(false);
-  // mock data => []변경
-  const [reviewArr, setReviewArr] = useState(reviewData);
-  const [editArr, setEditArr] = useState(reviewData[0]);
+  const [reviewArr, setReviewArr] = useState([]);
+  const [editArr, setEditArr] = useState([]);
   const reviewDelete = i => {
     return () => {
       let copy = [...reviewArr];
@@ -38,8 +39,7 @@ function PayReview() {
     fetch('http://10.58.52.162:3000/reviews', {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjo0LCJpYXQiOjE2NjkyMTA0MzYsImV4cCI6MTY3MTgwMjQzNiwiaXNzIjoiYWRtaW4iLCJzdWIiOiJhY2Nlc3NUb2tlbiJ9.vF3CttA8jRidyk35prgZG78D0a1NHHMIln9cuVYUVY0',
+        Authorization: token,
       },
     })
       .then(response => response.json())
@@ -48,8 +48,17 @@ function PayReview() {
 
   // console.log(reviewArr);
   useEffect(() => {
-    // reviewListFetch();
-  }, []);
+    reviewListFetch();
+  }, [modal]);
+
+  useEffect(
+    i => {
+      return () => {
+        reviewDelete(i);
+      };
+    },
+    [reviewArr, reviewDelete]
+  );
 
   return (
     <div className="PayReview">
@@ -81,18 +90,18 @@ function PayReview() {
                         alt="edit"
                         className="changeBtn"
                         onClick={() => {
-                          // fetch(`http://10.58.52.162:3000/reviews/${el.id}`, {
-                          //   method: 'GET',
-                          //   headers: {
-                          //     Authorization:
-                          //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjo0LCJpYXQiOjE2NjkyMTA0MzYsImV4cCI6MTY3MTgwMjQzNiwiaXNzIjoiYWRtaW4iLCJzdWIiOiJhY2Nlc3NUb2tlbiJ9.vF3CttA8jRidyk35prgZG78D0a1NHHMIln9cuVYUVY0',
-                          //   },
-                          // })
-                          //   .then(response => response.json())
-                          //   .then(data => setEditArr(data.reviewData));
+                          fetch(`http://10.58.52.162:3000/reviews/${el.id}`, {
+                            method: 'GET',
+                            headers: {
+                              Authorization: token,
+                            },
+                          })
+                            .then(response => response.json())
+                            .then(data => setEditArr(data.reviewData));
                           setModal(!modal);
                         }}
                       />
+                      {console.log(editArr)}
                       {modal === true ? (
                         <Modal
                           setModal={setModal}
@@ -106,14 +115,15 @@ function PayReview() {
                         alt="delete"
                         className="changeBtn"
                         // onClick={reviewDelete(i)}
-                        // onClick={() => {
-                        //   fetch('http', {
-                        //     method: 'GET',
-                        //     headers: {
-                        //       Authorization: '',
-                        //     },
-                        //   }).then(() => reviewDelete(i));
-                        // }}
+                        onClick={i => {
+                          fetch(`http://10.58.52.162:3000/reviews/${el.id}`, {
+                            method: 'DELETE',
+                            headers: {
+                              Authorization: token,
+                            },
+                          });
+                          reviewDelete(i);
+                        }}
                       />
                     </td>
                   </tr>
@@ -129,12 +139,12 @@ function PayReview() {
 export default PayReview;
 
 const Modal = ({ setEditArr, editArr, setModal }) => {
-  // const [reviewArr, setReviewArr] = useState([]);
-  // const [edit, setEdit] = useState({});
+  const token = localStorage.getItem('token');
+  const params = useParams();
+
   const editReview = e => {
     const { name, value } = e.target;
     setEditArr(prev => ({ ...prev, [name]: value }));
-    console.log(editArr);
   };
 
   // const postFetch = () => {
@@ -207,24 +217,26 @@ const Modal = ({ setEditArr, editArr, setModal }) => {
           <button
             className="reviewBtn"
             onClick={() => {
-              // pushReview();
               // fetch method PATCH 글수정
-              // fetch('http', {
-              //   method: 'PATCH',
-              //   headers: { accessToken: '' },
-              //   body: JSON.stringify({
-              //     productId: '1',
-              //     title: editArr.title,
-              //     content: editArr.content,
-              //     imageUrl: null,
-              //     score: editArr.score,
-              //   }),
-              // })
-              //   .then(response => {
-              //     console.log(response.status);
-              //     return response.json();
-              //   })
-              //   .then(data => console.log(data));
+              fetch('http://10.58.52.162:3000/reviews', {
+                method: 'PATCH',
+                headers: {
+                  'Content-type': 'application/json',
+                  Authorization: token,
+                },
+                body: JSON.stringify({
+                  productId: `${params.id}`,
+                  title: editArr.title,
+                  content: editArr.content,
+                  imageUrl: null,
+                  score: editArr.score,
+                }),
+              })
+                .then(response => {
+                  console.log(response.status);
+                  return response.json();
+                })
+                .then(data => console.log(data));
               setModal(false);
             }}
           >

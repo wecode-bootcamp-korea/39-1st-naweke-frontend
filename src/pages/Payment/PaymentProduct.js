@@ -10,6 +10,7 @@ function PaymentProduct({
   paylist: { totalPrice, orderId, orderProduct, createAt },
 }) {
   const [modal, setModal] = useState(false);
+  const token = localStorage.getItem('token');
 
   const newReview = e => {
     const { name, value } = e.target;
@@ -24,8 +25,7 @@ function PaymentProduct({
     fetch('http://10.58.52.162:3000/reviews', {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjo0LCJpYXQiOjE2NjkyMTA0MzYsImV4cCI6MTY3MTgwMjQzNiwiaXNzIjoiYWRtaW4iLCJzdWIiOiJhY2Nlc3NUb2tlbiJ9.vF3CttA8jRidyk35prgZG78D0a1NHHMIln9cuVYUVY0',
+        Authorization: token,
       },
     })
       .then(response => response.json())
