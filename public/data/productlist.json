@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "thumbnailUrl": "images/contact.png",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "desc": "나이키 러닝화",
+    "color":"white",
+    "price": "269000",
+    "gender": "여성",
+    "size": "230"
+  },
+  {
+    "id": 2,
+    "thumbnailUrl": "images/contact.png",
+    "desc": "베스트셀러",
+    "name": "나이키 브라질",
+    "color": "black",
+    "price": "269,000",
+    "gender": "여성",
+    "size": "230"
+  },
+  {
+    "id": 3,
+    "thumbnailUrl": "images/contact.png",
+    "desc": "베스트셀러",
+    "name": "나이키 네덜란드",
+    "color": "white",
+    "price": "269,000",
+    "gender": "여성",
+    "size": "230"
+  },
+  {
+    "id": 4,
+    "thumbnailUrl": "images/contact.png",
+    "desc": "베스트셀러",
+    "name": "나이키 네이스",
+    "color": "black",
+    "price": "200000",
+    "gender": "여성",
+    "size": "240"
+  },
+  {
+    "id": 5,
+    "thumbnailUrl": "images/contact.png",
+    "desc": "베스트셀러",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "color": "black",
+    "price": "111111",
+    "gender": "여성",
+    "size": "240"
+  },
+  {
+    "id": 6,
+    "image": "images/contact.png",
+    "nowstate": "베스트셀러",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "color": "black",
+    "price": "269,000",
+    "gender": "남성",
+    "size": "S"
+  },
+  {
+    "id": 7,
+    "image": "images/contact.png",
+    "nowstate": "베스트셀러",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "color": "white",
+    "price": "139900",
+    "gender": "남성",
+    "size": "S"
+  },
+  {
+    "id": 8,
+    "image": "images/contact.png",
+    "nowstate": "베스트셀러",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "color": "white",
+    "price": "85000",
+    "gender": "남성",
+    "size": "M"
+  },
+  {
+    "id": 9,
+    "image": "images/contact.png",
+    "nowstate": "베스트셀러",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "color": "white",
+    "price": "270000",
+    "gender": "남성",
+    "size": "L"
+  },
+  {
+    "id": 10,
+    "image": "images/contact.png",
+    "nowstate": "베스트셀러",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "color": "white",
+    "price": "120000",
+    "gender": "남성",
+    "size": "free"
+  },
+  {
+    "id": 11,
+    "image": "images/contact.png",
+    "nowstate": "베스트셀러",
+    "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
+    "color": "black",
+    "price": "50000",
+    "gender": "남성"
+  }
+]
+
