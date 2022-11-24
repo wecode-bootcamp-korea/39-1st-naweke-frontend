@@ -20,13 +20,11 @@ const Router = () => {
       <Nav />
       <Routes>
         <Route path="/cart" element={<Cart />} />
-        <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/products/:id" element={<Detail />} />
         <Route path="/" element={<Main />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/products" element={<Maintheme />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
