@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ProductList from '../components/productlist';
 // import Filter from '../components/Filter';
 import './Maintheme.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { SORT_DATA } from './Sortdata';
 
 function Maintheme() {
