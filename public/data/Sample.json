@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "name": "나위키 플렉스 러너2",
+      "desc": "남성 로드 레이싱화",
+      "price": 42000,
+      "thumbnailUrl": "https://images.pexels.com/photos/3490360/pexels-photo-3490360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "mainCategory": "shoes",
+      "subCategory": "running",
+      "created_at": "2022-11-18T02:33:09.000Z",
+      "recommend": null
+    },
+    {
+      "id": 4,
+      "name": "나위키 플렉스 플러스",
+      "desc": "남성 러닝화",
+      "price": 42000,
+      "thumbnailUrl": "https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "mainCategory": "shoes",
+      "subCategory": "running",
+      "created_at": "2022-11-18T02:33:09.000Z",
+      "recommend": null
+    },
+    {
+      "id": 7,
+      "name": "나위키 페가수스",
+      "desc": "남성 워터프루트 러닝화",
+      "price": 33000,
+      "thumbnailUrl": "https://images.pexels.com/photos/13580587/pexels-photo-13580587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "mainCategory": "shoes",
+      "subCategory": "running",
+      "created_at": "2022-11-18T02:33:09.000Z",
+      "recommend": null
+    }
+  ]
+}
