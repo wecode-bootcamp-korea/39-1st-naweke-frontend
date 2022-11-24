@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './pages/Nav/Nav';
 import Login from './pages/UserAccount/Login/Login';
@@ -15,7 +15,7 @@ const Router = () => {
       {/* <Nav /> */}
       <Routes>
         <Route path="/cart" element={<Cart />} />
-        <Route path="/main" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/products" element={<Maintheme />} />
         <Route path="/login" element={<Login />} />
