@@ -1,0 +1,108 @@
+.fontSize {
+  font-size: 2rem;
+}
+
+.container {
+  margin: 100px auto 40px;
+  width: 1200px;
+
+  .titleContainer {
+    position: relative;
+  }
+
+  .allCheckBox {
+    display: inline;
+  }
+
+  .check {
+    margin-right: 10px;
+    zoom: 1.2;
+    accent-color: #111;
+  }
+
+  .cart {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cartContainer {
+    width: 770px;
+    margin-right: 20px;
+
+    .cartInner {
+      height: 650px;
+      overflow: scroll;
+    }
+  }
+
+  .titleContainer {
+    position: relative;
+    .deleteButton {
+      position: absolute;
+      right: 0%;
+      text-align: center;
+      width: 75px;
+      height: 30px;
+      background-color: #111;
+      color: white;
+      border: none;
+      border-radius: 12px;
+    }
+  }
+
+  .titleWord {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 30px;
+  }
+
+  .titleCart {
+    display: inline;
+  }
+
+  .orderList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .order {
+    margin-bottom: 24px;
+  }
+
+  .orderFlex {
+    display: flex;
+    justify-content: space-between;
+    width: 370px;
+  }
+
+  .orderPriceWrap {
+    margin-bottom: 20px;
+  }
+
+  .deliveryWrap {
+    padding-bottom: 30px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .totalPriceWrap {
+    margin-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .orderbtnWrap {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .orderBtn {
+    background-color: black;
+    color: white;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 36px;
+    font-size: 2rem;
+    padding: 24px 30px;
+  }
+}
