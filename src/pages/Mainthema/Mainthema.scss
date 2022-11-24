@@ -1,10 +1,40 @@
-.sortWrap{
-    width: 300px;
-    height: 40px;
-    background-color: green;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.2rem;
+.sortWrap {
+  display: flex;
+//   position: absolute;
+  right: 0;
+  padding-right: 3vw;
+  justify-content: space-between;
+  width: 500px;
+  padding-top: 310px;
+  background-color: red;
+  .label {
+    display: inline-block;
+    width: 160px;
+    height: 36px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
     font-weight: 500;
+    font-size: 1.3rem;
+    background-color: #fff;
+  }
+  .label:hover {
+    border: 1px solid #111;
+  }
+  input[type='radio'] {
+    -webkit-appearance: radio;
+  }
+  input[type='radio']:checked + .label {
+    border-color: #111;
+    background-color: #111;
+    color: #fff;
+  }
+  input {
+    position: absolute;
+    height: 0px;
+    overflow: hidden;
+  }
 }

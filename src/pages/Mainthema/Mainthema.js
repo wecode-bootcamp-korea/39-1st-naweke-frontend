@@ -7,6 +7,7 @@ import './Mainthema.scss';
 
 function Running() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [sortValue, setSortValue] = useState({});
   const sort = searchParams.get('sort');
   const [posts, setPosts] = useState();
 
@@ -16,9 +17,36 @@ function Running() {
       .then(result => setPosts(result));
   }, [searchParams]);
   return (
-    <>
-      <ul className="sortWrap">안녕</ul>
-    </>
+    <div className="sortWrap">
+      {SORT_DATA.map(({ id, text, url }) => {
+        return (
+          <>
+            <input
+              id={url}
+              name="sort"
+              type="radio"
+              value={sortValue}
+              onChange={e => {
+                setSortValue(prev => ({
+                  ...prev,
+                  [e.target.name]: e.target.name,
+                }));
+              }}
+              className={`sort ${text}`}
+              key={id}
+              onClick={() => {
+                searchParams.delete('sort');
+                searchParams.append('sort', url);
+                setSearchParams(searchParams);
+              }}
+            />
+            <label htmlFor={url} className="label">
+              <span>{text}</span>
+            </label>
+          </>
+        );
+      })}
+    </div>
   );
 }
 

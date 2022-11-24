@@ -17,7 +17,7 @@ function Nav() {
       <p>Help</p>
       <p>Order Check</p>
       <p>
-        <Link to="/main">Logout</Link>
+        <Link to="/">Logout</Link>
       </p>
       <p>
         <Link to="/login">안녕하세요 회원님!</Link>
@@ -40,7 +40,7 @@ function Nav() {
 
       <div className="navBox">
         <div className="navLogo" onMouseEnter={() => setIsSubMenuOpen(false)}>
-          <Link to="/main">NAWEKE</Link>
+          <Link to="/">NAWEKE</Link>
         </div>
         <ul className="navMain" onMouseEnter={() => setIsSubMenuOpen(true)}>
           <Link to="/products?subCategory=running">
