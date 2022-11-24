@@ -1,0 +1,302 @@
+@import '../../styles/mixin.scss';
+
+.navWrap {
+  position: fixed;
+  z-index: 10;
+  .signBar {
+    @include flex(end, center);
+    font-size: 1.4rem;
+    width: 100vw;
+    height: 36px;
+    padding-right: 3vw;
+    gap: 1vw;
+    background-color: #f5f5f5;
+
+    p {
+      border-left: 2px solid #cedaeb;
+      padding-left: 10px;
+      height: 17px;
+
+      &:nth-child(1) {
+        border: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .navBox {
+    @include flex(space-between, center);
+    height: 67px;
+    width: 100vw;
+    margin: 0 auto;
+    padding-left: 2vw;
+    padding-right: 3vw;
+    background-color: #fff;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .navLogo {
+      display: flex;
+      align-items: center;
+      margin-bottom: -7px;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-top: -7px;
+      width: 280px;
+      height: 67px;
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .navMain {
+      @include flex(space-between, center);
+      width: 450px;
+      height: 67px;
+      font-size: 2rem;
+
+      li {
+        @include flex(center, center);
+        width: 150px;
+        height: 67px;
+
+        &:hover {
+          border-bottom: 2px solid black;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .navRight {
+      @include flex(space-around, center);
+      width: 280px;
+
+      .searchArea {
+        @include flex(baseline, center);
+        width: 200px;
+        height: 40px;
+        background-color: #f5f5f5;
+        border: none;
+        border-radius: 100px;
+        gap: 10px;
+
+        .magnifyimg {
+          @include flex(center, center);
+          margin-left: 2px;
+          width: 40px;
+          height: 36px;
+          background-color: none;
+          border-radius: 50px;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #cccfd8;
+          }
+        }
+
+        .searchInput {
+          position: relative;
+          width: 150px;
+          height: 30px;
+          background-color: transparent;
+          border: none;
+          display: flex;
+          font-size: 2rem;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .searchBox {
+    width: 100vw;
+    height: 350px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .searchBoxIn {
+      @include flex(space-between, center);
+      width: 100vw;
+      height: 67px;
+      padding-left: 2vw;
+      padding-right: 3vw;
+      background-color: #ffffff;
+
+      .navLogo {
+        display: flex;
+        align-items: center;
+        font-size: 3rem;
+        font-weight: 900;
+        width: 200px;
+        height: 67px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .searchMain {
+      @include flex(normal, center);
+      width: 700px;
+      height: 40px;
+      background-color: #f5f5f5;
+      border-radius: 100px;
+
+      .magnifyimg {
+        @include flex(center, center);
+        margin-left: 2px;
+        width: 40px;
+        height: 36px;
+        background-color: none;
+        border-radius: 50px;
+        background-color: #f5f5f5;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #cccfd8;
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      input {
+        width: 630px;
+        height: 40px;
+        border: none;
+        outline: none;
+        background-color: #f5f5f5;
+        font-size: 2rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      .filterBox {
+        @include flex(center, center);
+        z-index: 1;
+        position: absolute;
+        top: 67px;
+        left: 0px;
+        width: 100vw;
+        height: 350px;
+        background-color: #ffffff;
+
+        .innerFilterBox {
+          display: flex;
+          align-items: center;
+          width: 68vw;
+          height: 350px;
+          gap: 40px;
+          overflow: auto;
+
+          .filterId {
+            @include flex(space-between, normal);
+            flex-direction: column;
+            background-color: #ffffff;
+            width: 130px;
+            height: 220px;
+
+            .filterImg {
+              width: 130px;
+              height: 160px;
+            }
+
+            .filterProduct {
+              @include flex(space-between, normal);
+              height: 60px;
+              width: 130px;
+              background-color: #ffffff;
+              flex-direction: column;
+
+              p {
+                font-size: 1.5rem;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+    .closeBox {
+      @include flex(end, center);
+      width: 200px;
+      height: 40px;
+      font-size: 2rem;
+      font-weight: 900;
+
+      & > p:hover {
+        cursor: pointer;
+        color: #c8c8c8;
+      }
+    }
+  }
+  .popularSearchBox {
+    @include flex(baseline, center);
+    width: 47vw;
+    height: 270px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+
+    .popularSearch {
+      @include flex(space-around, baseline);
+      width: 200px;
+      height: 200px;
+      flex-direction: column;
+      font-size: 2rem;
+      font-weight: 900;
+
+      p {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #c8c8c8;
+      }
+
+      li:hover {
+        color: #c8c8c8;
+      }
+    }
+  }
+
+  .navUnder {
+    @include flex(center, center);
+    position: absolute;
+    width: 100vw;
+    height: 200px;
+    background-color: #ffffff;
+
+    ul {
+      @include flex(space-around, center);
+      flex-direction: column;
+      width: 180px;
+      height: 150px;
+      font-size: 1.8rem;
+      margin-left: -1vw;
+
+      li {
+        color: #757575;
+      }
+      li:hover {
+        color: black;
+      }
+    }
+  }
+}

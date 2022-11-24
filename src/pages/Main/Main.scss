@@ -1,7 +1,8 @@
+@import '../../styles/mixin.scss';
+
 .main {
-  display: flex;
+  @include flex(center, normal);
   flex-direction: column;
-  justify-content: center;
   width: 100vw;
 
   .mainWrap {
@@ -19,9 +20,8 @@
     }
 
     .mainBg {
-      display: flex;
+      @include flex(normal, center);
       flex-direction: column;
-      align-items: center;
 
       .mainCon {
         .moveBtn {
@@ -36,8 +36,7 @@
       }
 
       .runningWrap {
-        display: flex;
-        justify-content: center;
+        @include flex(center, normal);
         width: 100%;
         margin-bottom: 140px;
 
@@ -70,9 +69,8 @@
       }
 
       .soccerWrap {
-        display: flex;
+        @include flex(center, normal);
         flex-direction: row-reverse;
-        justify-content: center;
         width: 100%;
 
         .soccerBg {
@@ -105,8 +103,7 @@
       }
 
       .basketballWrap {
-        display: flex;
-        justify-content: center;
+        @include flex(center, normal);
         width: 100%;
         margin-top: 150px;
 
