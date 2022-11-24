@@ -3,8 +3,14 @@ import './ProductList.scss';
 import SIZE_LIST from './SizeList';
 
 function ProductList(props) {
-  const { product, onChangeAmount, cartDelete, setCheckItems, checkItems } =
-    props;
+  const {
+    product,
+    getCartList,
+    onChangeAmount,
+    cartDelete,
+    setCheckItems,
+    checkItems,
+  } = props;
   const {
     productOptionId,
     price,
@@ -15,6 +21,7 @@ function ProductList(props) {
     sizeName,
     cartId,
   } = product;
+  // const updateSelected = selected;
   const [selected, setSelected] = useState(quantity);
 
   const handleSingleCheck = (checked, productOptionId) => {
@@ -24,19 +31,19 @@ function ProductList(props) {
       setCheckItems(checkItems.filter(el => el !== productOptionId));
     }
   };
-  const saveAmount = e => {
-    onChangeAmount(e.target.value);
-    // quantityOnchange();
-  };
+  // const saveAmount = e => {
+  //   onChangeAmount(e.target.value);
+  //   quantityOnchange();
+  // };
   //상품 수량에 따른 가격
   const amountPrice = price * selected;
 
   //장바구니 물건 삭제 기능
 
   const quantityOnchange = e => {
-    setSelected(e.target.value);
+    // setSelected(e.target.value);
     const productCartId = cartId;
-
+    // setSelected(quantity);
     fetch(`http://10.58.52.172:3000/carts/${[productCartId]}`, {
       method: 'PATCH',
       headers: {
@@ -45,14 +52,28 @@ function ProductList(props) {
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
       },
       body: JSON.stringify({
-        quantity: `${selected}`,
+        // quantity: `${selected}`,
+        quantity: e.target.value,
       }),
     })
       .then(response => response.json())
-      .then(result => console.log(result));
+      .then(result => {
+        if (result.message === 'product quantity modified') {
+          setSelected(e.target.value);
+          getCartList();
+        }
+      });
+    // console.log('selected:', selected);
   };
-  console.log(cartId);
-  console.log(productOptionId);
+
+  const saveAmount = e => {
+    onChangeAmount(e.target.value);
+    // quantityOnchange();
+  };
+  // useEffect(() => {
+  //   quantityOnchange();
+  // }, [selected]);
+
   return (
     <>
       <div className="product">
@@ -79,7 +100,9 @@ function ProductList(props) {
               수량
               <select
                 className="amountOption"
-                onChange={quantityOnchange}
+                onChange={e => {
+                  quantityOnchange(e);
+                }}
                 defaultValue={selected}
               >
                 <option>1</option>

@@ -8,6 +8,12 @@ import ProductList from './ProductList';
 function Cart() {
   const [cartList, setCartList] = useState([]);
   const [checkItems, setCheckItems] = useState([]); // 체크 박스 빈 배열
+
+  //그러니까 checkitems가 변경이 안되거나 가격이 변경이 안되니까 렌더링이 발생이 안되니까
+  //총가격도 변하지않음.
+
+  console.log('cartList', cartList);
+
   const btnCartId = cartList.map(el => {
     return el.cartId;
   });
@@ -28,9 +34,21 @@ function Cart() {
   //     body: json.stringify({
   //       totalPrice:`${totalPrice}`,
   //       orderItems:[{
-  //         productOptionId:`${[orderId]}`
-  //         quantity:`${cartList.quantity}`
+  //         productOptionsId:`${[orderId]}`
+  //         quantity:`${cartsList.quantity}`
   //       }]
+
+  const lastItems = () => {
+    const orderItems = cartList.filter(el =>
+      checkItems.includes(el.productOptionId)
+    );
+    const itemsProductOptionId = orderItems.map(el => {
+      return el.productOptionId;
+    });
+    const itemsQuantity = orderItems.map(el => {
+      return el.quantity;
+    });
+  };
 
   //     })
   //   })
@@ -83,7 +101,7 @@ function Cart() {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === 'product deleted') {
+        if (result.message === 'cart deleted') {
           alert('삭제가 완료되었습니다.');
           getCartList();
         } else {
@@ -129,18 +147,18 @@ function Cart() {
   useEffect(() => {
     getCartList();
   }, []);
-  console.log(cartList);
+
   //총 가격 계산
   const totalPrice = cartList
     .filter(el => checkItems.includes(el.productOptionId))
     .reduce((a, b) => a + b.quantity * b.price, 0);
-  console.log(checkItems);
+
   //삭제 버튼 통신
-  console.log(totalPrice);
+
   const cartDelete = productOptionId => {
-    // setCartList(
-    //   cartList.filter(product => product.productOptionId !== productOptionId)
-    // );
+    setCartList(
+      cartList.filter(product => product.productOptionId !== productOptionId)
+    );
 
     // );
 
@@ -152,7 +170,6 @@ function Cart() {
       el => el.productOptionId === productOptionId
     );
     // const be
-    console.log(beforeDeleted);
 
     // const cartDeleteBtn = cartList.filter(el => cart);
 
@@ -169,7 +186,7 @@ function Cart() {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === 'product deleted') {
+        if (result.message === 'cart deleted') {
           alert('삭제가 완료되었습니다.');
           getCartList();
         } else {
@@ -206,6 +223,8 @@ function Cart() {
                 product={product}
                 setCheckItems={setCheckItems}
                 checkItems={checkItems}
+                getCartList={getCartList}
+                // saveAmount={saveAmount}
                 // quantityOnchange={quantityOnchange}
                 selectDelete={selectDelete}
                 onChangeAmount={amount => {
