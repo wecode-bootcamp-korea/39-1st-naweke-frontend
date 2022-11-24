@@ -23,7 +23,7 @@ function Cart() {
     const orderCheckItems = cartList.filter(el =>
       checkItems.includes(el.productOptionId)
     );
-    console.log(orderCheckItems);
+
     const cartOrder = orderCheckItems => {
       return orderCheckItems.map((obj, i) => {
         return {
@@ -38,7 +38,7 @@ function Cart() {
 
       orderItems: cartOrderItems,
     };
-    console.log(typeof totalPrice);
+    // console.log(typeof totalPrice);
 
     fetch('http://10.58.52.132:3000/orders', {
       method: 'POST',
@@ -50,7 +50,11 @@ function Cart() {
       body: JSON.stringify(result),
     })
       .then(response => response.json())
-      .then(result => setCartList(result));
+      .then(result => {
+        if (result.message === 'order Created') setCartList(cartList);
+        getCartList();
+      });
+
     // navigate(/'/payment')
   };
 
@@ -211,29 +215,30 @@ function Cart() {
             </button>
           </div>
           <div className="cartInner">
-            {cartList.map(product => (
-              <ProductList
-                cartDelete={cartDelete}
-                key={product.productOptionId}
-                product={product}
-                setCheckItems={setCheckItems}
-                checkItems={checkItems}
-                getCartList={getCartList}
-                // saveAmount={saveAmount}
-                // quantityOnchange={quantityOnchange}
-                selectDelete={selectDelete}
-                onChangeAmount={amount => {
-                  setCartList(
-                    cartList.map(cart => {
-                      if (cart.productOptionId === product.productOptionId) {
-                        cart.quantity = amount;
-                      }
-                      return cart;
-                    })
-                  );
-                }}
-              />
-            ))}
+            {cartList.length > 0 &&
+              cartList.map(product => (
+                <ProductList
+                  cartDelete={cartDelete}
+                  key={product.productOptionId}
+                  product={product}
+                  setCheckItems={setCheckItems}
+                  checkItems={checkItems}
+                  getCartList={getCartList}
+                  // saveAmount={saveAmount}
+                  // quantityOnchange={quantityOnchange}
+                  selectDelete={selectDelete}
+                  onChangeAmount={amount => {
+                    setCartList(
+                      cartList.map(cart => {
+                        if (cart.productOptionId === product.productOptionId) {
+                          cart.quantity = amount;
+                        }
+                        return cart;
+                      })
+                    );
+                  }}
+                />
+              ))}
           </div>
         </div>
         <div className="orderContainer">
