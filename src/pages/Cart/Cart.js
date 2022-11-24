@@ -7,10 +7,7 @@ import ProductList from './ProductList';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
-  const [checkItems, setCheckItems] = useState([]); // 체크 박스 빈 배열
-
-  //그러니까 checkitems가 변경이 안되거나 가격이 변경이 안되니까 렌더링이 발생이 안되니까
-  //총가격도 변하지않음.
+  const [checkItems, setCheckItems] = useState([]);
 
   console.log('cartList', cartList);
 
@@ -38,7 +35,6 @@ function Cart() {
 
       orderItems: cartOrderItems,
     };
-    // console.log(typeof totalPrice);
 
     fetch('http://10.58.52.132:3000/orders', {
       method: 'POST',
@@ -54,8 +50,6 @@ function Cart() {
         if (result.message === 'order Created') setCartList(cartList);
         getCartList();
       });
-
-    // navigate(/'/payment')
   };
 
   const handleAllCheck = checked => {
@@ -110,16 +104,6 @@ function Cart() {
         }
       });
   };
-
-  // const selectDelete = () => {
-  //   const afterDeleted = cartList.filter(el =>
-  //     // !checkItems.includes(el.productOptionId)
-  //     checkItems.includes(el.productOptionId) 이거 쓰자
-  //   );
-  //   setCartList(afterDeleted);
-  //   setCheckItems([]);
-  // };
-
   //목데이터
 
   // useEffect(() => {
@@ -141,7 +125,6 @@ function Cart() {
       .then(response => response.json())
       .then(result => setCartList(result));
   };
-  //처음에 벡엔드 통신하는거 여기까지
 
   useEffect(() => {
     getCartList();
@@ -158,19 +141,9 @@ function Cart() {
     setCartList(
       cartList.filter(product => product.productOptionId !== productOptionId)
     );
-
-    // );
-
-    // const beforeDeleted = cartList.filter(
-    //   el => checkItems.includes(el.productOptionId) //원래꺼
-    // );
-
     const beforeDeleted = cartList.filter(
       el => el.productOptionId === productOptionId
     );
-    // const be
-
-    // const cartDeleteBtn = cartList.filter(el => cart);
 
     fetch(`http://10.58.52.172:3000/carts/`, {
       method: 'DELETE',
@@ -195,9 +168,6 @@ function Cart() {
   };
 
   /////여기까지 삭제 버튼 통신
-
-  //목 데이터
-
   return (
     <div className="container">
       <div className="cart">
@@ -224,8 +194,6 @@ function Cart() {
                   setCheckItems={setCheckItems}
                   checkItems={checkItems}
                   getCartList={getCartList}
-                  // saveAmount={saveAmount}
-                  // quantityOnchange={quantityOnchange}
                   selectDelete={selectDelete}
                   onChangeAmount={amount => {
                     setCartList(
