@@ -5,7 +5,8 @@ import Nav from './pages/Nav/Nav';
 import Main from './pages/Main/Main';
 import Cart from './pages/Cart/Cart';
 import Detail from './pages/Detail/Detail';
-import SignUp from './pages/UserAccount/SignUp/SignUp';
+// import SignUp from './pages/UserAccount/SignUp/SignUp';
+// import Footer from './pages/Footer/Footer';
 
 const Router = () => {
   return (
@@ -15,10 +16,10 @@ const Router = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/main" element={<Main />} />
         {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/detail" element={<Detail />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/products/:id" element={<Detail />} />
+        {/* <Route path="/signup" element={<SignUp />} /> */}
+        {/* <Route path="/footer" element={<Footer />} /> */}
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 };

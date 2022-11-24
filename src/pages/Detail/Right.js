@@ -2,155 +2,93 @@ import React, { useState } from 'react';
 import './Right.scss';
 import './DetailModal';
 import Review from './Review';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import SIZE_LIST from './SIZE_LIST';
 
 function Right(props) {
+  const accessToken = localStorage.getItem('token');
   const navigate = useNavigate();
-  const [changeValue, setChangeValue] = useState('');
-  const [size, setSize] = useState(0);
+  const [getSize, setGetSize] = useState(0);
+  console.log(getSize);
 
-  const handleSize = e => {
-    setSize(e.target.value);
+  const clickPay = () => {
+    fetch('http://10.58.52.132:3000/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: accessToken,
+      },
+      body: JSON.stringify({
+        totalPrice: props.detailData.productInfo.price,
+        orderItems: [
+          {
+            productOptionId: `${params.id}`,
+            quantity: '1',
+          },
+        ],
+      }),
+    });
   };
 
-  console.log(size);
+  const basketAccess = () => {
+    fetch('http://10.58.52.172:3000/Carts', {
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json;charset=utf-8',
+        Authorization: accessToken,
+      },
+      body: JSON.stringify({
+        productId: `${params.id}`,
+        sizeId: getSize,
+      }),
+    });
+  };
+
+  const sizeHandle = e => {
+    setGetSize(e.target.value);
+  };
 
   return (
     <div className="rightContainer">
       <h1 className="title">{props.detailData.productInfo.name}</h1>
+
       <h4 className="description">
         {props.detailData.productInfo.description}
       </h4>
       <h4 className="price">
-        {props.detailData.productInfo.price.toLocaleString()}
+        {props.detailData.productInfo.price.toLocaleString()}원
       </h4>
       <h4 className="Size">사이즈 선택</h4>
-
       <div className="sizeButton">
-        <input
-          type="radio"
-          id="r1"
-          name="size"
-          value={220}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r1" className="label">
-          220
-        </label>
-
-        <input
-          type="radio"
-          id="r2"
-          name="size"
-          value={230}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r2" className="label">
-          230
-        </label>
-
-        <input
-          type="radio"
-          id="r3"
-          name="size"
-          value={240}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r3" className="label">
-          240
-        </label>
-
-        <input
-          type="radio"
-          id="r4"
-          name="size"
-          value={250}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r4" className="label">
-          250
-        </label>
-
-        <input
-          type="radio"
-          id="r5"
-          name="size"
-          value={260}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r5" className="label">
-          260
-        </label>
-
-        <input
-          type="radio"
-          id="r6"
-          name="size"
-          value={270}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r6" className="label">
-          270
-        </label>
-
-        <input
-          type="radio"
-          id="r7"
-          name="size"
-          value={280}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r7" className="label">
-          280
-        </label>
-
-        <input
-          type="radio"
-          id="r8"
-          name="size"
-          value={290}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r8" className="label">
-          290
-        </label>
-
-        <input
-          type="radio"
-          id="r9"
-          name="size"
-          value={300}
-          className="radio"
-          onChange={handleSize}
-          Checked
-        />
-        <label htmlFor="r9" className="label">
-          300
-        </label>
+        {props.detailData.productInfo.size.map((list, i) => {
+          // const sizeValue = [list];
+          return (
+            list === SIZE_LIST[i].id && (
+              <>
+                <input
+                  key={i}
+                  type="radio"
+                  id={list}
+                  name="size"
+                  value={SIZE_LIST[i].id}
+                  className="radio"
+                  onChange={sizeHandle}
+                />
+                <label htmlFor={list} className="label" key={list.id}>
+                  {SIZE_LIST[i].name}
+                </label>
+              </>
+            )
+          );
+        })}
       </div>
-      <button className="nowBtn" onClick={() => navigate('/payment')}>
+      <button className="nowBtn" onClick={clickPay}>
         바로결제
       </button>
       <button
         className="basketBtn"
         onClick={() => {
-          props.basketAccess();
+          basketAccess(props.detailData.productOptionId, getSize);
           props.switchModal();
         }}
       >
@@ -162,7 +100,9 @@ function Right(props) {
             <h3>리뷰</h3>
             <img className="directionImg" src="images/next.png" />
           </summary>
-          <Review />
+          {props.detailData.productInfo?.reviews.map(review => {
+            return <Review review={review} />;
+          })}
         </details>
         <details>
           <summary>

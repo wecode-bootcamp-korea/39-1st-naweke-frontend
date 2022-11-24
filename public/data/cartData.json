@@ -4,7 +4,23 @@
     "description": "남성 로드 러닝화",
     "image": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "price": 143000,
-    "size": [10, 11, 12, 13, 14],
+    "size": [
+      { "id": 1, "name": "XS" },
+      { "id": 2, "name": "S" },
+      { "id": 3, "name": "M" },
+      { "id": 4, "name": "L" },
+      { "id": 5, "name": "XL" },
+      { "id": 6, "name": "220" },
+      { "id": 7, "name": "230" },
+      { "id": 8, "name": "240" },
+      { "id": 9, "name": "250" },
+      { "id": 10, "name": "260" },
+      { "id": 11, "name": "270" },
+      { "id": 12, "name": "280" },
+      { "id": 13, "name": "290" },
+      { "id": 14, "name": "300" },
+      { "id": 15, "name": "FREE" }
+    ],
     "reviews": [
       {
         "title": "Naweke 제품 좋아요!",

@@ -4,63 +4,64 @@ import './Detail.scss';
 import DetailModal from './DetailModal';
 import Right from './Right';
 import Left from './Left';
+import Review from './Review';
+import SIZE_LIST from './SIZE_LIST';
 
 function Detail() {
+  const accessToken = localStorage.getItem('token');
   const [detailData, setDetailData] = useState([]);
+  const [size, setSize] = useState(0);
 
   const params = useParams();
-
-  console.log(params);
-
-  // useEffect(() => {
-  //   fetch(`http://10.58.52.132:3000/products/${params.id}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //     },
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => setDetailData(data));
-  // }, []);
-
   useEffect(() => {
-    fetch('/data/cartData.json')
-      .then(res => res.json())
+    fetch(`http://10.58.52.132:3000/products/${params.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: accessToken,
+      },
+    })
+      .then(response => response.json())
       .then(data => setDetailData(data));
   }, []);
-
-  console.log(detailData);
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const switchModal = () => {
     setIsOpenModal(prev => !prev);
   };
 
-  const basketAccess = () => {
-    fetch('http://10.58.52.56:3000/Carts', {
+  const buyAccess = () => {
+    fetch('http://10.58.52.132:3000/orders', {
       method: 'POST',
       headers: {
         'content-Type': 'application/json;charset=utf-8',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxOSwiaWF0IjoxNjY5MTgxMzQ1LCJleHAiOjE2NzE3NzMzNDUsImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.dvHAlqCKLEpOa1sF_u-V0xp1qnswG_NeocDzJ31ioKo',
       },
       body: JSON.stringify({
-        productId: '1',
-        sizeId: '10',
+        totalPrice: '',
+        orderItems: [
+          {
+            productOptionId: '',
+            quantity: '',
+          },
+        ],
       }),
     })
       .then(response => response.json())
-      .then(data => setDetailData(data));
+      .then(data => console.log(detailData));
   };
 
-  const detailImgAccess = () => {
-    fetch('http://10.58.52.132:3000/products/1', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
-      .then(response => response.json())
-      .then(data => console.log(data));
-  };
+  // const detailImgAccess = () => {
+  //   fetch('http://10.58.52.132:3000/products/1', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => console.log(data));
+  // };
 
   if (!detailData.productInfo) return null;
 
@@ -69,10 +70,12 @@ function Detail() {
       <Left detailData={detailData} />
 
       <Right
+        setSize={setSize}
         switchModal={switchModal}
-        basketAccess={basketAccess}
+        // basketAccess={basketAccess}
         detailData={detailData}
       />
+
       {isOpenModal && <DetailModal switchModal={switchModal} />}
     </div>
   );
