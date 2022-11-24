@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import COLOR_LIST from './colorData';
 import SIZE_LIST from './sizeData';
 import PRICE_LIST from './priceData';
+import SORT_DATA from './sortData';
 import './Filter.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 const Filter = ({ setFilterData }) => {
+  const navigate = useNavigate();
+  const [sortValue, setSortValue] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectValue, setSelectValue] = useState({
     size: '',
@@ -47,6 +50,18 @@ const Filter = ({ setFilterData }) => {
   return (
     <div className="filter">
       <div className="filterInner">
+        <div className="mainSort filterLayout">
+          <span>
+            조건별 검색
+            <img
+              src="images/goback.png"
+              alt="goback"
+              onClick={() => {
+                navigate(`/products?${searchParams.toString()}`);
+              }}
+            />
+          </span>
+        </div>
         {/* gender */}
         <div className="productGender filterLayout">
           <h3>성별</h3>
@@ -149,6 +164,36 @@ const Filter = ({ setFilterData }) => {
               );
             })}
           </div>
+        </div>
+        <div className="sortWrap">
+          {SORT_DATA.map(({ id, text, url }) => {
+            return (
+              <>
+                <input
+                  id={url}
+                  name="sort"
+                  type="radio"
+                  value={sortValue}
+                  onChange={e => {
+                    setSortValue(prev => ({
+                      ...prev,
+                      [e.target.name]: e.target.name,
+                    }));
+                  }}
+                  className={`sort ${text}`}
+                  key={id}
+                  onClick={() => {
+                    searchParams.delete('sort');
+                    searchParams.append('sort', url);
+                    setSearchParams(searchParams);
+                  }}
+                />
+                <label htmlFor={url} className="label">
+                  <span>{text}</span>
+                </label>
+              </>
+            );
+          })}
         </div>
       </div>
     </div>
