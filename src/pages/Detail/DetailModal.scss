@@ -1,0 +1,60 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  .modalText {
+    margin-left: 40px;
+    .modalClose:after {
+      font-weight: bold;
+      display: flex;
+      justify-content: end;
+      content: '\00d7';
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .modalTitle {
+      margin-top: 10px;
+      font-size: 2.5rem;
+    }
+    .modalFont {
+      margin-top: 40px;
+      font-size: 2rem;
+    }
+  }
+  .modalContent {
+    border-radius: 30px;
+    width: 450px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 30px;
+    background: #fff;
+    transform: translate(-50%, -50%);
+  }
+  .modalBtn {
+    display: flex;
+    justify-content: space-around;
+  }
+  .modalButton:hover {
+    background-color: rgb(90, 90, 90);
+  }
+  .modalButton {
+    width: 150px;
+    margin-top: 60px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}

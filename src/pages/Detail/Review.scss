@@ -1,0 +1,26 @@
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .reviewTitle {
+    margin-top: 30px;
+    font-size: 2rem;
+  }
+  .reviewVal {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    .reviewSel {
+      margin-left: 5px;
+      width: 30px;
+      border-style: none;
+      outline: none;
+    }
+  }
+  .reviewReview {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+}
