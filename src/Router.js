@@ -4,20 +4,20 @@ import Nav from './pages/Nav/Nav';
 import Login from './pages/UserAccount/Login/Login';
 import Main from './pages/Main/Main';
 import Cart from './pages/Cart/Cart';
-import Mainthema from './pages/Mainthema/Mainthema';
-import Footer from './pages/Footer/Footer';
+import ProductDetail from './pages/Productdetail/ProductDetail';
 import SignUp from './pages/UserAccount/SignUp/SignUp';
-import Productdetail from './pages/Productdetail/ProductDetail';
+import Footer from './pages/Footer/Footer';
+import Maintheme from './pages/Maintheme/Maintheme';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Nav />
+      {/* <Nav /> */}
       <Routes>
         <Route path="/cart" element={<Cart />} />
         <Route path="/" element={<Main />} />
-        <Route path="/products/:id" element={<Productdetail />} />
-        <Route path="/products" element={<Mainthema />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/products" element={<Maintheme />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

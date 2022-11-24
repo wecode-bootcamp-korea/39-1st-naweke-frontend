@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import MAIN_DATA from './mainData.js';
 import './Main.scss';
-import Product from '../components/Product';
 
 function Main() {
   const navigate = useNavigate();
