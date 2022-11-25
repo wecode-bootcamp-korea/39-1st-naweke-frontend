@@ -11,7 +11,7 @@ function Payment() {
   const accessToken = localStorage.getItem('token');
   // 주문내역 데이터
   const orderListFetch = () => {
-    fetch('http://10.58.52.132:3000/orders', {
+    fetch('http://10.58.52.162:3000/orders', {
       method: 'GET',
       headers: {
         Authorization: accessToken,
@@ -20,10 +20,9 @@ function Payment() {
       .then(response => response.json())
       .then(data => setPaymentData(data.orderList));
   };
-  // console.log(paymentData);
 
   useEffect(() => {
-    // orderListFetch();
+    orderListFetch();
   }, [accessToken]);
 
   return (
@@ -40,6 +39,7 @@ function Payment() {
                 reviewArr={reviewArr}
                 review={review}
                 setReview={setReview}
+                paymentData={paymentData}
               />
             );
           })}
@@ -52,7 +52,7 @@ function Payment() {
         review={review}
         setReview={setReview}
       />
-      <Link to="/main" className="link">
+      <Link to="/" className="link">
         메인으로 이동
       </Link>
     </div>

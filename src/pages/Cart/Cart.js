@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useNavigate } from 'react';
-import { json } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { json, useNavigate } from 'react-router-dom';
 
 import './Cart.scss';
 
@@ -8,13 +8,13 @@ import ProductList from './ProductList';
 function Cart() {
   const [cartList, setCartList] = useState([]);
   const [checkItems, setCheckItems] = useState([]);
-
+  const accessToken = localStorage.getItem('token');
   console.log('cartList', cartList);
 
   // const btnCartId = cartList.map(el => {
   //   return el.cartId;
   // });
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   //
   const goToOrderList = () => {
     const orderCheckItems = cartList.filter(el =>
@@ -36,12 +36,11 @@ function Cart() {
       orderItems: cartOrderItems,
     };
 
-    fetch('http://10.58.52.132:3000/orders', {
+    fetch('http://10.58.52.162:3000/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxOSwiaWF0IjoxNjY5MTgxMzQ1LCJleHAiOjE2NzE3NzMzNDUsImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.dvHAlqCKLEpOa1sF_u-V0xp1qnswG_NeocDzJ31ioKo',
+        Authorization: accessToken,
       },
       body: JSON.stringify(result),
     })
@@ -50,6 +49,7 @@ function Cart() {
         if (result.message === 'order Created') setCartList(cartList);
         getCartList();
       });
+    navigate('/payment');
   };
 
   const handleAllCheck = checked => {
@@ -83,12 +83,11 @@ function Cart() {
     const deleteCartId = beforeDeleted.map(el => {
       return el.cartId;
     });
-    fetch(`http://10.58.52.172:3000/carts/`, {
+    fetch(`http://10.58.52.162:3000/carts/`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+        Authorization: accessToken,
       },
       body: JSON.stringify({
         cartId: deleteCartId,
@@ -114,12 +113,11 @@ function Cart() {
 
   //백엔드 통신
   const getCartList = () => {
-    fetch('http://10.58.52.132:3000/carts/', {
+    fetch('http://10.58.52.162:3000/carts/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxOSwiaWF0IjoxNjY5MTgxMzQ1LCJleHAiOjE2NzE3NzMzNDUsImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.dvHAlqCKLEpOa1sF_u-V0xp1qnswG_NeocDzJ31ioKo',
+        Authorization: accessToken,
       },
     })
       .then(response => response.json())
@@ -145,12 +143,11 @@ function Cart() {
       el => el.productOptionId === productOptionId
     );
 
-    fetch(`http://10.58.52.172:3000/carts/`, {
+    fetch(`http://10.58.52.162:3000/carts/`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+        Authorization: accessToken,
       },
       body: JSON.stringify({
         cartId: [`${beforeDeleted[0].cartId}`],
@@ -185,7 +182,7 @@ function Cart() {
             </button>
           </div>
           <div className="cartInner">
-            {cartList.length > 0 &&
+            {cartList.length > 0 ? (
               cartList.map(product => (
                 <ProductList
                   cartDelete={cartDelete}
@@ -206,7 +203,10 @@ function Cart() {
                     );
                   }}
                 />
-              ))}
+              ))
+            ) : (
+              <div className="noCart">상품이 없습니다</div>
+            )}
           </div>
         </div>
         <div className="orderContainer">
@@ -229,7 +229,11 @@ function Cart() {
               </div>
             </div>
             <div className="orderbtnWrap">
-              <button className="orderBtn" onClick={goToOrderList}>
+              <button
+                className="orderBtn"
+                onClick={goToOrderList}
+                disabled={cartList && !checkItems}
+              >
                 주문결제
               </button>
             </div>

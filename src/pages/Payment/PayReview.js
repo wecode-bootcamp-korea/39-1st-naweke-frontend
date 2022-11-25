@@ -45,12 +45,13 @@ function PayReview() {
       .then(response => response.json())
       .then(data => setReviewArr(data.reviewData));
   };
+  console.log(reviewArr);
 
   // console.log(reviewArr);
   useEffect(() => {
     reviewListFetch();
     // }, []);
-    reviewListFetch();
+    // reviewListFetch();
   }, [modal]);
 
   // useEffect(
@@ -117,14 +118,14 @@ function PayReview() {
                         alt="delete"
                         className="changeBtn"
                         // onClick={reviewDelete(i)}
-                        onClick={i => {
+                        onClick={() => {
                           fetch(`http://10.58.52.162:3000/reviews/${el.id}`, {
                             method: 'DELETE',
                             headers: {
                               Authorization: token,
                             },
                           });
-                          reviewDelete(i);
+                          // reviewDelete(i);
                         }}
                       />
                     </td>
@@ -140,7 +141,7 @@ function PayReview() {
 }
 export default PayReview;
 
-const Modal = ({ setEditArr, editArr, setModal }) => {
+const Modal = ({ setEditArr, editArr, setModal, reviewArr }) => {
   const token = localStorage.getItem('token');
   const params = useParams();
 
@@ -206,7 +207,7 @@ const Modal = ({ setEditArr, editArr, setModal }) => {
                 <option>5</option>
               </select>
             </span>
-            <span>el.id</span>
+            {/* <span>el.id</span> */}
           </div>
           <input
             type="text"
@@ -227,7 +228,7 @@ const Modal = ({ setEditArr, editArr, setModal }) => {
                   Authorization: token,
                 },
                 body: JSON.stringify({
-                  productId: `${params.id}`,
+                  reviewId: reviewArr[0].id,
                   title: editArr.title,
                   content: editArr.content,
                   imageUrl: null,

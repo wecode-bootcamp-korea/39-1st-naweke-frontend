@@ -3,6 +3,7 @@ import COLOR_LIST from './colorData';
 import SIZE_LIST from './sizeData';
 import PRICE_LIST from './priceData';
 import SORT_DATA from './sortData';
+import SIZESECONLIST from './sizeSeconData';
 import './Filter.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 const Filter = ({ setFilterData }) => {
@@ -13,7 +14,6 @@ const Filter = ({ setFilterData }) => {
     color: '',
     price: 0,
   });
-  const sizeTitle = searchParams.get('mainCategory');
 
   const handleSelect = e => {
     const { name, value, id } = e.target;
@@ -33,6 +33,8 @@ const Filter = ({ setFilterData }) => {
     }
   };
 
+  const sizeTitle = searchParams.get('mainCategory');
+  console.log(sizeTitle);
   const handleGender = e => {
     searchParams.set(e.target.name, e.target.value);
     setSearchParams(searchParams);
@@ -55,7 +57,7 @@ const Filter = ({ setFilterData }) => {
               src="images/goback.png"
               alt="goback"
               onClick={() => {
-                navigate(`/products?${searchParams.toString()}`);
+                navigate('?mainCategory=shoes&subCategory=running');
               }}
             />
           </span>
@@ -107,9 +109,13 @@ const Filter = ({ setFilterData }) => {
                     checked={Number(selectValue.price) === price}
                     onChange={handleSelect}
                   />
-                  <span>{`${(
-                    price - 50000
-                  ).toLocaleString()}원 ~${price.toLocaleString()}원`}</span>
+                  <span>
+                    {price < 200001
+                      ? `${(
+                          price - 50000
+                        ).toLocaleString()}원 ~${price.toLocaleString()}원`
+                      : '200,000원+'}
+                  </span>
                 </label>
               </div>
             );
@@ -119,23 +125,23 @@ const Filter = ({ setFilterData }) => {
         <div className="productSize filterLayout">
           <h3>사이즈</h3>
           <div className="sizeBtnWrap">
-            {SIZE_LIST[sizeTitle].map((size, i) => {
-              return (
-                <div key={i}>
-                  <input
-                    type="checkbox"
-                    name="size"
-                    id={`size${i}`}
-                    value={size}
-                    // checked={Number(selectValue.size) === size}
-                    onChange={handleSelect}
-                  />
-                  <label htmlFor={`size${i}`} className="label">
-                    <span>{size}</span>
-                  </label>
-                </div>
-              );
-            })}
+            {sizeTitle &&
+              SIZE_LIST[sizeTitle].map((size, i) => {
+                return (
+                  <div key={i}>
+                    <input
+                      type="checkbox"
+                      name="size"
+                      id={`size${i}`}
+                      value={size}
+                      onChange={handleSelect}
+                    />
+                    <label htmlFor={`size${i}`} className="label">
+                      <span>{size}</span>
+                    </label>
+                  </div>
+                );
+              })}
           </div>
         </div>
         {/* color */}

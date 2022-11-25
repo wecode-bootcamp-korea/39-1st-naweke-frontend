@@ -2,36 +2,42 @@ import React, { useState } from 'react';
 import './Right.scss';
 import './DetailModal';
 import Review from './Review';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import SIZE_LIST from './SIZE_LIST';
 
 function Right(props) {
   const accessToken = localStorage.getItem('token');
   const navigate = useNavigate();
   const [getSize, setGetSize] = useState(0);
-  console.log(getSize);
+  const params = useParams();
 
   const clickPay = () => {
-    fetch('http://10.58.52.132:3000/orders', {
+    fetch('http://10.58.52.162:3000/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         Authorization: accessToken,
       },
       body: JSON.stringify({
+        // eslint-disable-next-line react/destructuring-assignment
         totalPrice: props.detailData.productInfo.price,
         orderItems: [
           {
-            productOptionId: `${params.id}`,
+            productOptionId: params.id,
             quantity: '1',
           },
         ],
       }),
     });
+    navigate('/payment');
   };
 
+  const test = Object.keys(SIZE_LIST).indexOf(getSize);
+  console.log(params.id, getSize);
+  console.log(test);
+
   const basketAccess = () => {
-    fetch('http://10.58.52.172:3000/Carts', {
+    fetch('http://10.58.52.162:3000/carts', {
       method: 'POST',
       headers: {
         'content-Type': 'application/json;charset=utf-8',
@@ -45,7 +51,7 @@ function Right(props) {
   };
 
   const sizeHandle = e => {
-    setGetSize(e.target.value);
+    setGetSize(e.target.id);
   };
 
   return (
@@ -61,24 +67,21 @@ function Right(props) {
       <h4 className="Size">사이즈 선택</h4>
       <div className="sizeButton">
         {props.detailData.productInfo.size.map((list, i) => {
-          // const sizeValue = [list];
           return (
-            list === SIZE_LIST[i].id && (
-              <>
-                <input
-                  key={i}
-                  type="radio"
-                  id={list}
-                  name="size"
-                  value={SIZE_LIST[i].id}
-                  className="radio"
-                  onChange={sizeHandle}
-                />
-                <label htmlFor={list} className="label" key={list.id}>
-                  {SIZE_LIST[i].name}
-                </label>
-              </>
-            )
+            <>
+              <input
+                key={i}
+                type="radio"
+                id={list}
+                name="size"
+                value={SIZE_LIST[list]}
+                className="radio"
+                onChange={sizeHandle}
+              />
+              <label htmlFor={list} className="label" key={list.id}>
+                {SIZE_LIST[list]}
+              </label>
+            </>
           );
         })}
       </div>
@@ -98,16 +101,22 @@ function Right(props) {
         <details>
           <summary>
             <h3>리뷰</h3>
-            <img className="directionImg" src="images/next.png" />
+            {/* <img
+              className="directionImg"
+              src="images/arrow-down.png"
+              alt="img"
+            /> */}
+            <span className="arrow">&#94;</span>
           </summary>
-          {props.detailData.productInfo?.reviews.map(review => {
+
+          {props.detailData.productInfo.reviews?.map(review => {
             return <Review review={review} />;
           })}
         </details>
         <details>
           <summary>
             <h3>추가 정보</h3>
-            <img className="directionImg" src="images/next.png" />
+            <span className="arrow">&#94;</span>
           </summary>
           <p className="productInforTitle">상품정보제공고시</p>
           <ul className="productInfor">

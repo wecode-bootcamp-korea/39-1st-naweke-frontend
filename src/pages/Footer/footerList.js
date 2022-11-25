@@ -3,9 +3,13 @@ const FOOTER_LIST = [
     id: 1,
     title: 'Product',
     list: [
-      { id: 1, listTitle: 'Running', path: '/running' },
-      { id: 2, listTitle: 'Soccer', path: '/soccer' },
-      { id: 3, listTitle: 'Basketball', path: '/basketball' },
+      { id: 1, listTitle: 'Running', path: '/products?subCategory=running' },
+      { id: 2, listTitle: 'Soccer', path: '/products?subCategory=soccer' },
+      {
+        id: 3,
+        listTitle: 'Basketball',
+        path: '/products?subCategory=basketball',
+      },
     ],
   },
   {

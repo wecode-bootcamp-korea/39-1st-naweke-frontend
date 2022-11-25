@@ -28,7 +28,7 @@ function User({ userData: { title, text, url, button } }) {
 
   // fetch
   const loginAccess = () => {
-    fetch(`${APIS.login}`, {
+    fetch('http://10.58.52.162:3000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -48,11 +48,13 @@ function User({ userData: { title, text, url, button } }) {
       .then(data => {
         if (data.message) {
           localStorage.setItem('token', data.message);
-          navigate('/main');
+          navigate('/');
+          window.location.reload();
         } else {
           alert('아이디와 비밀번호를 확인해주세요');
         }
       });
+    // window.location.reload();
   };
   const signUpAccess = () => {
     fetch(`${APIS.signup}`, {
@@ -77,7 +79,7 @@ function User({ userData: { title, text, url, button } }) {
       .then(data => {
         if (data.result.message === 'login success') {
           localStorage.setItem('token', data.result.accessToken);
-          navigate('/main');
+          navigate('/');
         }
       });
   };
@@ -109,7 +111,8 @@ function User({ userData: { title, text, url, button } }) {
     <div className="signup">
       <div className="signupInner">
         <div className="logo">
-          <img src="/images/nike.png" alt="logo" />
+          {/* <img src="/images/nike.png" alt="logo" /> */}
+          NAWEKE
         </div>
         <h2>{title}</h2>
         <form className="signupInput">
