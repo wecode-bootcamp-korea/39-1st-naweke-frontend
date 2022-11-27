@@ -1,10 +1,11 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import MAIN_DATA from './mainData.js';
 import './Main.scss';
 
 function Main() {
   const navigate = useNavigate();
+  const [filterData, setFilterData] = useState([]);
 
   return (
     <div className="main">
@@ -26,15 +27,11 @@ function Main() {
                 <div className="mainText">
                   <h3>{slogan}</h3>
                   <p>{text}</p>
-                  <button
-                    type="button"
-                    className="moveBtn"
-                    onClick={() => {
-                      navigate({ url });
-                    }}
-                  >
-                    {button}&nbsp;&raquo;
-                  </button>
+                  <Link to={url}>
+                    <button type="button" className="moveBtn">
+                      {button}&nbsp;&raquo;
+                    </button>
+                  </Link>
                 </div>
               </div>
             );

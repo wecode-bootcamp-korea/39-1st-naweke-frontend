@@ -1,5 +1,6 @@
 .signup {
   width: 100vw;
+  padding: 180px 0 100px;
 
   .signupInner {
     width: 460px;
@@ -7,6 +8,9 @@
 
     .logo {
       height: 50px;
+      font-size: 4.5rem;
+      font-weight: 900;
+      text-align: center;
 
       img {
         height: 60px;
@@ -68,6 +72,7 @@
       }
 
       input#terms:checked {
+        accent-color: #111;
         background-color: #444;
       }
     }
@@ -80,6 +85,7 @@
       background-color: #111;
       color: #fff;
       font-size: 1.6rem;
+      cursor: pointer;
 
       &:disabled {
         opacity: 0.6;

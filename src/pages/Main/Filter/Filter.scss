@@ -1,0 +1,228 @@
+/* stylelint-disable selector-class-pattern */
+// /* stylelint-disable-next-line selector-class-pattern */
+.filter {
+  position: fixed;
+  top: 170px;
+  width: 230px;
+  height: 700px;
+  overflow-y: scroll;
+  background-color: #fff;
+  color: #111111;
+  font-size: 1.6rem;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: #ddd;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
+  .filterInner {
+    width: 85%;
+    margin: 0 auto;
+
+    .mainSort {
+      width: 100%;
+      span {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 20px;
+        font-size: 2rem;
+        font-weight: 600;
+
+        img {
+          width: 18px;
+          margin-left: 3px;
+          vertical-align: middle;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .filterLayout {
+      padding-bottom: 30px;
+      border-bottom: 1px solid #ddd;
+
+      h3 {
+        margin: 15px 0 20px;
+        font-weight: 600;
+      }
+    }
+
+    .checkBoxList {
+      margin-bottom: 10px;
+
+      label {
+        font-size: 1.6rem;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      span {
+        vertical-align: middle;
+      }
+
+      [type='radio'] {
+        width: 15px;
+        height: 15px;
+        margin: 0 5px 0 0;
+        transition: border 0.5s ease-in-out;
+        border: 2px solid #bcbcbc;
+        appearance: none;
+      }
+
+      [type='radio']:checked {
+        background-color: #111;
+      }
+
+      .selectTitle {
+        vertical-align: top;
+      }
+    }
+
+    .productPrice {
+      .showPrice {
+        width: 100%;
+        margin: 12px auto;
+
+        label {
+          font-size: 1.6rem;
+          cursor: pointer;
+        }
+
+        span {
+          vertical-align: middle;
+        }
+
+        [type='radio'] {
+          width: 15px;
+          height: 15px;
+          margin: 0 5px 0 0;
+          transition: border 0.5s ease-in-out;
+          border: 2px solid #bcbcbc;
+          vertical-align: middle;
+          appearance: none;
+        }
+
+        [type='radio']:checked {
+          background-color: #111;
+        }
+      }
+    }
+
+    .productSize {
+      .sizeBtnWrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 190px;
+
+        .label {
+          display: inline-block;
+          width: 55px;
+          height: 36px;
+          margin: 5px 3px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          line-height: 30px;
+          text-align: center;
+          cursor: pointer;
+        }
+
+        .label:hover {
+          border: 1px solid #111;
+        }
+        input[type='checkbox'] {
+          -webkit-appearance: checkbox;
+        }
+        input[type='checkbox']:checked + .label {
+          border-color: #111;
+        }
+
+        input {
+          position: absolute;
+          height: 0px;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .productColor {
+      .colorBtnWrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        margin-bottom: 75px;
+      }
+      .colorLayout {
+        width: 62px;
+        height: 70px;
+        font-size: 1.2rem;
+        text-align: center;
+        cursor: pointer;
+
+        .label {
+          display: inline-block;
+          width: 58px;
+          height: 70px;
+          margin: 0 auto;
+          border-radius: 5px;
+          line-height: 24px;
+          text-align: center;
+          cursor: pointer;
+
+          .bgcolor {
+            width: 37px;
+            height: 37px;
+            margin: 0 auto;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+          }
+          .white {
+            background-color: white;
+          }
+          .black {
+            background-color: black;
+          }
+          .grey {
+            background-color: grey;
+          }
+          .green {
+            background-color: #7bba3c;
+          }
+          .yellow {
+            background-color: #fed533;
+          }
+          .red {
+            background-color: #e7352b;
+          }
+          .blue {
+            background-color: #1790c8;
+          }
+        }
+
+        input[type='radio'] {
+          -webkit-appearance: radio;
+        }
+        input[type='radio']:checked + .label {
+          background-color: #ddd;
+        }
+
+        input {
+          position: absolute;
+          height: 0px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

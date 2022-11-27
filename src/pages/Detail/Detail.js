@@ -14,7 +14,7 @@ function Detail() {
 
   const params = useParams();
   useEffect(() => {
-    fetch(`http://10.58.52.132:3000/products/${params.id}`, {
+    fetch(`http://10.58.52.162:3000/products/${params.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -30,27 +30,27 @@ function Detail() {
     setIsOpenModal(prev => !prev);
   };
 
-  const buyAccess = () => {
-    fetch('http://10.58.52.132:3000/orders', {
-      method: 'POST',
-      headers: {
-        'content-Type': 'application/json;charset=utf-8',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxOSwiaWF0IjoxNjY5MTgxMzQ1LCJleHAiOjE2NzE3NzMzNDUsImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.dvHAlqCKLEpOa1sF_u-V0xp1qnswG_NeocDzJ31ioKo',
-      },
-      body: JSON.stringify({
-        totalPrice: '',
-        orderItems: [
-          {
-            productOptionId: '',
-            quantity: '',
-          },
-        ],
-      }),
-    })
-      .then(response => response.json())
-      .then(data => console.log(detailData));
-  };
+  // const buyAccess = () => {
+  //   fetch('http://10.58.52.162:3000/orders', {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-Type': 'application/json;charset=utf-8',
+  //       Authorization:
+  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxOSwiaWF0IjoxNjY5MTgxMzQ1LCJleHAiOjE2NzE3NzMzNDUsImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.dvHAlqCKLEpOa1sF_u-V0xp1qnswG_NeocDzJ31ioKo',
+  //     },
+  //     body: JSON.stringify({
+  //       totalPrice: '',
+  //       orderItems: [
+  //         {
+  //           productOptionId: '',
+  //           quantity: '',
+  //         },
+  //       ],
+  //     }),
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => console.log(detailData));
+  // };
 
   // const detailImgAccess = () => {
   //   fetch('http://10.58.52.132:3000/products/1', {

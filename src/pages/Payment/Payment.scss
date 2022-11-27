@@ -1,0 +1,129 @@
+.payment {
+  width: 100vw;
+
+  .paymentWrap {
+    width: 1000px;
+    margin: 70px auto;
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 500;
+    }
+
+    .paymentList {
+      width: 100%;
+      margin: 0 auto;
+
+      .paymentProduct {
+        margin-top: 50px;
+        border: 1px solid #bcbcbc;
+        border-radius: 5px;
+
+        .payProductInfo {
+          height: 50px;
+          border-radius: 5px;
+          background-color: #eee;
+
+          ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            height: 50px;
+            margin: 0 auto;
+
+            li {
+              margin-right: 20px;
+              font-size: 1.6rem;
+            }
+            li:first-child {
+              font-size: 1.8rem;
+              font-weight: 500;
+            }
+            li:last-child {
+              margin-left: auto;
+            }
+          }
+        }
+
+        .payProductDetail {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 90%;
+          height: 130px;
+          margin: 0 auto;
+
+          img {
+            width: 100px;
+            height: 100px;
+            margin-right: 50px;
+            overflow: hidden;
+          }
+          .payDetail {
+            width: 300px;
+            margin-right: auto;
+            font-size: 1.6rem;
+
+            li {
+              margin-bottom: 10px;
+            }
+            li:last-child {
+              margin-top: 20px;
+              font-size: 1.8rem;
+              font-weight: 500;
+            }
+          }
+
+          .shipment {
+            width: 150px;
+            font-size: 1.4rem;
+
+            li {
+              margin-bottom: 10px;
+            }
+          }
+          .payStatus {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+            font-size: 1.6rem;
+            font-weight: 500;
+
+            span {
+              margin-bottom: 15px;
+            }
+            .reviewBtn {
+              width: 110px;
+              height: 35px;
+              border: none;
+              border-radius: 5px;
+              background-color: #111;
+              color: #fff;
+              font-size: 1.3rem;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  .link {
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 30px auto;
+    margin-bottom: 100px;
+    padding-top: 15px;
+    border-radius: 10px;
+    background-color: #111;
+    color: #fff;
+    font-size: 1.6rem;
+    text-align: center;
+
+    &:hover {
+      background-color: rgb(90, 90, 90);
+    }
+  }
+}

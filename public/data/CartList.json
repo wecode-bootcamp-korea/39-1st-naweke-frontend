@@ -1,0 +1,30 @@
+[
+  {
+    "productName": "나이키 범고래 덩크 로우",
+    "price": 220000,
+    "thumbnailImageUrl": "../../images/kimhojoon/nikeshoes.jpeg",
+    "productOptionId": 1,
+    "quantity": 1
+  },
+  {
+    "productName": "나이키 킬샷",
+    "price": 180000,
+    "thumbnailImageUrl": "../images/kimhojoon/nikeshoes.jpeg",
+    "productOptionId": 2,
+    "quantity": 2
+  },
+  {
+    "productName": "나이키 에어 맥스 98",
+    "price": 80000,
+    "thumbnailImageUrl": "../images/kimhojoon/nikeshoes.jpeg",
+    "productOptionId": 3,
+    "quantity": 1
+  },
+  {
+    "productName": "나이키 리액트 윈드 로우 ",
+    "price": 1100000,
+    "thumbnailImageUrl": "../images/kimhojoon/nikeshoes.jpeg",
+    "productOptionId": 4,
+    "quantity": 4
+  }
+]
