@@ -44,11 +44,11 @@
 
 ||페이지 및 기능 구현|설명|담당 개발자|
 |:-:|:--------------:|:---:|:--------:|
-|Main Page|<img src="images/mainpage.gif" width="300px">|- 메인페이지 레이아웃|박지영|
-|Login<br>SignUp|<img src="images/loginSignup.gif" width="300px">|- 로그인 회원가입<br> 레이아웃<br>-회원가입시<br>바로 로그인|박지영|
-|Search|<img src="images/searchFilter.gif" width="300px">|-상품 검색창 <br>레이아웃<br>-검색 필터링<br> 기능구현 |홍석현|
-|Product List|<img src="images/productList.gif" width="300px">|- 상품 리스트 <br>자동 생성|홍석현|
-|Fiter|<img src="images/productfilter.gif" width="300px">|- 필터링 조건에따라<br> 쿼리스트링 적용|박지영<br>홍석현|
-|ProductDetail|<img src="images/clientoption.gif" width="300px">|- 상품 사이즈 등 선택<br> 조건 서버에 전송|조형진|
-|Cart|<img src="images/cart.gif" width="300px">|- 선택상품 삭제<br>- 전체삭제<br> 수량변경 및<br> 삭제에따른 가격변경|김호준|
-|Review|<img src="images/review.gif" width="300px">|- 리뷰 작성,수정,삭제|박지영|
+|Main Page|<img src="public/images/mainpage.gif" width="300px">|- 메인페이지 레이아웃|박지영|
+|Login<br>SignUp|<img src="public/images/loginSignup.gif" width="300px">|- 로그인 회원가입<br> 레이아웃<br>-회원가입시<br>바로 로그인|박지영|
+|Search|<img src="public/images/searchFilter.gif" width="300px">|-상품 검색창 <br>레이아웃<br>-검색 필터링<br> 기능구현 |홍석현|
+|Product List|<img src="public/images/productList.gif" width="300px">|- 상품 리스트 <br>자동 생성|홍석현|
+|Fiter|<img src="public/images/productfilter.gif" width="300px">|- 필터링 조건에따라<br> 쿼리스트링 적용|박지영<br>홍석현|
+|ProductDetail|<img src="public/images/clientoption.gif" width="300px">|- 상품 사이즈 등 선택<br> 조건 서버에 전송|조형진|
+|Cart|<img src="public/images/cart.gif" width="300px">|- 선택상품 삭제<br>- 전체삭제<br> 수량변경 및<br> 삭제에따른 가격변경|김호준|
+|Review|<img src="public/images/review.gif" width="300px">|- 리뷰 작성,수정,삭제|박지영|
