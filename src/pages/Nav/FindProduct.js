@@ -6,7 +6,7 @@ const FindProduct = ({ searchInput }) => {
   const [feedData, setFeedData] = useState([]);
 
   useEffect(() => {
-    fetch('/data/productlist.json')
+    fetch('http://10.58.52.162:3000/products')
       // http://10.58.52.162:3000/products
       .then(response => response.json())
       .then(result => setFeedData(result));

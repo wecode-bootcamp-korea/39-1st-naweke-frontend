@@ -9,7 +9,7 @@ function Nav() {
   const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
 
-  const accessToken = localStorage.getItem('accessToken') && (
+  const accessToken = localStorage.getItem('token') && (
     <div
       className="signBar"
       // isToken={isToken}
