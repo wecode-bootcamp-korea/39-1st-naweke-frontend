@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductList from '../components/productlist';
 import './Maintheme.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { SORT_DATA } from './Sortdata';
 import Filter from '../Main/Filter/Filter';
 
