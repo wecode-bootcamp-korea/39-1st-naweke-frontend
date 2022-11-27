@@ -13,7 +13,7 @@ const ProductList = ({ data }) => {
             <div className="contentBox">
               <div className="nowState">{name}</div>
               <div className="prdName">{desc}</div>
-              <div className="price">{price.toLocaleString()}</div>
+              <div className="price">{price.toLocaleString()}원</div>
             </div>
           </Link>
         </div>

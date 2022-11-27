@@ -3,8 +3,9 @@
 }
 
 .container {
-  margin: 100px auto 40px;
   width: 1200px;
+  margin: 100px auto 40px;
+  padding-top: 77px;
 
   .titleContainer {
     position: relative;
@@ -31,7 +32,8 @@
 
     .cartInner {
       height: 650px;
-      overflow: scroll;
+      margin-top: 30px;
+      overflow: auto;
     }
   }
 
@@ -40,24 +42,29 @@
     .deleteButton {
       position: absolute;
       right: 0%;
-      text-align: center;
       width: 75px;
       height: 30px;
-      background-color: #111;
-      color: white;
       border: none;
       border-radius: 12px;
+      background-color: #111;
+      color: white;
+      text-align: center;
     }
   }
-
+  .orderContainer {
+    position: fixed;
+    top: 170px;
+    right: 100px;
+  }
   .titleWord {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     padding-bottom: 30px;
+    font-size: 3.5rem;
   }
 
   .titleCart {
     display: inline;
+    line-height: 40px;
   }
 
   .orderList {
@@ -97,12 +104,27 @@
   }
 
   .orderBtn {
-    background-color: black;
-    color: white;
     width: 100%;
+    padding: 12px 20px;
     border: 1px solid black;
     border-radius: 36px;
-    font-size: 2rem;
-    padding: 24px 30px;
+    background-color: black;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+    }
   }
+}
+.noCart {
+  margin-top: 10px;
+  color: #555;
+  font-size: 2rem;
+  text-align: center;
 }

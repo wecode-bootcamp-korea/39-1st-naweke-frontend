@@ -23,7 +23,7 @@ function ProductList(props) {
   } = product;
   // const updateSelected = selected;
   const [selected, setSelected] = useState(quantity);
-
+  const accessToken = localStorage.getItem('token');
   const handleSingleCheck = (checked, productOptionId) => {
     if (checked) {
       setCheckItems(prev => [...prev, productOptionId]);
@@ -44,12 +44,11 @@ function ProductList(props) {
     // setSelected(e.target.value);
     const productCartId = cartId;
     // setSelected(quantity);
-    fetch(`http://10.58.52.172:3000/carts/${[productCartId]}`, {
+    fetch(`http://10.58.52.162:3000/carts/${[productCartId]}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxMiwiaWF0IjoxNjY5MDI2ODA5LCJleHAiOjE2NzE2MTg4MDksImlzcyI6ImFkbWluIiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.DhfgeERBkf4s7uin2NCCSLX2tFNcWXRs-vgMvY4InJs',
+        Authorization: accessToken,
       },
       body: JSON.stringify({
         // quantity: `${selected}`,

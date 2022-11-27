@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { NAV_LIST } from './Navlist';
 import FindProduct from './FindProduct';
 import './Nav.scss';
@@ -9,35 +9,62 @@ function Nav() {
   const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
 
-  const accessToken = localStorage.getItem('accessToken') && (
-    <div
-      className="signBar"
-      // isToken={isToken}
-      onMouseEnter={() => setIsSubMenuOpen(false)}
-    >
-      <p>Help</p>
-      <p>Order Check</p>
-      <p>
-        <Link to="/">Logout</Link>
-      </p>
-      <p>
-        <Link to="/login">안녕하세요 회원님!</Link>
-      </p>
-    </div>
-  );
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  //  && (
+  //   <div
+  //     className="signBar"
+  //     // isToken={isToken}
+  //     onMouseEnter={() => setIsSubMenuOpen(false)}
+  //   >
+  //     <p>Help</p>
+  //     <p>Order Check</p>
+  //     <p>
+  //       <Link to="/">Logout</Link>
+  //     </p>
+  //     <p>
+  //       <Link to="/login">안녕하세요 회원님!</Link>
+  //     </p>
+  //   </div>
+  // );
   return (
     <div className="navWrap">
-      {accessToken}
-      <div className="signBar" onMouseEnter={() => setIsSubMenuOpen(false)}>
-        <p>Help</p>
-        <p>Order Check</p>
-        <p>
-          <Link to="/signup">Sign Up</Link>
-        </p>
-        <p>
-          <Link to="/login">Login</Link>
-        </p>
-      </div>
+      {token ? (
+        <div
+          className="signBar"
+          // isToken={isToken}
+          onMouseEnter={() => setIsSubMenuOpen(false)}
+        >
+          <p>Help</p>
+          <p>
+            <Link to="/payment">Order Check</Link>
+          </p>
+          <p
+            onClick={() => {
+              localStorage.removeItem('token');
+              window.location.reload();
+            }}
+          >
+            Logout
+          </p>
+          <p>
+            <Link to="/login">안녕하세요 회원님!</Link>
+          </p>
+        </div>
+      ) : (
+        <div className="signBar" onMouseEnter={() => setIsSubMenuOpen(false)}>
+          <p>Help</p>
+          <p>
+            <Link to="/login">Order Check</Link>
+          </p>
+          <p>
+            <Link to="/signup">Sign Up</Link>
+          </p>
+          <p>
+            <Link to="/login">Login</Link>
+          </p>
+        </div>
+      )}
 
       <div className="navBox">
         <div className="navLogo" onMouseEnter={() => setIsSubMenuOpen(false)}>
@@ -77,7 +104,7 @@ function Nav() {
         <div className="searchBox">
           <div className="searchBoxIn">
             <div className="navLogo">
-              <Link to="/main">
+              <Link to="/">
                 <p
                   className="searchBoxLogo"
                   onClick={() => setIsSearchBoxOpen(false)}

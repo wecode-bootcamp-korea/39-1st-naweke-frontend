@@ -1,19 +1,19 @@
 .modal {
   position: fixed;
-  left: 0;
+  z-index: 100;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 100;
   .modalText {
     margin-left: 40px;
     .modalClose:after {
-      font-weight: bold;
+      content: '\00d7';
       display: flex;
       justify-content: end;
-      content: '\00d7';
       font-size: 2rem;
+      font-weight: bold;
       cursor: pointer;
     }
 
@@ -27,15 +27,15 @@
     }
   }
   .modalContent {
-    border-radius: 30px;
-    width: 450px;
-    height: 300px;
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 450px;
+    height: 300px;
     padding: 30px;
-    background: #fff;
     transform: translate(-50%, -50%);
+    border-radius: 30px;
+    background: #fff;
   }
   .modalBtn {
     display: flex;
@@ -45,16 +45,16 @@
     background-color: rgb(90, 90, 90);
   }
   .modalButton {
+    display: flex;
+    justify-content: center;
     width: 150px;
     margin-top: 60px;
     padding: 15px;
-    display: flex;
-    justify-content: center;
     border: none;
     border-radius: 20px;
     background-color: black;
     color: white;
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: pointer;
   }
 }

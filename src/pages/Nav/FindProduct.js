@@ -6,26 +6,26 @@ const FindProduct = ({ searchInput }) => {
   const [feedData, setFeedData] = useState([]);
 
   useEffect(() => {
-    fetch('/data/productlist.json')
-      // http://10.58.52.162:3000/products
+    fetch('http://10.58.52.162:3000/products')
       .then(response => response.json())
-      .then(result => setFeedData(result));
+      .then(result => setFeedData(result.data));
   }, []);
+  console.log(feedData);
 
   const searchIdData = feedData.filter(e => e.name.includes(searchInput));
 
-  if (searchInput.length > 1 && searchIdData) {
+  if (searchInput && searchIdData) {
     return (
       <div className="filterBox">
         <div className="innerFilterBox">
-          {searchIdData.map(({ id, image, name, price }) => {
+          {searchIdData.map(({ id, thumbnailUrl, name, price }) => {
             return (
               <Link key={id} to={`/products/${id}`}>
                 <div key={id} className="filterId">
-                  <img src={image} alt="img" className="filterImg" />
+                  <img src={thumbnailUrl} alt="img" className="filterImg" />
                   <div className="filterProduct">
                     <p>{name}</p>
-                    <p>{price}</p>
+                    <p>{price.toLocaleString()}원</p>
                   </div>
                 </div>
               </Link>

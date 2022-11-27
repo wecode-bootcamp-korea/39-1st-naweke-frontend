@@ -1,40 +1,44 @@
-@import '../../styles/mixin.scss';
+@import '../../styles/mixin';
 
 .navWrap {
   position: fixed;
   z-index: 10;
+  top: 0;
+  width: 100%;
+  // overflow-x: hidden;
+
   .signBar {
     @include flex(end, center);
-    font-size: 1.4rem;
     width: 100vw;
     height: 36px;
     padding-right: 3vw;
-    gap: 1vw;
     background-color: #f5f5f5;
+    font-size: 1.4rem;
+    gap: 1vw;
 
     p {
-      border-left: 2px solid #cedaeb;
-      padding-left: 10px;
       height: 17px;
+      padding-left: 10px;
+      border-left: 2px solid #cedaeb;
 
       &:nth-child(1) {
         border: none;
       }
 
       &:hover {
-        cursor: pointer;
         opacity: 0.5;
+        cursor: pointer;
       }
     }
   }
 
   .navBox {
     @include flex(space-between, center);
-    height: 67px;
     width: 100vw;
+    height: 67px;
     margin: 0 auto;
-    padding-left: 2vw;
     padding-right: 3vw;
+    padding-left: 2vw;
     background-color: #fff;
 
     img {
@@ -45,12 +49,12 @@
     .navLogo {
       display: flex;
       align-items: center;
+      width: 280px;
+      height: 67px;
+      margin-top: -7px;
       margin-bottom: -7px;
       font-size: 3rem;
       font-weight: 900;
-      margin-top: -7px;
-      width: 280px;
-      height: 67px;
       img {
         width: 80px;
         height: 80px;
@@ -83,62 +87,62 @@
         @include flex(baseline, center);
         width: 200px;
         height: 40px;
-        background-color: #f5f5f5;
         border: none;
         border-radius: 100px;
+        background-color: #f5f5f5;
         gap: 10px;
 
         .magnifyimg {
           @include flex(center, center);
-          margin-left: 2px;
           width: 40px;
           height: 36px;
-          background-color: none;
+          margin-left: 2px;
           border-radius: 50px;
+          background-color: none;
 
           &:hover {
-            cursor: pointer;
             background-color: #cccfd8;
+            cursor: pointer;
           }
         }
 
         .searchInput {
+          display: flex;
           position: relative;
           width: 150px;
           height: 30px;
-          background-color: transparent;
           border: none;
-          display: flex;
-          font-size: 2rem;
           outline: none;
+          background-color: transparent;
+          font-size: 2rem;
         }
       }
     }
   }
 
   .searchBox {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 350px;
     background-color: #ffffff;
-    position: absolute;
-    left: 0;
-    top: 0;
 
     .searchBoxIn {
       @include flex(space-between, center);
       width: 100vw;
       height: 67px;
-      padding-left: 2vw;
       padding-right: 3vw;
+      padding-left: 2vw;
       background-color: #ffffff;
 
       .navLogo {
         display: flex;
         align-items: center;
-        font-size: 3rem;
-        font-weight: 900;
         width: 200px;
         height: 67px;
+        font-size: 3rem;
+        font-weight: 900;
 
         &:hover {
           cursor: pointer;
@@ -150,21 +154,21 @@
       @include flex(normal, center);
       width: 700px;
       height: 40px;
-      background-color: #f5f5f5;
       border-radius: 100px;
+      background-color: #f5f5f5;
 
       .magnifyimg {
         @include flex(center, center);
-        margin-left: 2px;
         width: 40px;
         height: 36px;
-        background-color: none;
+        margin-left: 2px;
         border-radius: 50px;
+        background-color: none;
         background-color: #f5f5f5;
 
         &:hover {
-          cursor: pointer;
           background-color: #cccfd8;
+          cursor: pointer;
         }
 
         img {
@@ -191,8 +195,8 @@
 
       .filterBox {
         @include flex(center, center);
-        z-index: 1;
         position: absolute;
+        z-index: 1;
         top: 67px;
         left: 0px;
         width: 100vw;
@@ -210,21 +214,22 @@
           .filterId {
             @include flex(space-between, normal);
             flex-direction: column;
-            background-color: #ffffff;
             width: 130px;
             height: 220px;
+            background-color: #ffffff;
 
             .filterImg {
               width: 130px;
               height: 160px;
+              margin-bottom: 10px;
             }
 
             .filterProduct {
               @include flex(space-between, normal);
-              height: 60px;
-              width: 130px;
-              background-color: #ffffff;
               flex-direction: column;
+              width: 130px;
+              height: 60px;
+              background-color: #ffffff;
 
               p {
                 font-size: 1.5rem;
@@ -232,6 +237,17 @@
               }
             }
           }
+        }
+        .innerFilterBox::-webkit-scrollbar {
+          height: 5px;
+        }
+        .innerFilterBox::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background-color: #444;
+        }
+        .innerFilterBox::-webkit-scrollbar-track {
+          border-radius: 10px;
+          background-color: #eee;
         }
       }
     }
@@ -243,31 +259,31 @@
       font-weight: 900;
 
       & > p:hover {
-        cursor: pointer;
         color: #c8c8c8;
+        cursor: pointer;
       }
     }
   }
   .popularSearchBox {
     @include flex(baseline, center);
-    width: 47vw;
-    height: 270px;
     position: relative;
     left: 50%;
+    width: 47vw;
+    height: 270px;
     transform: translate(-50%);
 
     .popularSearch {
       @include flex(space-around, baseline);
+      flex-direction: column;
       width: 200px;
       height: 200px;
-      flex-direction: column;
       font-size: 2rem;
       font-weight: 900;
 
       p {
+        color: #c8c8c8;
         font-size: 1.5rem;
         font-weight: 500;
-        color: #c8c8c8;
       }
 
       li:hover {
@@ -288,8 +304,8 @@
       flex-direction: column;
       width: 180px;
       height: 150px;
-      font-size: 1.8rem;
       margin-left: -1vw;
+      font-size: 1.8rem;
 
       li {
         color: #757575;

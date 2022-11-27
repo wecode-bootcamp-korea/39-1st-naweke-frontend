@@ -1,13 +1,15 @@
-@import '../../styles/mixin.scss';
+@import '../../styles/mixin';
 
 .main {
   @include flex(center, normal);
   flex-direction: column;
   width: 100vw;
+  padding: 130px 0 100px;
 
   .mainWrap {
     width: 1200px;
     margin: 0 auto;
+    margin-bottom: 100px;
 
     .mainSlogan {
       width: 80%;
@@ -32,6 +34,7 @@
           background-color: #111;
           color: #fff;
           font-size: 1.6rem;
+          cursor: pointer;
         }
       }
 
@@ -54,7 +57,7 @@
           width: 400px;
           height: 280px;
           margin-top: 10px;
-          margin-left: 100px;
+          margin-left: 120px;
 
           h3 {
             margin-bottom: 20px;
@@ -87,7 +90,7 @@
           width: 400px;
           height: 250px;
           margin-top: 80px;
-          margin-right: 60px;
+          margin-right: 80px;
 
           h3 {
             margin-bottom: 20px;
@@ -121,7 +124,7 @@
           width: 400px;
           height: 270px;
           margin-top: 120px;
-          margin-left: 80px;
+          margin-left: 100px;
 
           h3 {
             margin-bottom: 20px;

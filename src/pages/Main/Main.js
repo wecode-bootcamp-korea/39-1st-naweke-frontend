@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import MAIN_DATA from './mainData.js';
 import './Main.scss';
-import Filter from './Filter/Filter.js';
 
 function Main() {
   const navigate = useNavigate();
@@ -28,15 +27,11 @@ function Main() {
                 <div className="mainText">
                   <h3>{slogan}</h3>
                   <p>{text}</p>
-                  <button
-                    type="button"
-                    className="moveBtn"
-                    onClick={() => {
-                      navigate({ url });
-                    }}
-                  >
-                    {button}&nbsp;&raquo;
-                  </button>
+                  <Link to={url}>
+                    <button type="button" className="moveBtn">
+                      {button}&nbsp;&raquo;
+                    </button>
+                  </Link>
                 </div>
               </div>
             );
@@ -46,11 +41,6 @@ function Main() {
           <img src="images/mainmsg.png" alt="mainmsg" />
         </div>
       </div>
-      <Filter setFilterData={setFilterData} />
-      {/* {console.log(filterData)}
-      {filterData.map((el, i) => {
-        return <div key={i}>{el.name}</div>;
-      })} */}
     </div>
   );
 }

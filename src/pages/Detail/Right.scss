@@ -2,7 +2,7 @@
   width: 370px;
   margin-left: 30px;
   .title {
-    font-size: 4rem;
+    font-size: 3.2rem;
   }
   .description {
     margin-top: 15px;
@@ -17,19 +17,19 @@
     font-size: 1.8rem;
   }
   .sizeButton {
-    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
     .label:hover {
       border-color: rgb(90, 90, 90);
     }
     .label {
-      cursor: pointer;
-      font-size: 2rem;
+      margin: 5px;
+      padding: 18px 13px;
       border: 1px solid #e5e5e5;
       border-radius: 10px;
-      padding: 18px 13px;
-      margin: 5px;
+      font-size: 2rem;
+      cursor: pointer;
     }
     input[type='radio'] {
       -webkit-appearance: radio;
@@ -39,40 +39,40 @@
     }
     .radio {
       position: absolute;
-      overflow: hidden;
       height: 0px;
+      overflow: hidden;
     }
   }
   .nowBtn:hover {
     background-color: rgb(90, 90, 90);
   }
   .nowBtn {
-    margin-top: 20px;
-    width: 100%;
-    padding: 20px;
     display: flex;
     justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
     border: none;
     border-radius: 40px;
     background-color: black;
     color: white;
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: pointer;
   }
   .basketBtn:hover {
     background-color: rgb(90, 90, 90);
   }
   .basketBtn {
-    margin-top: 10px;
-    width: 100%;
-    padding: 20px;
     display: flex;
     justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
     border: none;
     border-radius: 40px;
     background-color: black;
     color: white;
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: pointer;
   }
   .infor {
@@ -81,11 +81,17 @@
       align-items: center;
       justify-content: space-between;
       margin-top: 30px;
-      cursor: pointer;
       border-top: 1px solid #e5e5e5;
+      cursor: pointer;
       h3 {
         margin-top: 20px;
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+      }
+      .arrow {
+        margin-top: 20px;
+        transform: rotateX(50deg);
+        font-size: 2.8rem;
+        vertical-align: middle;
       }
       .directionImg {
         width: 16px;
@@ -97,11 +103,11 @@
     }
     .productInfor {
       margin: 20px;
-      list-style: disc;
       font-size: 2rem;
+      list-style: disc;
       li {
-        font-size: 1.6rem;
         margin: 10px;
+        font-size: 1.6rem;
         line-height: 24px;
       }
     }

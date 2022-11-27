@@ -55,8 +55,10 @@
           margin: 0 auto;
 
           img {
-            height: 110px;
+            width: 100px;
+            height: 100px;
             margin-right: 50px;
+            overflow: hidden;
           }
           .payDetail {
             width: 300px;
@@ -107,146 +109,21 @@
       }
     }
   }
-}
-.link {
-  display: block;
-  width: 200px;
-  height: 50px;
-  margin: 30px auto;
-  margin-bottom: 100px;
-  padding-top: 15px;
-  border-radius: 10px;
-  background-color: #111;
-  color: #fff;
-  font-size: 1.6rem;
-  text-align: center;
+  .link {
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 30px auto;
+    margin-bottom: 100px;
+    padding-top: 15px;
+    border-radius: 10px;
+    background-color: #111;
+    color: #fff;
+    font-size: 1.6rem;
+    text-align: center;
 
-  &:hover {
-    background-color: rgb(90, 90, 90);
+    &:hover {
+      background-color: rgb(90, 90, 90);
+    }
   }
-  // .review {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: space-between;
-  //   width: 1000px;
-  //   margin: 0 auto;
-
-  //   .reviewContainer,
-  //   .showReview {
-  //     display: flex;
-  //     flex-direction: column;
-  //     justify-content: flex-start;
-  //     width: 450px;
-  //     height: 300px;
-  //     border: 1px solid #bcbcbc;
-  //     border-radius: 10px;
-  //     gap: 10px;
-
-  //     h3 {
-  //       width: 85%;
-  //       margin: 30px auto;
-  //       margin-bottom: 10px;
-  //       font-size: 2.2rem;
-  //       font-weight: 500;
-  //     }
-
-  //     .reviewInner,
-  //     .showReviewInner {
-  //       width: 85%;
-  //       height: 210px;
-  //       margin: 0 auto;
-
-  //       .reviewTitle {
-  //         display: block;
-  //         width: 100%;
-  //         margin-top: 10px;
-  //         border-style: none;
-  //         outline: none;
-  //         font-size: 1.8rem;
-  //         font-weight: 500;
-  //       }
-
-  //       .reviewInfo {
-  //         display: flex;
-  //         align-items: center;
-  //         justify-content: flex-start;
-  //         margin-top: 10px;
-  //         font-size: 1.6rem;
-
-  //         li {
-  //           width: 200px;
-  //         }
-  //       }
-
-  //       .reviewVal {
-  //         display: flex;
-  //         justify-content: space-between;
-  //         margin-top: 10px;
-  //         font-size: 1.6rem;
-
-  //         .reviewSelect {
-  //           width: 50px;
-  //           margin-left: 10px;
-  //           border-style: none;
-  //           outline: none;
-  //         }
-  //       }
-
-  //       .reviewInput {
-  //         width: 100%;
-  //         height: 80px;
-  //         margin-top: 10px;
-  //         border-style: none;
-  //         outline: none;
-  //         font-weight: 1.6rem;
-  //       }
-  //       .reviewBtn:hover {
-  //         background-color: rgb(90, 90, 90);
-  //       }
-  //       .reviewBtn {
-  //         display: block;
-  //         width: 35%;
-  //         height: 30px;
-  //         margin: 0 auto;
-  //         margin-top: 10px;
-  //         border: none;
-  //         border-radius: 40px;
-  //         background-color: #111;
-  //         color: white;
-  //         font-size: 1.4rem;
-  //         cursor: pointer;
-  //       }
-  //       .postReview {
-  //         margin-bottom: 20px;
-  //       }
-  //     }
-  //     .showReviewInner {
-  //       height: 190px;
-  //       overflow-y: scroll;
-  //     }
-  //     .showReviewInner::-webkit-scrollbar {
-  //       width: 10px;
-  //     }
-  //     .showReviewInner::-webkit-scrollbar-thumb {
-  //       border-radius: 10px;
-  //       background-color: #111;
-  //     }
-  //     .showReviewInner::-webkit-scrollbar-track {
-  //       border-radius: 10px;
-  //       background-color: grey;
-  //       box-shadow: inset 0px 0px 5px white;
-  //     }
-
-  //     .reviewDetail {
-  //       // height: 48px;
-  //       margin: 15px 0 10px;
-  //       font-size: 1.5rem;
-  //     }
-
-  //     .changeBtn {
-  //       width: 16px;
-  //       margin-left: 7px;
-  //     }
-  //   }
-  // }
 }
