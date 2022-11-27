@@ -18,10 +18,14 @@
 - Slack
 - github
 
+# 프로젝트 선정이유
+
+- 지금까지 학습했던 기술스택을 활용 할 수 있고 실력이 향상 될 수 있을것으로 판단되어서 선정했습니다.
+
 # 참여 개발자
 
-- 백엔드 - [이명석](https://github.com/myeongseoklee?tab=repositories), [김한솔](https://github.com/lukas0306), [지송현](https://github.com/applleeee?tab=repositories)
-- 프론트 - [김호준](https://github.com/HOJOON07), [박지영](https://github.com/zhwltlr?tab=repositories), [조형진](https://github.com/gowell032), [홍석현](https://github.com/SeokhyunHong1510)
+- [백엔드](https://github.com/wecode-bootcamp-korea/39-1st-naweke-backend) - [이명석](https://github.com/myeongseoklee?tab=repositories), [김한솔](https://github.com/lukas0306), [지송현](https://github.com/applleeee?tab=repositories)
+- [프론트](https://github.com/wecode-bootcamp-korea/39-1st-naweke-frontend) - [김호준](https://github.com/HOJOON07), [박지영](https://github.com/zhwltlr?tab=repositories), [조형진](https://github.com/gowell032), [홍석현](https://github.com/SeokhyunHong1510)
 
 # Demo Video
 
