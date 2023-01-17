@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import COLOR_LIST from './colorData';
 import SIZE_LIST from './sizeData';
 import PRICE_LIST from './priceData';
-import SORT_DATA from './sortData';
-import SIZESECONLIST from './sizeSeconData';
-import './Filter.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import './Filter.scss';
+
 const Filter = ({ setFilterData }) => {
+  const IP = 'http://10.58.52.162:3000/products?';
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectValue, setSelectValue] = useState({
@@ -34,7 +34,6 @@ const Filter = ({ setFilterData }) => {
   };
 
   const sizeTitle = searchParams.get('mainCategory');
-  console.log(sizeTitle);
   const handleGender = e => {
     searchParams.set(e.target.name, e.target.value);
     setSearchParams(searchParams);
@@ -42,7 +41,7 @@ const Filter = ({ setFilterData }) => {
   };
 
   const filtering = url => {
-    fetch(`http://10.58.52.162:3000/products?${url}`)
+    fetch(`${IP}${url}`)
       .then(response => response.json())
       .then(data => setFilterData(data.data));
   };

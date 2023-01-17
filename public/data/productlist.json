@@ -4,7 +4,7 @@
     "thumbnailUrl": "images/contact.png",
     "name": "나이키 줌X 베이퍼플라이 넥스트% 2",
     "desc": "나이키 러닝화",
-    "color":"white",
+    "color": "white",
     "price": "269000",
     "gender": "여성",
     "size": "230"
@@ -109,4 +109,3 @@
     "gender": "남성"
   }
 ]
-
