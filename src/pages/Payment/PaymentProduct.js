@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Review from './Review';
+import { APIS } from '../../config';
 import './Payment.scss';
 import './PaymentProduct.scss';
 
@@ -9,22 +11,24 @@ function PaymentProduct({
   reviewArr,
   paymentData,
   paylist: { totalPrice, orderId, orderProduct, createAt },
+  setControlReview,
+  controlReview,
 }) {
-  const [modal, setModal] = useState(false);
+  const [reviewModal, setReviewModal] = useState(false);
   const token = localStorage.getItem('token');
 
   const newReview = e => {
     const { name, value } = e.target;
     setReview(prev => ({ ...prev, [name]: value }));
   };
+  // 새로운 리뷰 추가
   const pushReview = () => {
-    let copy = reviewArr.concat(review);
-    setReviewArr(copy);
+    let copyReviewArr = reviewArr.concat(review);
+    setReviewArr(copyReviewArr);
   };
 
-  console.log(orderProduct);
   const showReview = () => {
-    fetch('http://10.58.52.162:3000/reviews', {
+    fetch(`${APIS.review}`, {
       method: 'GET',
       headers: {
         Authorization: token,
@@ -34,7 +38,7 @@ function PaymentProduct({
       .then(data => setReviewArr(data.reviewData));
   };
   useEffect(() => {
-    // showReview();
+    showReview();
   }, [reviewArr]);
   return (
     <div className="paymentProduct">
@@ -64,21 +68,23 @@ function PaymentProduct({
                 <button
                   className="reviewBtn"
                   onClick={() => {
-                    // showReview();
-                    setModal(!modal);
+                    showReview();
+                    setControlReview(false);
+                    setReviewModal(!reviewModal);
                   }}
                 >
                   리뷰 작성하기
                 </button>
                 {/* 주문내역 모달 */}
-                {modal === true ? (
-                  <Modal
+                {reviewModal === true ? (
+                  <Review
                     newReview={newReview}
                     pushReview={pushReview}
-                    setModal={setModal}
-                    reviewArr={reviewArr}
+                    setReviewModal={setReviewModal}
                     review={review}
+                    reviewArr={reviewArr}
                     paymentData={paymentData}
+                    controlReview={controlReview}
                   />
                 ) : null}
               </div>
@@ -91,97 +97,3 @@ function PaymentProduct({
 }
 
 export default PaymentProduct;
-
-const Modal = ({
-  newReview,
-  pushReview,
-  setModal,
-  review,
-  editArr,
-  paymentData,
-}) => {
-  const token = localStorage.getItem('token');
-  const postFetch = () => {
-    fetch('http://10.58.52.162:3000/reviews', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        Authorization: token,
-      },
-      body: JSON.stringify({
-        productId: paymentData[0].orderProduct[0].productOptionId,
-        title: review.title,
-        content: review.text,
-        score: review.score,
-        imageUrl: null,
-      }),
-    })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-        throw new Error('에러 발생!');
-      })
-      .catch(error => alert('실패'))
-      .then(data => {
-        alert('성공');
-      });
-  };
-  // useEffect(() => {
-  //   postFetch();
-  // });
-
-  return (
-    <div className="reviewWrap">
-      <div className="reviewContainer">
-        <h3>리뷰 작성하기</h3>
-        <div className="reviewInner">
-          <input
-            type="text"
-            className="reviewTitle"
-            name="title"
-            placeholder="제목"
-            onChange={newReview}
-            // value={editArr.title}
-          />
-          <div className="reviewVal">
-            <span>
-              평점
-              <select
-                className="reviewSelect"
-                name="score"
-                onChange={newReview}
-                // value={editArr.score}
-              >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </span>
-            <span>날짜</span>
-          </div>
-          <input
-            type="text"
-            className="reviewInput"
-            placeholder="리뷰를 작성하세요"
-            name="text"
-            onChange={newReview}
-            // value={editArr.content}
-          />
-          <button
-            className="reviewBtn"
-            onClick={() => {
-              postFetch();
-              pushReview();
-              setModal(false);
-            }}
-          >
-            작성하기
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};

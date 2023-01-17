@@ -1,0 +1,11 @@
+{
+  "reviewData": [
+    {
+      "id": 2,
+      "productName": "나이키 리액트 윈드 로우",
+      "title": "제목",
+      "score": 5,
+      "content": "내용 테스트"
+    }
+  ]
+}
